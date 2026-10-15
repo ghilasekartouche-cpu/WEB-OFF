@@ -579,72 +579,196 @@
       box-shadow: 0 0 12px var(--gold);
     }
 
+    #orderForm,
     .order-form {
       padding: 36px 32px;
     }
 
+    /* SofΠek Minimalist Black & White Order Form Styling */
+    #orderForm,
+    .sofnek-form {
+      position: relative;
+      background: linear-gradient(165deg, rgba(16, 21, 18, 0.92), rgba(8, 10, 9, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 24px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
+    }
+
     .form-glow {
       position: absolute;
-      width: 220px;
-      height: 220px;
+      width: 240px;
+      height: 240px;
       right: -60px;
       top: -70px;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.28), transparent 70%);
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.22), transparent 70%);
       pointer-events: none;
     }
 
+    .form-badge-wrap {
+      margin-bottom: 12px;
+    }
+
+    .sofnek-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      padding: 4px 12px;
+    }
+
     .order-form h3 {
+      font-family: var(--serif);
+      font-size: 1.85rem;
+      color: #ffffff;
       margin-bottom: 6px;
+      letter-spacing: 0.02em;
     }
 
     .form-hint {
       color: rgba(255, 255, 255, 0.58);
-      font-size: 0.9rem;
-      margin-bottom: 24px;
+      font-size: 0.88rem;
+      margin-bottom: 22px;
+      line-height: 1.45;
     }
 
     .field {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-bottom: 18px;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.72);
+      gap: 7px;
+      margin-bottom: 16px;
     }
 
-    .field input,
-    .field textarea {
+    .field-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+    }
+
+    .field-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .required-tag {
+      color: var(--gold);
+      background: rgba(255, 215, 0, 0.12);
+      border: 1px solid rgba(255, 215, 0, 0.28);
+    }
+
+    .locked-tag {
+      color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .fields-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 520px) {
+      .fields-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field input {
       width: 100%;
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(255, 255, 255, 0.08);
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.06);
       color: var(--white);
       font-family: var(--sans);
-      font-size: 1rem;
+      font-size: 0.95rem;
       letter-spacing: 0;
       text-transform: none;
       outline: none;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     }
 
-    .field textarea {
-      resize: vertical;
-      min-height: 120px;
+    .field input::placeholder {
+      color: rgba(255, 255, 255, 0.35);
     }
 
-    .field input::placeholder,
-    .field textarea::placeholder {
-      color: rgba(255, 255, 255, 0.38);
+    .field input:focus {
+      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
     }
 
-    .field input:focus,
-    .field textarea:focus {
+    .field input[readonly] {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.72);
+      cursor: not-allowed;
+      user-select: none;
+      font-weight: 500;
+    }
+
+    .field input[readonly]:focus {
+      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow: none;
+    }
+
+    .field-price input[readonly] {
+      color: var(--gold);
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    .btn-sofnek-submit {
+      width: 100%;
+      padding: 16px 28px;
+      margin-top: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      background: #ffffff;
+      color: #0b0f0d;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-sofnek-submit:hover:not(:disabled) {
+      background: var(--gold);
+      color: var(--green-deep);
       border-color: var(--gold);
-      background: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.14);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 45px rgba(255, 215, 0, 0.38);
+    }
+
+    .btn-sofnek-submit:disabled {
+      opacity: 0.75;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
     }
 
     .about {
@@ -984,27 +1108,81 @@
           </ul>
         </div>
 
-        <form class="glass-card order-form" action="#" method="post">
+        <form id="orderForm" method="GET" action="https://script.google.com/macros/s/AKfycbzuAh-qYqd3CvR8YETx8P5UgML3bLaExIiklLzghZCmrUeeMiNKh-Uq5zoL2DSjvFu1/exec">
           <div class="form-glow"></div>
+
+          <div class="form-badge-wrap">
+            <span class="sofnek-badge">Minimalist Express · Instant Sync</span>
+          </div>
+
           <h3>Réserver votre commande</h3>
-          <p class="form-hint">Les champs sont prêts pour votre prochaine intégration.</p>
+          <p class="form-hint">Transmission directe et instantanée vers notre base de données Google Sheets.</p>
 
-          <label class="field">
-            <span>Nom du client</span>
-            <input type="text" name="client_name" placeholder="Votre nom" autocomplete="name">
-          </label>
+          <div class="field">
+            <label for="customerName" class="field-label">
+              <span>Customer Name</span>
+              <span class="field-tag required-tag">Required</span>
+            </label>
+            <input 
+              type="text" 
+              id="customerName" 
+              name="customerName" 
+              placeholder="e.g. John Doe" 
+              required 
+              autocomplete="name"
+            >
+          </div>
 
-          <label class="field">
-            <span>Numéro de téléphone</span>
-            <input type="tel" name="phone" placeholder="0795 51 34 82" autocomplete="tel">
-          </label>
+          <div class="field">
+            <label for="phoneNumber" class="field-label">
+              <span>Phone Number</span>
+              <span class="field-tag required-tag">Required</span>
+            </label>
+            <input 
+              type="tel" 
+              id="phoneNumber" 
+              name="phoneNumber" 
+              placeholder="e.g. +213 795 51 34 82" 
+              required 
+              autocomplete="tel"
+            >
+          </div>
 
-          <label class="field">
-            <span>Détails de la commande</span>
-            <textarea name="order_details" rows="5" placeholder="Ex. 1 Naan Steak, 1 Double Cheese, Hot Wings 6 pcs…"></textarea>
-          </label>
+          <div class="fields-row">
+            <div class="field">
+              <label for="orderDetails" class="field-label">
+                <span>Order Details</span>
+                <span class="field-tag locked-tag">Readonly</span>
+              </label>
+              <input 
+                type="text" 
+                id="orderDetails" 
+                name="orderDetails" 
+                value="Chicken Street Family Meal" 
+                readonly
+              >
+            </div>
 
-          <button class="btn-gold btn-full" type="submit">Envoyer la commande</button>
+            <div class="field field-price">
+              <label for="price" class="field-label">
+                <span>Price</span>
+                <span class="field-tag locked-tag">Fixed</span>
+              </label>
+              <input 
+                type="text" 
+                id="price" 
+                name="price" 
+                value="25$" 
+                readonly
+              >
+            </div>
+          </div>
+
+          <button id="submitBtn" class="btn-sofnek-submit" type="submit">
+            Commander maintenant — 25$
+          </button>
+
+          <div id="formStatus" class="form-status" aria-live="polite"></div>
         </form>
       </div>
     </section>
@@ -1244,112 +1422,8 @@
       })();
 
       /* ==========================================================
-         3. FORM & DIRECT EXCEL / GOOGLE SHEETS PIPELINE
+         3. FORM SUBMISSION: Native HTML GET direct to Google Apps Script
          ========================================================== */
-      (function initFormHandler() {
-        const form = document.querySelector('form.order-form');
-        if (!form) return;
-
-        const nameInput = form.querySelector('input[name="client_name"]');
-        const phoneInput = form.querySelector('input[name="phone"]');
-        const detailsInput = form.querySelector('textarea[name="order_details"]');
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const defaultBtnText = submitBtn ? submitBtn.innerHTML : 'Envoyer la commande';
-
-        // Feedback display container
-        const feedbackNode = document.createElement('div');
-        form.appendChild(feedbackNode);
-
-        const showMessage = (type, title, message) => {
-          feedbackNode.innerHTML = `
-            <div class="form-feedback-box feedback-${type}" role="alert">
-              <strong>${title}</strong>
-              <span>${message}</span>
-            </div>
-          `;
-        };
-
-        const setLoading = (loading) => {
-          if (!submitBtn) return;
-          if (loading) {
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = '0.85';
-            submitBtn.style.cursor = 'not-allowed';
-            submitBtn.innerHTML = '<span class="btn-spinner"></span> Transmission en cours…';
-          } else {
-            submitBtn.disabled = false;
-            submitBtn.style.opacity = '1';
-            submitBtn.style.cursor = 'pointer';
-            submitBtn.innerHTML = defaultBtnText;
-          }
-        };
-
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          feedbackNode.innerHTML = '';
-
-          const clientName = nameInput ? nameInput.value.trim() : '';
-          const phone = phoneInput ? phoneInput.value.trim() : '';
-          const orderDetails = detailsInput ? detailsInput.value.trim() : '';
-
-          if (!clientName || !phone || !orderDetails) {
-            showMessage(
-              'error',
-              'Champs requis incomplets',
-              'Veuillez renseigner votre nom, votre numéro et les détails de votre commande.'
-            );
-            return;
-          }
-
-          const orderId = 'CS-' + Math.floor(1000 + Math.random() * 9000);
-          const payload = {
-            orderId: orderId,
-            clientName: clientName,
-            phone: phone,
-            orderDetails: orderDetails,
-            timestamp: new Date().toLocaleString('fr-FR', { timeZone: 'Africa/Algiers' }),
-            status: 'EN_ATTENTE_10_MIN'
-          };
-
-          setLoading(true);
-
-          try {
-            /**
-             * POST directly to Google Apps Script Web App or SheetDB endpoint.
-             * text/plain payload prevents browser CORS pre-flight halts on Google Apps Script endpoints.
-             */
-            const API_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxYOUR_GOOGLE_APPS_SCRIPT_ID/exec';
-
-            const response = await fetch(API_ENDPOINT, {
-              method: 'POST',
-              headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-              body: JSON.stringify(payload)
-            });
-
-            if (!response.ok && response.type !== 'opaque') {
-              throw new Error('Network error ' + response.status);
-            }
-
-            showMessage(
-              'success',
-              `Commande confirmée (${orderId})`,
-              `Merci ${clientName}. Votre commande est transmise directement à la cuisine. Préparation lancée pour un retrait dans 10 minutes à Bir El Djir.`
-            );
-
-            form.reset();
-          } catch (err) {
-            // Simulated fallback for immediate local testing
-            showMessage(
-              'success',
-              `Commande validée (${orderId})`,
-              `Merci ${clientName}. Votre commande a été enregistrée avec succès. Préparation en cours (retrait dans 10 min).`
-            );
-            form.reset();
-          } finally {
-            setLoading(false);
-          }
-        });
-      })();
     });
   </script>
 </body>
