@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chicken Street — La Street c'est chic! | Bir El Djir, Oran</title>
-  <meta name="description" content="Chicken Street, le street food de luxe à Bir El Djir, Oran. Naans, burgers et fried chicken. Commandez en 10 minutes.">
+  <title>Chicken Street — تشيكن ستريت | Bir El Djir, Oran</title>
+  <meta name="description" content="Chicken Street, le street food de luxe à Bir El Djir, Oran. تشيكن ستريت - أكل شوارع راقٍ وفخم في وهران.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-  <!-- Production CDNs: Three.js, GSAP & ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Production CDNs: GSAP & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
@@ -27,7 +26,13 @@
       --stroke: rgba(255, 215, 0, 0.28);
       --shadow: 0 24px 80px rgba(8, 12, 10, 0.45);
       --serif: "Cormorant Garamond", Georgia, serif;
-      --sans: "Outfit", system-ui, sans-serif;
+      --sans: "Outfit", "Cairo", "Tajawal", system-ui, sans-serif;
+
+      /* Official Color Tokens */
+      --red: #D62828;
+      --yellow: #FCBF49;
+      --primary-green: #2E7D32;
+      --warm-bg: #FFF8EC;
     }
 
     *,
@@ -107,10 +112,10 @@
     @keyframes drift {
       0%,
       100% {
-        transform: translate3d(0, 0, 0) scale(1);
+        transform: translate(0, 0) scale(1);
       }
       50% {
-        transform: translate3d(24px, -30px, 0) scale(1.08);
+        transform: translate(24px, -30px) scale(1.08);
       }
     }
 
@@ -234,67 +239,7 @@
       display: grid;
       place-items: center;
       padding: 140px 24px 80px;
-    }
-
-    #three-canvas-container {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      perspective: 1200px;
-      overflow: hidden;
-    }
-
-    #three-canvas-container canvas {
-      width: 100% !important;
-      height: 100% !important;
-      display: block;
-    }
-
-    #three-canvas-container::before,
-    #three-canvas-container::after {
-      content: "";
-      position: absolute;
-      left: 58%;
-      top: 42%;
-      border-radius: 50%;
-      transform-style: preserve-3d;
-      pointer-events: none;
-    }
-
-    #three-canvas-container::before {
-      width: min(520px, 70vw);
-      height: min(520px, 70vw);
-      border: 1px solid rgba(255, 215, 0, 0.28);
-      box-shadow:
-        0 0 80px rgba(255, 215, 0, 0.12),
-        inset 0 0 80px rgba(255, 215, 0, 0.08);
-      animation: orbit-ring-a 18s linear infinite;
-    }
-
-    #three-canvas-container::after {
-      width: min(280px, 42vw);
-      height: min(280px, 42vw);
-      background: radial-gradient(circle at 35% 30%, rgba(255, 215, 0, 0.35), transparent 58%);
-      animation: orbit-ring-b 22s linear infinite reverse;
-    }
-
-    @keyframes orbit-ring-a {
-      from {
-        transform: translate(-50%, -50%) rotateX(62deg) rotateZ(0deg);
-      }
-      to {
-        transform: translate(-50%, -50%) rotateX(62deg) rotateZ(360deg);
-      }
-    }
-
-    @keyframes orbit-ring-b {
-      from {
-        transform: translate(-50%, -50%) rotateX(58deg) rotateZ(0deg);
-      }
-      to {
-        transform: translate(-50%, -50%) rotateX(58deg) rotateZ(360deg);
-      }
+      background: radial-gradient(circle at 50% 36%, rgba(255, 215, 0, 0.08) 0%, rgba(74, 93, 82, 0.16) 45%, var(--green-deep) 90%);
     }
 
     .hero-veil {
@@ -302,8 +247,8 @@
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(180deg, rgba(29, 38, 34, 0.15) 0%, rgba(29, 38, 34, 0.55) 70%, var(--green-deep) 100%),
-        radial-gradient(circle at 70% 40%, rgba(255, 215, 0, 0.12), transparent 42%);
+        linear-gradient(180deg, rgba(29, 38, 34, 0.1) 0%, rgba(29, 38, 34, 0.5) 70%, var(--green-deep) 100%),
+        radial-gradient(circle at 65% 35%, rgba(255, 215, 0, 0.08), transparent 50%);
       pointer-events: none;
     }
 
@@ -459,13 +404,11 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
-      perspective: 1400px;
     }
 
     .menu-card {
       padding: 28px 26px 30px;
-      transform-style: preserve-3d;
-      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
       animation: rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
@@ -478,9 +421,9 @@
     }
 
     .menu-card:hover {
-      transform: rotateX(6deg) rotateY(-8deg) translateZ(18px);
+      transform: translateY(-6px);
       border-color: var(--stroke);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 215, 0, 0.18);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 215, 0, 0.2);
     }
 
     .card-shine {
@@ -974,6 +917,417 @@
         padding-top: 120px;
       }
     }
+
+    /* ==========================================================
+       SHOPPING CART, BILINGUAL & LUXURY STYLING
+       ========================================================== */
+    .add-to-cart-btn {
+      width: 100%;
+      padding: 12px 0;
+      background: #D62828;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+    .add-to-cart-btn:hover { background: #B71F1F; }
+    .add-to-cart-btn:active { transform: scale(.97); }
+    .add-to-cart-btn:focus-visible { outline: 3px solid #1565C0; outline-offset: 2px; }
+
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 380px;
+      max-width: 100%;
+      height: 100%;
+      background: #fff;
+      color: #111;
+      box-shadow: 0 0 24px rgba(0, 0, 0, .2);
+      transform: translateX(-100%);
+      transition: transform .3s;
+      display: flex;
+      flex-direction: column;
+      z-index: 9999;
+    }
+    .cart-panel.open { transform: translateX(0); }
+
+    .cart-items { flex: 1; overflow-y: auto; list-style: none; padding: 0 20px; margin: 0; }
+    .cart-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+    #checkout-btn {
+      width: 100%;
+      padding: 12px;
+      background: #2E7D32;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #checkout-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Navigation Actions & Language Switcher */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 3px 6px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 3px 8px;
+      border-radius: 999px;
+      line-height: 1.2;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      color: #111;
+      background: #FCBF49;
+    }
+
+    .lang-sep {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 0.75rem;
+      user-select: none;
+    }
+
+    /* Header Cart Button */
+    .cart-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: #D62828;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(214, 40, 40, 0.4);
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+
+    .cart-toggle:hover {
+      background: #B71F1F;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(214, 40, 40, 0.55);
+    }
+
+    .cart-count {
+      display: inline-grid;
+      place-items: center;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 6px;
+      border-radius: 999px;
+      background: #FCBF49;
+      color: #111;
+      font-size: 0.75rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    /* Cart Dim Backdrop */
+    .cart-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 9998;
+    }
+
+    .cart-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Cart Panel Header & Footer */
+    .cart-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 22px;
+      border-bottom: 1px solid #eee;
+      background: #FFF8EC;
+    }
+
+    .cart-panel-header h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #111;
+      margin: 0;
+    }
+
+    .cart-close {
+      background: transparent;
+      border: none;
+      font-size: 30px;
+      line-height: 1;
+      color: #666;
+      cursor: pointer;
+      padding: 0 6px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .cart-close:hover {
+      color: #D62828;
+      background: rgba(214, 40, 40, 0.08);
+    }
+
+    #cart-empty {
+      padding: 50px 20px;
+      text-align: center;
+      color: #777;
+      font-size: 1.05rem;
+      margin: auto 0;
+    }
+
+    #cart-empty[hidden] {
+      display: none !important;
+    }
+
+    .cart-footer {
+      padding: 20px 22px;
+      border-top: 1px solid #eee;
+      background: #FFF8EC;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .cart-footer p {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #111;
+      margin: 0;
+    }
+
+    #cart-total {
+      color: #D62828;
+      font-size: 1.3rem;
+    }
+
+    /* Cart Row Elements */
+    .cart-name {
+      flex: 1;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #222;
+      line-height: 1.3;
+    }
+
+    .cart-line-total {
+      font-weight: 700;
+      color: #D62828;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    .cart-qty {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f1f1;
+      border-radius: 8px;
+      padding: 3px 6px;
+    }
+
+    .cart-qty button {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      width: 26px;
+      height: 26px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      display: grid;
+      place-items: center;
+      line-height: 1;
+      color: #111;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .cart-qty button:hover {
+      background: #FCBF49;
+      border-color: #d89e2e;
+      color: #000;
+    }
+
+    .cart-qty span {
+      min-width: 20px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #111;
+    }
+
+    .cart-row button[data-action="remove"] {
+      background: transparent;
+      border: none;
+      color: #888;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .cart-row button[data-action="remove"]:hover {
+      color: #D62828;
+      background: rgba(214, 40, 40, 0.1);
+    }
+
+    /* Menu Cards Grid & Item Styles */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      width: 100%;
+    }
+
+    .menu-item {
+      position: relative;
+      background: linear-gradient(165deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 24px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-8px);
+      border-color: rgba(252, 191, 73, 0.4);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 20px rgba(252, 191, 73, 0.15);
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      background: #19241f;
+      display: block;
+    }
+
+    .menu-item .item-title {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .menu-item .price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #FCBF49;
+      margin-bottom: 16px;
+    }
+
+    /* Direction and RTL Support */
+    html[dir="rtl"] {
+      direction: rtl;
+    }
+
+    html[dir="rtl"] body {
+      font-family: "Cairo", "Tajawal", "Outfit", system-ui, sans-serif;
+    }
+
+    html[dir="rtl"] .cart-panel {
+      left: auto;
+      right: 0;
+      transform: translateX(100%);
+    }
+
+    html[dir="rtl"] .cart-panel.open {
+      transform: translateX(0);
+    }
+
+    html[dir="rtl"] .formule-perks li {
+      padding-left: 0;
+      padding-right: 22px;
+    }
+
+    html[dir="rtl"] .formule-perks li::before {
+      left: auto;
+      right: 0;
+    }
+
+    @media (max-width: 990px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-cta {
+        display: none;
+      }
+      .cart-panel {
+        width: 100%;
+      }
+      .brand-text em {
+        display: none;
+      }
+      .cart-toggle {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -988,109 +1342,105 @@
       <span class="brand-mark">CS</span>
       <span class="brand-text">
         <strong>Chicken Street</strong>
-        <em>Bir El Djir · Oran</em>
+        <em data-i18n="brand_sub">Bir El Djir · Oran</em>
       </span>
     </a>
     <nav class="nav-links">
-      <a href="#menu">Menu</a>
-      <a href="#formule">Formule</a>
-      <a href="#about">À propos</a>
-      <a href="#contact">Contact</a>
+      <a href="#menu" data-i18n="nav_menu">Menu</a>
+      <a href="#formule" data-i18n="nav_formule">Formule</a>
+      <a href="#about" data-i18n="nav_about">À propos</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
     </nav>
-    <a class="nav-cta" href="#formule">Commander</a>
+    <div class="nav-actions">
+      <!-- Language switcher -->
+      <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Langue / اللغة">
+        <button type="button" class="lang-btn active" data-lang="ar">AR</button>
+        <span class="lang-sep">|</span>
+        <button type="button" class="lang-btn" data-lang="fr">FR</button>
+      </div>
+
+      <!-- Cart button in the header -->
+      <button id="cart-toggle" class="cart-toggle" type="button" aria-controls="cart-panel">
+        <span data-i18n="cart_btn">السلة</span> <span id="cart-count" class="cart-count">0</span>
+      </button>
+
+      <a class="nav-cta" href="#formule" data-i18n="nav_order">Commander</a>
+    </div>
   </header>
+
+  <!-- Cart backdrop overlay -->
+  <div id="cart-backdrop" class="cart-backdrop"></div>
+
+  <!-- Cart panel -->
+  <aside id="cart-panel" class="cart-panel" aria-label="سلة الطلبات">
+    <div class="cart-panel-header">
+      <h2 data-i18n="my_cart">سلتي</h2>
+      <button id="cart-close" type="button" class="cart-close" aria-label="Close">&times;</button>
+    </div>
+    <p id="cart-empty" data-i18n="cart_empty">سلتك فارغة</p>
+    <ul id="cart-items" class="cart-items"></ul>
+    <div class="cart-footer">
+      <p><span data-i18n="total">المجموع:</span> <strong id="cart-total">0 دج</strong></p>
+      <button id="checkout-btn" type="button" disabled data-i18n="checkout">إتمام الطلب</button>
+    </div>
+  </aside>
 
   <main>
     <section id="hero" class="hero">
-      <div id="three-canvas-container"></div>
       <div class="hero-veil"></div>
       <div class="hero-content">
-        <p class="eyebrow anim-in">Street food · Haute couture</p>
-        <h1 class="anim-in delay-1">Chicken Street — La Street c'est chic!</h1>
-        <p class="lede anim-in delay-2">Le goût de la rue, l'éclat de l'or. Naans tandoori, burgers signature et fried chicken croustillant au cœur de Bir El Djir.</p>
-        <a class="btn-gold anim-in delay-3" href="#formule">Order Now</a>
+        <p class="eyebrow anim-in" data-i18n="hero_eyebrow">Street food · Haute couture</p>
+        <h1 class="anim-in delay-1" data-i18n="hero_title">Chicken Street — La Street c'est chic!</h1>
+        <p class="lede anim-in delay-2" data-i18n="hero_lede">Le goût de la rue, l'éclat de l'or. Naans tandoori, burgers signature et fried chicken croustillant au cœur de Bir El Djir.</p>
+        <a class="btn-gold anim-in delay-3" href="#formule" data-i18n="hero_cta">Order Now</a>
       </div>
       <div class="hero-scroll" aria-hidden="true">
-        <span>Défiler</span>
+        <span data-i18n="hero_scroll">Défiler</span>
         <i></i>
       </div>
     </section>
 
     <section id="menu" class="section menu">
       <div class="section-head">
-        <p class="eyebrow">La carte</p>
-        <h2>Menu</h2>
-        <p class="section-sub">Des signatures généreuses, cuites à la minute — street food d'exception.</p>
+        <p class="eyebrow" data-i18n="menu_eyebrow">La carte</p>
+        <h2 data-i18n="menu_title">Menu</h2>
+        <p class="section-sub" data-i18n="menu_sub">Des signatures généreuses, cuites à la minute — street food d'exception.</p>
       </div>
 
       <div class="menu-grid">
-        <article class="glass-card menu-card tilt">
-          <div class="card-shine"></div>
-          <header class="card-head">
-            <span class="card-index">01</span>
-            <h3>Naans</h3>
-          </header>
-          <p class="card-tag">Four tandoor · 740 – 1050 DA</p>
-          <ul class="dish-list">
-            <li>
-              <span>Naan Tandoori</span>
-              <em>à partir de 740 DA</em>
-            </li>
-            <li>
-              <span>Naan Thaï</span>
-              <em>à partir de 890 DA</em>
-            </li>
-            <li>
-              <span>Naan Steak</span>
-              <em>jusqu'à 1050 DA</em>
-            </li>
-          </ul>
+        <article class="menu-item" data-id="chicken-burger" data-name="برغر دجاج" data-name-fr="Burger Poulet" data-price="650">
+          <img src="images/chicken-burger.jpg" alt="برغر دجاج">
+          <h3 class="item-title">برغر دجاج</h3>
+          <p class="price">650 دج</p>
+          <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
         </article>
 
-        <article class="glass-card menu-card tilt delay-card-1">
-          <div class="card-shine"></div>
-          <header class="card-head">
-            <span class="card-index">02</span>
-            <h3>Burgers</h3>
-          </header>
-          <p class="card-tag">Pain brioché · sauce maison</p>
-          <ul class="dish-list">
-            <li>
-              <span>Double Cheese</span>
-              <em>Signature</em>
-            </li>
-            <li>
-              <span>Chick'n Crousty</span>
-              <em>Crispy</em>
-            </li>
-            <li>
-              <span>Big Classic</span>
-              <em>Iconique</em>
-            </li>
-          </ul>
+        <article class="menu-item" data-id="margherita-pizza" data-name="بيتزا مارغريتا" data-name-fr="Pizza Margherita" data-price="800">
+          <img src="images/margherita-pizza.jpg" alt="بيتزا مارغريتا">
+          <h3 class="item-title">بيتزا مارغريتا</h3>
+          <p class="price">800 دج</p>
+          <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
         </article>
 
-        <article class="glass-card menu-card tilt delay-card-2">
-          <div class="card-shine"></div>
-          <header class="card-head">
-            <span class="card-index">03</span>
-            <h3>Fried Chicken</h3>
-          </header>
-          <p class="card-tag">Mariné · croustillant</p>
-          <ul class="dish-list">
-            <li>
-              <span>Hot Wings</span>
-              <em>6 pièces</em>
-            </li>
-            <li>
-              <span>Hot Wings</span>
-              <em>10 pièces</em>
-            </li>
-            <li>
-              <span>Crispy Tenders</span>
-              <em>Filets d'or</em>
-            </li>
-          </ul>
+        <article class="menu-item" data-id="french-fries" data-name="بطاطا مقلية" data-name-fr="Frites" data-price="250">
+          <img src="images/french-fries.jpg" alt="بطاطا مقلية">
+          <h3 class="item-title">بطاطا مقلية</h3>
+          <p class="price">250 دج</p>
+          <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
+        </article>
+
+        <article class="menu-item" data-id="soft-drink" data-name="مشروب غازي" data-name-fr="Boisson Gazeuse" data-price="150">
+          <img src="images/soft-drink.jpg" alt="مشروب غازي">
+          <h3 class="item-title">مشروب غازي</h3>
+          <p class="price">150 دج</p>
+          <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
+        </article>
+
+        <article class="menu-item" data-id="family-meal" data-name="وجبة تشيكن ستريت العائلية" data-name-fr="Menu Familial Chicken Street" data-price="2500">
+          <img src="images/family-meal.jpg" alt="وجبة تشيكن ستريت العائلية">
+          <h3 class="item-title">وجبة تشيكن ستريت العائلية</h3>
+          <p class="price">2500 دج</p>
+          <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
         </article>
       </div>
     </section>
@@ -1098,30 +1448,33 @@
     <section id="formule" class="section formule">
       <div class="formule-layout">
         <div class="formule-copy">
-          <p class="eyebrow">Express 10 min</p>
-          <h2>FORMULE</h2>
-          <p>Fini l'attente de dix minutes au comptoir. Transmettez votre nom, votre téléphone et le détail de la commande — nous préparons pendant que vous arrivez.</p>
+          <p class="eyebrow" data-i18n="formule_eyebrow">Express 10 min</p>
+          <h2 data-i18n="formule_title">FORMULE</h2>
+          <p data-i18n="formule_desc">Fini l'attente de dix minutes au comptoir. Transmettez votre nom, votre téléphone et le détail de la commande — nous préparons pendant que vous arrivez.</p>
           <ul class="formule-perks">
-            <li>Préparation anticipée</li>
-            <li>Confirmation par téléphone</li>
-            <li>Retrait à Bir El Djir</li>
+            <li data-i18n="formule_p1">Préparation anticipée</li>
+            <li data-i18n="formule_p2">Confirmation par téléphone</li>
+            <li data-i18n="formule_p3">Retrait à Bir El Djir</li>
           </ul>
         </div>
 
-        <form id="orderForm" method="GET" action="https://script.google.com/macros/s/AKfycbzuAh-qYqd3CvR8YETx8P5UgML3bLaExIiklLzghZCmrUeeMiNKh-Uq5zoL2DSjvFu1/exec">
+        <!-- Hidden Iframe Target to prevent redirect away from the page -->
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+        <form id="orderForm" method="GET" action="https://script.google.com/macros/s/AKfycbzuAh-qYqd3CvR8YETx8P5UgML3bLaExIiklLzghZCmrUeeMiNKh-Uq5zoL2DSjvFu1/exec" target="hidden_iframe">
           <div class="form-glow"></div>
 
           <div class="form-badge-wrap">
-            <span class="sofnek-badge">Minimalist Express · Instant Sync</span>
+            <span class="sofnek-badge" data-i18n="form_badge">Minimalist Express · Instant Sync</span>
           </div>
 
-          <h3>Réserver votre commande</h3>
-          <p class="form-hint">Transmission directe et instantanée vers notre base de données Google Sheets.</p>
+          <h3 data-i18n="form_title">Réserver votre commande</h3>
+          <p class="form-hint" data-i18n="form_hint">Transmission directe et instantanée vers notre base de données Google Sheets.</p>
 
           <div class="field">
             <label for="customerName" class="field-label">
-              <span>Customer Name</span>
-              <span class="field-tag required-tag">Required</span>
+              <span data-i18n="label_name">Customer Name</span>
+              <span class="field-tag required-tag" data-i18n="tag_required">Required</span>
             </label>
             <input 
               type="text" 
@@ -1135,8 +1488,8 @@
 
           <div class="field">
             <label for="phoneNumber" class="field-label">
-              <span>Phone Number</span>
-              <span class="field-tag required-tag">Required</span>
+              <span data-i18n="label_phone">Phone Number</span>
+              <span class="field-tag required-tag" data-i18n="tag_required">Required</span>
             </label>
             <input 
               type="tel" 
@@ -1151,35 +1504,35 @@
           <div class="fields-row">
             <div class="field">
               <label for="orderDetails" class="field-label">
-                <span>Order Details</span>
-                <span class="field-tag locked-tag">Readonly</span>
+                <span data-i18n="label_details">Order Details</span>
+                <span class="field-tag locked-tag" data-i18n="tag_readonly">Readonly</span>
               </label>
               <input 
                 type="text" 
                 id="orderDetails" 
                 name="orderDetails" 
-                value="Chicken Street Family Meal" 
+                value="" 
                 readonly
               >
             </div>
 
             <div class="field field-price">
               <label for="price" class="field-label">
-                <span>Price</span>
-                <span class="field-tag locked-tag">Fixed</span>
+                <span data-i18n="label_price">Price</span>
+                <span class="field-tag locked-tag" data-i18n="tag_fixed">Fixed</span>
               </label>
               <input 
                 type="text" 
                 id="price" 
                 name="price" 
-                value="25$" 
+                value="0 دج" 
                 readonly
               >
             </div>
           </div>
 
-          <button id="submitBtn" class="btn-sofnek-submit" type="submit">
-            Commander maintenant — 25$
+          <button id="submitBtn" class="btn-sofnek-submit" type="submit" data-i18n="submit_btn">
+            Commander maintenant
           </button>
 
           <div id="formStatus" class="form-status" aria-live="polite"></div>
@@ -1189,176 +1542,56 @@
 
     <section id="about" class="section about">
       <div class="about-frame glass-card">
-        <p class="eyebrow">Maison</p>
-        <h2>À propos</h2>
-        <p class="about-lead">Chicken Street n'est pas une simple enseigne de rue. C'est le rendez-vous nocturne d'Oran, là où le tandoor rencontre l'or, et où chaque naan, burger et aile croustillante est dressé comme un bijou.</p>
-        <p>À Bir El Djir, nous élevons le street food au rang de cérémonie : produits généreux, chaleur du four, lumière dorée. Ici, la street est chic — et Oran le sait.</p>
+        <p class="eyebrow" data-i18n="about_eyebrow">Maison</p>
+        <h2 data-i18n="about_title">À propos</h2>
+        <p class="about-lead" data-i18n="about_lead">Chicken Street n'est pas une simple enseigne de rue. C'est le rendez-vous nocturne d'Oran, là où le tandoor rencontre l'or, et où chaque naan, burger et aile croustillante est dressé comme un bijou.</p>
+        <p data-i18n="about_text">À Bir El Djir, nous élevons le street food au rang de cérémonie : produits généreux, chaleur du four, lumière dorée. Ici, la street est chic — et Oran le sait.</p>
       </div>
     </section>
 
     <section id="contact" class="section contact">
       <div class="section-head">
-        <p class="eyebrow">Nous trouver</p>
-        <h2>Contact</h2>
+        <p class="eyebrow" data-i18n="contact_eyebrow">Nous trouver</p>
+        <h2 data-i18n="contact_title">Contact</h2>
       </div>
 
       <div class="contact-grid">
         <article class="glass-card contact-card">
-          <h3>Adresse</h3>
-          <p>Boulevard des Lions<br>Bir El Djir, Oran</p>
+          <h3 data-i18n="contact_addr_title">Adresse</h3>
+          <p data-i18n="contact_addr">Boulevard des Lions<br>Bir El Djir, Oran</p>
           <p class="plus-code">PC5Q+4QR</p>
         </article>
         <article class="glass-card contact-card">
-          <h3>Téléphone</h3>
+          <h3 data-i18n="contact_phone_title">Téléphone</h3>
           <p><a href="tel:+213795513482">0795 51 34 82</a></p>
-          <p class="muted">Appelez ou passez commande via FORMULE</p>
+          <p class="muted" data-i18n="contact_phone_hint">Appelez ou passez commande via FORMULE</p>
         </article>
         <article class="glass-card contact-card">
-          <h3>Horaires</h3>
-          <p>Lundi au dimanche</p>
-          <p class="hours">11:00 AM — 03:00 AM</p>
+          <h3 data-i18n="contact_hours_title">Horaires</h3>
+          <p data-i18n="contact_days">Lundi au dimanche</p>
+          <p class="hours" data-i18n="contact_time">11:00 AM — 03:00 AM</p>
         </article>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>Chicken Street · Boulevard des Lions, Bir El Djir, Oran</p>
-    <p class="footer-tag">La Street c'est chic!</p>
+    <p data-i18n="footer_text">Chicken Street · Boulevard des Lions, Bir El Djir, Oran</p>
+    <p class="footer-tag" data-i18n="footer_tag">La Street c'est chic!</p>
   </footer>
 
   <!-- Compiled Application Logic -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       /* ==========================================================
-         1. THREE.JS LUXURY ROTATING SCENE (#three-canvas-container)
-         Colors: Emerald Green (#4A5D52 / #2C3A34) & Gold (#FFD700)
-         ========================================================== */
-      (function initThreeScene() {
-        const container = document.getElementById('three-canvas-container');
-        if (!container || typeof THREE === 'undefined') return;
-
-        const scene = new THREE.Scene();
-        const width = container.clientWidth || window.innerWidth;
-        const height = container.clientHeight || window.innerHeight;
-
-        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-        camera.position.set(0, 0, 7.5);
-
-        const renderer = new THREE.WebGLRenderer({
-          alpha: true,
-          antialias: true,
-          powerPreference: 'high-performance'
-        });
-        renderer.setSize(width, height);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.25;
-        container.appendChild(renderer.domElement);
-
-        const group = new THREE.Group();
-        scene.add(group);
-
-        // Lighting System
-        const ambientLight = new THREE.AmbientLight(0x4a5d52, 2.2);
-        scene.add(ambientLight);
-
-        const keyGoldLight = new THREE.DirectionalLight(0xffd700, 4.2);
-        keyGoldLight.position.set(5, 5, 4);
-        scene.add(keyGoldLight);
-
-        const pointRimLight = new THREE.PointLight(0xffffff, 2.0, 16);
-        pointRimLight.position.set(-4, -3, 3);
-        scene.add(pointRimLight);
-
-        // 3D Sculpture: Gold Torus Knot & Emerald Crystal Core
-        const knotGeo = new THREE.TorusKnotGeometry(1.6, 0.38, 160, 32, 2, 3);
-        const knotMat = new THREE.MeshPhysicalMaterial({
-          color: 0xffd700,
-          metalness: 0.95,
-          roughness: 0.18,
-          reflectivity: 0.9,
-          clearcoat: 0.8,
-          clearcoatRoughness: 0.1
-        });
-        const goldKnot = new THREE.Mesh(knotGeo, knotMat);
-        group.add(goldKnot);
-
-        const innerGeo = new THREE.IcosahedronGeometry(0.85, 1);
-        const innerMat = new THREE.MeshStandardMaterial({
-          color: 0x2c3a34,
-          metalness: 0.7,
-          roughness: 0.25,
-          wireframe: true
-        });
-        const emeraldCore = new THREE.Mesh(innerGeo, innerMat);
-        group.add(emeraldCore);
-
-        // Ambient Gold Stardust Particles
-        const particleCount = 280;
-        const particleGeo = new THREE.BufferGeometry();
-        const positions = new Float32Array(particleCount * 3);
-        for (let i = 0; i < particleCount * 3; i += 3) {
-          positions[i] = (Math.random() - 0.5) * 14;
-          positions[i + 1] = (Math.random() - 0.5) * 14;
-          positions[i + 2] = (Math.random() - 0.5) * 8;
-        }
-        particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        const particleMat = new THREE.PointsMaterial({
-          color: 0xffd700,
-          size: 0.045,
-          transparent: true,
-          opacity: 0.65,
-          blending: THREE.AdditiveBlending
-        });
-        const particles = new THREE.Points(particleGeo, particleMat);
-        scene.add(particles);
-
-        // Mouse Parallax & Dynamic Resize
-        let mouseX = 0, mouseY = 0;
-        let targetX = 0, targetY = 0;
-
-        window.addEventListener('resize', () => {
-          const w = container.clientWidth || window.innerWidth;
-          const h = container.clientHeight || window.innerHeight;
-          camera.aspect = w / h;
-          camera.updateProjectionMatrix();
-          renderer.setSize(w, h);
-        });
-
-        window.addEventListener('pointermove', (e) => {
-          mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-          mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-        });
-
-        const animate = () => {
-          requestAnimationFrame(animate);
-
-          targetX += (mouseX * 0.45 - targetX) * 0.05;
-          targetY += (mouseY * 0.35 - targetY) * 0.05;
-
-          group.rotation.x += 0.005;
-          group.rotation.y += 0.008;
-          group.rotation.x += (targetY - group.rotation.x) * 0.03;
-          group.rotation.y += (targetX - group.rotation.y) * 0.03;
-
-          particles.rotation.y += 0.0006;
-          particles.rotation.x += 0.0004;
-
-          renderer.render(scene, camera);
-        };
-        animate();
-      })();
-
-      /* ==========================================================
-         2. GSAP SCROLL-TRIGGERED REVEAL ANIMATIONS
+         1. GSAP SCROLL-TRIGGERED REVEAL ANIMATIONS
          ========================================================== */
       (function initGsapReveals() {
         if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
         gsap.registerPlugin(ScrollTrigger);
 
-        // Menu Cards
-        gsap.from('.menu-card', {
+        // Menu Cards (Clean 2D Reveal)
+        gsap.from('.menu-card, .menu-item', {
           scrollTrigger: {
             trigger: '#menu',
             start: 'top 75%',
@@ -1366,7 +1599,6 @@
           },
           y: 50,
           opacity: 0,
-          rotationX: 10,
           stagger: 0.16,
           duration: 1.1,
           ease: 'power3.out'
@@ -1384,7 +1616,7 @@
           ease: 'power3.out'
         });
 
-        gsap.from('.order-form', {
+        gsap.from('#orderForm, .order-form', {
           scrollTrigger: {
             trigger: '#formule',
             start: 'top 75%'
@@ -1422,8 +1654,498 @@
       })();
 
       /* ==========================================================
-         3. FORM SUBMISSION: Native HTML GET direct to Google Apps Script
+         3. BILINGUAL & SHOPPING CART SYSTEM
          ========================================================== */
+      const STORAGE_KEY = "fastfood-cart";
+
+      const TRANSLATIONS = {
+        ar: {
+          cart_btn: "السلة",
+          my_cart: "سلتي",
+          cart_empty: "سلتك فارغة",
+          add_to_cart: "أضف إلى السلة",
+          total: "المجموع:",
+          checkout: "إتمام الطلب",
+          currency: "دج",
+
+          brand_sub: "بئر الجير · وهران",
+          nav_menu: "القائمة",
+          nav_formule: "العرض",
+          nav_about: "من نحن",
+          nav_contact: "اتصل بنا",
+          nav_order: "اطلب الآن",
+
+          hero_eyebrow: "أكل شوارع · راقٍ وفخم",
+          hero_title: "تشيكن ستريت — الشارع بكل أناقة!",
+          hero_lede: "مذاق الشارع، بريق الذهب. خبز نان تندوري، برغر مميز ودجاج مقلي مقرمش في قلب بئر الجير.",
+          hero_cta: "اطلب الآن",
+          hero_scroll: "مرر للأسفل",
+
+          menu_eyebrow: "قائمة الطعام",
+          menu_title: "القائمة",
+          menu_sub: "أطباق سخية تحضر فورياً — طعام شوارع استثنائي.",
+
+          formule_eyebrow: "سريع 10 دقائق",
+          formule_title: "FORMULE",
+          formule_desc: "لا مزيد من الانتظار عند الصندوق. أرسل اسمك ورقم هاتفك وتفاصيل طلبك — وسنجهزه أثناء قدومك.",
+          formule_p1: "تحضير مسبق",
+          formule_p2: "تأكيد عبر الهاتف",
+          formule_p3: "استلام من بئر الجير",
+
+          form_badge: "سريع ومباشر · مزامنة فورية",
+          form_title: "حجز طلبك",
+          form_hint: "إرسال مباشر وفوري إلى قاعدة بيانات Google Sheets.",
+          label_name: "اسم العميل",
+          tag_required: "مطلوب",
+          placeholder_name: "مثال: أحمد محمد",
+          label_phone: "رقم الهاتف",
+          placeholder_phone: "مثال: 0795513482",
+          label_details: "تفاصيل الطلب",
+          tag_readonly: "للقراءة فقط",
+          label_price: "السعر",
+          tag_fixed: "محدد",
+          submit_btn: "تأكيد الطلب الآن",
+
+          about_eyebrow: "القصة",
+          about_title: "عن تشيكن ستريت",
+          about_lead: "تشيكن ستريت ليست مجرد علامة طعام عادية. إنها ملتقى السهرات في وهران، حيث يلتقي التندوري ببريق الذهب، وتقدم كل وجبة كتحفة فنية.",
+          about_text: "في بئر الجير، نرتقي بطعام الشارع إلى مستوى التميز: منتجات سخية، حرارة الفرن، وأجواء ذهبية متميزة.",
+
+          contact_eyebrow: "موقعنا",
+          contact_title: "تواصل معنا",
+          contact_addr_title: "العنوان",
+          contact_addr: "شارع ليزليون<br>بئر الجير، وهران",
+          contact_phone_title: "الهاتف",
+          contact_phone_hint: "اتصل أو اطلب عبر العرض",
+          contact_hours_title: "ساعات العمل",
+          contact_days: "من الإثنين إلى الأحد",
+          contact_time: "11:00 صباحاً — 03:00 ليلاً",
+
+          footer_text: "تشيكن ستريت · شارع ليزليون، بئر الجير، وهران",
+          footer_tag: "الشارع بكل أناقة!"
+        },
+        fr: {
+          cart_btn: "Panier",
+          my_cart: "Mon Panier",
+          cart_empty: "Votre panier est vide",
+          add_to_cart: "Ajouter au panier",
+          total: "Total :",
+          checkout: "Commander",
+          currency: "DA",
+
+          brand_sub: "Bir El Djir · Oran",
+          nav_menu: "Menu",
+          nav_formule: "Formule",
+          nav_about: "À propos",
+          nav_contact: "Contact",
+          nav_order: "Commander",
+
+          hero_eyebrow: "Street food · Haute couture",
+          hero_title: "Chicken Street — La Street c'est chic!",
+          hero_lede: "Le goût de la rue, l'éclat de l'or. Naans tandoori, burgers signature et fried chicken croustillant au cœur de Bir El Djir.",
+          hero_cta: "Order Now",
+          hero_scroll: "Défiler",
+
+          menu_eyebrow: "La carte",
+          menu_title: "Menu",
+          menu_sub: "Des signatures généreuses, cuites à la minute — street food d'exception.",
+
+          formule_eyebrow: "Express 10 min",
+          formule_title: "FORMULE",
+          formule_desc: "Fini l'attente de dix minutes au comptoir. Transmettez votre nom, votre téléphone et le détail de la commande — nous préparons pendant que vous arrivez.",
+          formule_p1: "Préparation anticipée",
+          formule_p2: "Confirmation par téléphone",
+          formule_p3: "Retrait à Bir El Djir",
+
+          form_badge: "Minimalist Express · Instant Sync",
+          form_title: "Réserver votre commande",
+          form_hint: "Transmission directe et instantanée vers notre base de données Google Sheets.",
+          label_name: "Customer Name",
+          tag_required: "Required",
+          placeholder_name: "e.g. John Doe",
+          label_phone: "Phone Number",
+          placeholder_phone: "e.g. +213 795 51 34 82",
+          label_details: "Order Details",
+          tag_readonly: "Readonly",
+          label_price: "Price",
+          tag_fixed: "Fixed",
+          submit_btn: "Commander maintenant",
+
+          about_eyebrow: "Maison",
+          about_title: "À propos",
+          about_lead: "Chicken Street n'est pas une simple enseigne de rue. C'est le rendez-vous nocturne d'Oran, là où le tandoor rencontre l'or, et où chaque naan, burger et aile croustillante est dressé comme un bijou.",
+          about_text: "À Bir El Djir, nous élevons le street food au rang de cérémonie : produits généreux, chaleur du four, lumière dorée. Ici, la street est chic — et Oran le sait.",
+
+          contact_eyebrow: "Nous trouver",
+          contact_title: "Contact",
+          contact_addr_title: "Adresse",
+          contact_addr: "Boulevard des Lions<br>Bir El Djir, Oran",
+          contact_phone_title: "Téléphone",
+          contact_phone_hint: "Appelez ou passez commande via FORMULE",
+          contact_hours_title: "Horaires",
+          contact_days: "Lundi au dimanche",
+          contact_time: "11:00 AM — 03:00 AM",
+
+          footer_text: "Chicken Street · Boulevard des Lions, Bir El Djir, Oran",
+          footer_tag: "La Street c'est chic!"
+        }
+      };
+
+      let currentLang = 'ar';
+      try {
+        const savedLang = localStorage.getItem('fastfood-lang');
+        if (savedLang === 'fr' || savedLang === 'ar') {
+          currentLang = savedLang;
+        }
+      } catch (e) {}
+
+      function formatPrice(amount) {
+        const currency = currentLang === 'ar' ? 'دج' : 'DA';
+        return `${Number(amount) || 0} ${currency}`;
+      }
+
+      function loadCart() {
+        try {
+          const stored = localStorage.getItem(STORAGE_KEY);
+          if (!stored) return [];
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed)) {
+            return parsed.map(item => ({
+              id: String(item.id),
+              name: String(item.name || ''),
+              price: Number(item.price) || 0,
+              quantity: Math.max(1, Number(item.quantity) || 1)
+            }));
+          }
+          return [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      let cart = loadCart();
+
+      function saveCart() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+        } catch (e) {
+          console.error('Error saving cart:', e);
+        }
+      }
+
+      function addToCart(item) {
+        const existing = cart.find(c => c.id === item.id);
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push({
+            id: String(item.id),
+            name: String(item.name),
+            price: Number(item.price),
+            quantity: 1
+          });
+        }
+        update();
+      }
+
+      function changeQuantity(id, delta) {
+        const item = cart.find(c => c.id === id);
+        if (!item) return;
+        item.quantity += delta;
+        if (item.quantity <= 0) {
+          removeFromCart(id);
+          return;
+        }
+        update();
+      }
+
+      function removeFromCart(id) {
+        cart = cart.filter(c => c.id !== id);
+        update();
+      }
+
+      function getTotal() {
+        return cart.reduce((s, c) => s + Number(c.price) * Number(c.quantity), 0);
+      }
+
+      function getCount() {
+        return cart.reduce((s, c) => s + Number(c.quantity), 0);
+      }
+
+      function update() {
+        saveCart();
+        renderCart();
+      }
+
+      function renderCart() {
+        const list = document.querySelector("#cart-items");
+        if (list) {
+          list.innerHTML = "";
+          cart.forEach(item => {
+            const li = document.createElement("li");
+            li.className = "cart-row";
+            li.dataset.id = item.id;
+            li.innerHTML = `
+              <span class="cart-name"></span>
+              <span class="cart-line-total">${formatPrice(item.price * item.quantity)}</span>
+              <div class="cart-qty">
+                <button type="button" data-action="inc">+</button>
+                <span>${item.quantity}</span>
+                <button type="button" data-action="dec">&minus;</button>
+              </div>
+              <button type="button" data-action="remove">&times;</button>
+            `;
+            // SECURITY RULE: Set the dish name strictly using textContent
+            li.querySelector(".cart-name").textContent = item.name;
+            list.appendChild(li);
+          });
+        }
+
+        const totalEl = document.querySelector("#cart-total");
+        if (totalEl) totalEl.textContent = formatPrice(getTotal());
+
+        const countEl = document.querySelector("#cart-count");
+        if (countEl) countEl.textContent = String(getCount());
+
+        const emptyEl = document.querySelector("#cart-empty");
+        if (emptyEl) emptyEl.hidden = cart.length > 0;
+
+        const checkoutBtn = document.querySelector("#checkout-btn");
+        if (checkoutBtn) checkoutBtn.disabled = cart.length === 0;
+
+        // GOOGLE SHEETS FORM SYNC:
+        const orderDetailsInput = document.querySelector('#orderForm input[name="orderDetails"]');
+        const priceInput = document.querySelector('#orderForm input[name="price"]');
+        if (orderDetailsInput) {
+          if (cart.length > 0) {
+            orderDetailsInput.value = cart.map(item => `${item.name} (x${item.quantity})`).join(', ');
+          } else {
+            orderDetailsInput.value = currentLang === 'ar' ? 'وجبة تشيكن ستريت العائلية' : 'Chicken Street Family Meal';
+          }
+        }
+        if (priceInput) {
+          priceInput.value = formatPrice(getTotal());
+        }
+
+        const submitBtn = document.querySelector('#submitBtn');
+        if (submitBtn) {
+          const submitBase = currentLang === 'ar' ? 'تأكيد الطلب الآن' : 'Commander maintenant';
+          submitBtn.textContent = cart.length > 0 ? `${submitBase} — ${formatPrice(getTotal())}` : submitBase;
+        }
+      }
+
+      function setLanguage(lang) {
+        currentLang = lang === 'fr' ? 'fr' : 'ar';
+        try {
+          localStorage.setItem('fastfood-lang', currentLang);
+        } catch (e) {}
+
+        const html = document.documentElement;
+        if (currentLang === 'ar') {
+          html.setAttribute('lang', 'ar');
+          html.setAttribute('dir', 'rtl');
+        } else {
+          html.setAttribute('lang', 'fr');
+          html.setAttribute('dir', 'ltr');
+        }
+
+        // Update active state on language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.lang === currentLang);
+        });
+
+        // Translate data-i18n elements
+        const t = TRANSLATIONS[currentLang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (t[key] !== undefined) {
+            if (t[key].includes('<br>')) {
+              el.innerHTML = t[key];
+            } else {
+              el.textContent = t[key];
+            }
+          }
+        });
+
+        // Translate placeholders
+        const nameInput = document.getElementById('customerName');
+        if (nameInput && t.placeholder_name) nameInput.placeholder = t.placeholder_name;
+        const phoneInput = document.getElementById('phoneNumber');
+        if (phoneInput && t.placeholder_phone) phoneInput.placeholder = t.placeholder_phone;
+
+        // Update menu items in DOM
+        const menuItems = document.querySelectorAll('.menu-item');
+        const itemMap = {};
+        menuItems.forEach(card => {
+          const nameAr = card.dataset.name;
+          const nameFr = card.dataset.nameFr || nameAr;
+          const priceNum = Number(card.dataset.price);
+
+          itemMap[card.dataset.id] = { ar: nameAr, fr: nameFr };
+
+          const titleEl = card.querySelector('.item-title');
+          const priceEl = card.querySelector('.price');
+          const imgEl = card.querySelector('img');
+
+          const localizedTitle = currentLang === 'ar' ? nameAr : nameFr;
+          if (titleEl) titleEl.textContent = localizedTitle;
+          if (imgEl) imgEl.alt = localizedTitle;
+          if (priceEl) priceEl.textContent = formatPrice(priceNum);
+        });
+
+        // Sync localized names in current cart items
+        cart.forEach(item => {
+          if (itemMap[item.id]) {
+            item.name = currentLang === 'ar' ? itemMap[item.id].ar : itemMap[item.id].fr;
+          }
+        });
+
+        update();
+      }
+
+      /* Event Delegation: Menu Add to Cart */
+      const menuContainer = document.querySelector('.menu');
+      if (menuContainer) {
+        menuContainer.addEventListener('click', (e) => {
+          const btn = e.target.closest('.add-to-cart-btn');
+          if (!btn) return;
+          const card = btn.closest('.menu-item');
+          if (!card) return;
+          const id = card.dataset.id;
+          const localizedName = currentLang === 'ar' ? card.dataset.name : (card.dataset.nameFr || card.dataset.name);
+          const price = Number(card.dataset.price);
+          addToCart({ id, name: localizedName, price });
+
+          // Visual feedback
+          const originalText = btn.textContent;
+          btn.textContent = currentLang === 'ar' ? 'تمت الإضافة ✓' : 'Ajouté ✓';
+          setTimeout(() => {
+            btn.textContent = originalText;
+          }, 600);
+        });
+      }
+
+      /* Event Delegation: Cart Row actions (inc, dec, remove) */
+      const cartItemsList = document.querySelector('#cart-items');
+      if (cartItemsList) {
+        cartItemsList.addEventListener('click', (e) => {
+          const actionBtn = e.target.closest('[data-action]');
+          if (!actionBtn) return;
+          const row = actionBtn.closest('.cart-row');
+          if (!row) return;
+          const id = row.dataset.id;
+          const action = actionBtn.dataset.action;
+          if (action === 'inc') {
+            changeQuantity(id, 1);
+          } else if (action === 'dec') {
+            changeQuantity(id, -1);
+          } else if (action === 'remove') {
+            removeFromCart(id);
+          }
+        });
+      }
+
+      /* Cart Panel Toggle & Close */
+      const cartPanel = document.querySelector('#cart-panel');
+      const cartToggle = document.querySelector('#cart-toggle');
+      const cartClose = document.querySelector('#cart-close');
+      const cartBackdrop = document.querySelector('#cart-backdrop');
+
+      function openCartPanel() {
+        if (cartPanel) cartPanel.classList.add('open');
+        if (cartBackdrop) cartBackdrop.classList.add('open');
+      }
+
+      function closeCartPanel() {
+        if (cartPanel) cartPanel.classList.remove('open');
+        if (cartBackdrop) cartBackdrop.classList.remove('open');
+      }
+
+      if (cartToggle) {
+        cartToggle.addEventListener('click', () => {
+          if (cartPanel && cartPanel.classList.contains('open')) {
+            closeCartPanel();
+          } else {
+            openCartPanel();
+          }
+        });
+      }
+
+      if (cartClose) {
+        cartClose.addEventListener('click', closeCartPanel);
+      }
+
+      if (cartBackdrop) {
+        cartBackdrop.addEventListener('click', closeCartPanel);
+      }
+
+      /* Checkout button click listener */
+      const checkoutBtn = document.querySelector('#checkout-btn');
+      if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+          closeCartPanel();
+          const orderForm = document.querySelector('#orderForm');
+          if (orderForm) {
+            const orderDetailsInput = orderForm.querySelector('input[name="orderDetails"]');
+            const priceInput = orderForm.querySelector('input[name="price"]');
+            if (orderDetailsInput && cart.length > 0) {
+              orderDetailsInput.value = cart.map(item => `${item.name} (x${item.quantity})`).join(', ');
+            }
+            if (priceInput) {
+              priceInput.value = formatPrice(getTotal());
+            }
+            orderForm.scrollIntoView({ behavior: 'smooth' });
+            const nameInput = orderForm.querySelector('#customerName');
+            if (nameInput) {
+              setTimeout(() => nameInput.focus(), 600);
+            }
+          }
+        });
+      }
+
+      /* Language Switcher Listener */
+      const langSwitcher = document.querySelector('#lang-switcher');
+      if (langSwitcher) {
+        langSwitcher.addEventListener('click', (e) => {
+          const btn = e.target.closest('.lang-btn');
+          if (btn) {
+            const targetLang = btn.dataset.lang;
+            if (targetLang && targetLang !== currentLang) {
+              setLanguage(targetLang);
+            }
+          } else {
+            setLanguage(currentLang === 'ar' ? 'fr' : 'ar');
+          }
+        });
+      }
+
+      /* CRITICAL RULE: Preserving Native HTML GET Submission to Google Apps Script via Hidden Iframe */
+      const orderForm = document.querySelector('#orderForm');
+      if (orderForm) {
+        orderForm.addEventListener('submit', () => {
+          const submitBtn = document.querySelector('#submitBtn');
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = currentLang === 'ar' ? 'جاري إرسال الطلب...' : 'Envoi en cours...';
+          }
+
+          // Handle UX after submission without preventing default (native GET submits to hidden iframe)
+          setTimeout(() => {
+            alert('🎉 تم تسجيل طلبك بنجاح! شكرًا لك.');
+            orderForm.reset();
+            cart = [];
+            saveCart();
+            renderCart();
+            if (submitBtn) {
+              submitBtn.disabled = false;
+            }
+          }, 600);
+        });
+      }
+
+      /* Initial language setup and cart render */
+      setLanguage(currentLang);
+      renderCart();
     });
   </script>
 </body>
