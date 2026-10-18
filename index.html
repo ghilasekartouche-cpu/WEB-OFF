@@ -1409,35 +1409,35 @@
 
       <div class="menu-grid">
         <article class="menu-item" data-id="chicken-burger" data-name="برغر دجاج" data-name-fr="Burger Poulet" data-price="650">
-          <img src="Burger.jpeg" alt="برغر دجاج">
+          <img src="images/chicken-burger.jpg" alt="برغر دجاج">
           <h3 class="item-title">برغر دجاج</h3>
           <p class="price">650 دج</p>
           <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
         </article>
 
         <article class="menu-item" data-id="margherita-pizza" data-name="بيتزا مارغريتا" data-name-fr="Pizza Margherita" data-price="800">
-          <img src="pizza.jpeg" alt="بيتزا مارغريتا">
+          <img src="images/margherita-pizza.jpg" alt="بيتزا مارغريتا">
           <h3 class="item-title">بيتزا مارغريتا</h3>
           <p class="price">800 دج</p>
           <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
         </article>
 
         <article class="menu-item" data-id="french-fries" data-name="بطاطا مقلية" data-name-fr="Frites" data-price="250">
-          <img src="friz.jpeg" alt="بطاطا مقلية">
+          <img src="images/french-fries.jpg" alt="بطاطا مقلية">
           <h3 class="item-title">بطاطا مقلية</h3>
           <p class="price">250 دج</p>
           <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
         </article>
 
         <article class="menu-item" data-id="soft-drink" data-name="مشروب غازي" data-name-fr="Boisson Gazeuse" data-price="150">
-          <img src="drink.jpeg" alt="مشروب غازي">
+          <img src="images/soft-drink.jpg" alt="مشروب غازي">
           <h3 class="item-title">مشروب غازي</h3>
           <p class="price">150 دج</p>
           <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
         </article>
 
         <article class="menu-item" data-id="family-meal" data-name="وجبة تشيكن ستريت العائلية" data-name-fr="Menu Familial Chicken Street" data-price="2500">
-          <img src="meal.jpeg" alt="وجبة تشيكن ستريت العائلية">
+          <img src="images/family-meal.jpg" alt="وجبة تشيكن ستريت العائلية">
           <h3 class="item-title">وجبة تشيكن ستريت العائلية</h3>
           <p class="price">2500 دج</p>
           <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
@@ -1461,7 +1461,7 @@
         <!-- Hidden Iframe Target to prevent redirect away from the page -->
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-        <form id="orderForm" method="GET" action="https://script.google.com/macros/s/AKfycbzuAh-qYqd3CvR8YETx8P5UgML3bLaExIiklLzghZCmrUeeMiNKh-Uq5zoL2DSjvFu1/exec" target="hidden_iframe">
+        <form id="orderForm" method="POST" action="https://script.google.com/macros/s/AKfycbzuAh-qYqd3CvR8YETx8P5UgML3bLaExIiklLzghZCmrUeeMiNKh-Uq5zoL2DSjvFu1/exec">
           <div class="form-glow"></div>
 
           <div class="form-badge-wrap">
@@ -2119,27 +2119,65 @@
         });
       }
 
-      /* CRITICAL RULE: Preserving Native HTML GET Submission to Google Apps Script via Hidden Iframe */
+      /* ==========================================================================
+         Form Submission Pipeline (Google Apps Script Webhook)
+         Bypasses Android Chrome CORS blocks using mode: 'no-cors'
+         ========================================================================== */
       const orderForm = document.querySelector('#orderForm');
       if (orderForm) {
-        orderForm.addEventListener('submit', () => {
+        orderForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
           const submitBtn = document.querySelector('#submitBtn');
+          const originalBtnText = submitBtn ? submitBtn.textContent : '';
+          const scriptURL = orderForm.action || 'https://script.google.com/macros/s/AKfycbzuAh-qYqd3CvR8YETx8P5UgML3bLaExIiklLzghZCmrUeeMiNKh-Uq5zoL2DSjvFu1/exec';
+
           if (submitBtn) {
             submitBtn.disabled = true;
-            submitBtn.textContent = currentLang === 'ar' ? 'جاري إرسال الطلب...' : 'Envoi en cours...';
+            submitBtn.textContent = (typeof currentLang !== 'undefined' && currentLang === 'ar')
+              ? 'جاري إرسال الطلب...'
+              : 'Envoi en cours...';
           }
 
-          // Handle UX after submission without preventing default (native GET submits to hidden iframe)
-          setTimeout(() => {
-            alert('🎉 تم تسجيل طلبك بنجاح! شكرًا لك.');
-            orderForm.reset();
-            cart = [];
-            saveCart();
-            renderCart();
-            if (submitBtn) {
-              submitBtn.disabled = false;
-            }
-          }, 600);
+          const formData = new FormData(orderForm);
+
+          fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            cache: 'no-cache',
+            body: formData
+          })
+            .then(() => {
+              // mode: 'no-cors' returns an opaque response (status 0, response.ok is false).
+              // Reaching .then() confirms the browser successfully transmitted the payload to Google Apps Script.
+              const successMsg = (typeof currentLang !== 'undefined' && currentLang === 'ar')
+                ? '🎉 تم تسجيل طلبك بنجاح! شكرًا لك.'
+                : '🎉 Votre commande a été enregistrée avec succès ! Merci.';
+
+              alert(successMsg);
+
+              orderForm.reset();
+              if (typeof cart !== 'undefined') {
+                cart = [];
+                if (typeof saveCart === 'function') saveCart();
+                if (typeof renderCart === 'function') renderCart();
+              }
+            })
+            .catch((error) => {
+              // Catches offline states or true network failures
+              console.error('Order submission error:', error);
+              const errorMsg = (typeof currentLang !== 'undefined' && currentLang === 'ar')
+                ? '⚠️ تعذر إرسال الطلب. يرجى التحقق من اتصالك بالإنترنت والمحاولة مجددًا.'
+                : '⚠️ Échec de l\'envoi. Veuillez vérifier votre connexion internet et réessayer.';
+
+              alert(errorMsg);
+            })
+            .finally(() => {
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+              }
+            });
         });
       }
 
