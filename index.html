@@ -1517,7 +1517,7 @@
                 style="position:absolute;width:1px;height:1px;top:-9999px;left:-9999px;opacity:0;pointer-events:none;border:none;"
                 aria-hidden="true" tabindex="-1"></iframe>
 
-        <form id="orderForm" method="GET" action="https://script.google.com/macros/s/AKfycbzuAh-qYqd3CvR8YETx8P5UgML3bLaExIiklLzghZCmrUeeMiNKh-Uq5zoL2DSjvFu1/exec" target="hidden_iframe">
+        <form id="orderForm" method="POST" action="https://script.google.com/macros/s/AKfycbwux1vgIG3uCBE62p0jl642VjpGwzg4pQysSPQeY9xzbGeC_FZ4Z6OkXNfAWO6uMbdu/exec" target="hidden_iframe">
           <div class="form-glow"></div>
 
           <div class="form-badge-wrap">
@@ -2187,7 +2187,7 @@
          Tested & Verified on: Android (Chrome/Samsung), iOS (Safari), Desktop (All)
          ========================================================== */
       const orderForm = document.getElementById('orderForm');
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzuAh-qYqd3CvR8YETx8P5UgML3bLaExIiklLzghZCmrUeeMiNKh-Uq5zoL2DSjvFu1/exec';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwux1vgIG3uCBE62p0jl642VjpGwzg4pQysSPQeY9xzbGeC_FZ4Z6OkXNfAWO6uMbdu/exec';
 
       if (orderForm) {
         orderForm.addEventListener('submit', async function(e) {
@@ -2254,37 +2254,36 @@
             formStatus.innerHTML = currentLang === 'ar' ? 'جاري الاتصال بقاعدة البيانات...' : 'Connexion à la base de données...';
           }
 
-          // Build query parameters for Google Apps Script Webhook
-          const params = new URLSearchParams();
-          params.append('customerName', nameVal);
-          params.append('phoneNumber', phoneVal);
-          params.append('orderDetails', finalOrder);
-          params.append('price', finalPrice);
-          params.append('timestamp', timestampVal);
+          // Build form-urlencoded payload for Google Apps Script doPost Webhook
+          const formData = new URLSearchParams();
+          formData.append('customerName', nameVal);
+          formData.append('phoneNumber', phoneVal);
+          formData.append('orderDetails', finalOrder);
+          formData.append('price', finalPrice);
+          formData.append('timestamp', timestampVal);
           // Compatibility aliases
-          params.append('name', nameVal);
-          params.append('phone', phoneVal);
-          params.append('order', finalOrder);
-
-          const finalUrl = `${GOOGLE_SCRIPT_URL}?${params.toString()}`;
+          formData.append('name', nameVal);
+          formData.append('phone', phoneVal);
+          formData.append('order', finalOrder);
 
           // Dual-Layer Submission:
-          // 1. Primary: fetch with mode: 'no-cors' (works on modern Android, iOS Safari, Desktop)
-          // 2. Fallback: Image Ping beacon (universal fallback for WebViews and older browsers)
+          // 1. Primary: fetch POST with mode: 'no-cors' (Android, iOS Safari, Desktop)
+          // 2. Fallback: native iframe submission if fetch is unsupported or blocked
           try {
-            await fetch(finalUrl, {
-              method: 'GET',
+            await fetch(GOOGLE_SCRIPT_URL, {
+              method: 'POST',
               mode: 'no-cors',
-              cache: 'no-cache',
-              credentials: 'omit'
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              body: formData
             });
           } catch (fetchErr) {
-            console.warn('Fetch fallback to beacon:', fetchErr);
+            console.warn('Fetch fallback to iframe submit:', fetchErr);
             try {
-              const ping = new Image();
-              ping.src = finalUrl;
-            } catch (pingErr) {
-              console.error('All dispatch attempts failed:', pingErr);
+              orderForm.submit();
+            } catch (submitErr) {
+              console.error('All dispatch attempts failed:', submitErr);
             }
           }
 
