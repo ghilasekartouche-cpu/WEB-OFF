@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Chicken Street — تشيكن ستريت | Bir El Djir, Oran</title>
-  <meta name="description" content="Chicken Street, le street food de luxe à Bir El Djir, Oran. تشيكن ستريت - أكل شوارع راقٍ وفخم في وهران.">
+  <title>Web Restaurant | [Restaurant Name] SaaS Template</title>
+  <meta name="description" content="Web Restaurant — Modern, customizable restaurant & food delivery SaaS template with real-time shopping cart and Google Sheets integration.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -1402,6 +1402,276 @@
         font-size: 0.8rem;
       }
     }
+
+    /* ==========================================================
+       MINI-CART / SUMMARY LIST (TOP FOOD CATEGORIES / MENU)
+       ========================================================== */
+    .mini-cart-summary {
+      width: min(880px, 100%);
+      margin: 0 auto 36px;
+      padding: 20px 24px;
+      background: linear-gradient(165deg, rgba(44, 58, 52, 0.65), rgba(20, 28, 24, 0.78));
+      border: 1px solid rgba(255, 215, 0, 0.28);
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mini-cart-summary.has-items {
+      border-color: rgba(252, 191, 73, 0.55);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), 0 0 24px rgba(252, 191, 73, 0.12);
+    }
+
+    .summary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .summary-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .summary-icon {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(252, 191, 73, 0.15);
+      color: #FCBF49;
+    }
+
+    .summary-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: 0.3px;
+    }
+
+    .summary-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary-badge-label {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.65);
+      font-weight: 500;
+    }
+
+    .summary-count {
+      display: inline-grid;
+      place-items: center;
+      min-width: 24px;
+      height: 24px;
+      padding: 0 7px;
+      border-radius: 999px;
+      background: #FCBF49;
+      color: #1a2420;
+      font-size: 0.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .summary-empty {
+      padding: 16px 8px 6px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.92rem;
+      margin: 0;
+    }
+
+    .summary-empty[hidden] {
+      display: none !important;
+    }
+
+    .summary-items-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+    }
+
+    .summary-items-list[hidden] {
+      display: none !important;
+    }
+
+    .summary-item-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      animation: summaryItemPop 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .summary-item-row:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(252, 191, 73, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .summary-item-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .summary-item-qty {
+      display: inline-grid;
+      place-items: center;
+      min-width: 24px;
+      height: 22px;
+      padding: 0 8px;
+      background: #D62828;
+      color: #ffffff;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      line-height: 1;
+      box-shadow: 0 2px 6px rgba(214, 40, 40, 0.4);
+    }
+
+    .summary-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.12);
+    }
+
+    .summary-footer[hidden] {
+      display: none !important;
+    }
+
+    .summary-checkout-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #FCBF49;
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(252, 191, 73, 0.12);
+      transition: all 0.2s ease;
+    }
+
+    .summary-checkout-link:hover {
+      background: #FCBF49;
+      color: #1a2420;
+    }
+
+    .summary-arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    .summary-checkout-link:hover .summary-arrow {
+      transform: translateY(2px);
+    }
+
+    @keyframes summaryItemPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.92) translateY(6px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .mini-cart-summary {
+        padding: 16px 16px;
+        margin-bottom: 24px;
+      }
+      .summary-header {
+        flex-direction: row;
+      }
+      .summary-title {
+        font-size: 0.98rem;
+      }
+      .summary-item-row {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+      }
+      .summary-footer {
+        justify-content: center;
+      }
+      .summary-checkout-link {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Category Filter Pills */
+    .menu-categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 0 auto 32px;
+      max-width: 880px;
+      padding: 0 12px;
+    }
+
+    .category-btn {
+      padding: 8px 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.75);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.22s ease;
+    }
+
+    .category-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border-color: rgba(252, 191, 73, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .category-btn.active {
+      background: #FCBF49;
+      color: #1a2420;
+      border-color: #FCBF49;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(252, 191, 73, 0.35);
+    }
+
+    .menu-item .item-desc {
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.45;
+      margin-bottom: 12px;
+      flex-grow: 1;
+    }
   </style>
 </head>
 <body>
@@ -1413,10 +1683,10 @@
 
   <header class="nav">
     <a class="brand" href="#hero">
-      <span class="brand-mark">CS</span>
+      <span class="brand-mark" id="brand-mark">WR</span>
       <span class="brand-text">
-        <strong>Chicken Street</strong>
-        <em data-i18n="brand_sub">Bir El Djir · Oran</em>
+        <strong id="brand-name">Web Restaurant</strong>
+        <em id="brand-sub" data-i18n="brand_sub">Fast Food & Gourmet</em>
       </span>
     </a>
     <nav class="nav-links">
@@ -1463,10 +1733,10 @@
     <section id="hero" class="hero">
       <div class="hero-veil"></div>
       <div class="hero-content">
-        <p class="eyebrow anim-in" data-i18n="hero_eyebrow">Street food · Haute couture</p>
-        <h1 class="anim-in delay-1" data-i18n="hero_title">Chicken Street — La Street c'est chic!</h1>
-        <p class="lede anim-in delay-2" data-i18n="hero_lede">Le goût de la rue, l'éclat de l'or. Naans tandoori, burgers signature et fried chicken croustillant au cœur de Bir El Djir.</p>
-        <a class="btn-gold anim-in delay-3" href="#formule" data-i18n="hero_cta">Order Now</a>
+        <p class="eyebrow anim-in" id="hero-eyebrow" data-i18n="hero_eyebrow">Fast Food · Gourmet Quality</p>
+        <h1 class="anim-in delay-1" id="hero-title" data-i18n="hero_title">Web Restaurant — Fast Food & Gourmet</h1>
+        <p class="lede anim-in delay-2" id="hero-lede" data-i18n="hero_lede">Tasty description goes here. Fresh burgers, crispy sides and gourmet recipes prepared in minutes.</p>
+        <a class="btn-gold anim-in delay-3" href="#formule" id="hero-cta" data-i18n="hero_cta">Order Now</a>
       </div>
       <div class="hero-scroll" aria-hidden="true">
         <span data-i18n="hero_scroll">Défiler</span>
@@ -1481,41 +1751,45 @@
         <p class="section-sub" data-i18n="menu_sub">Des signatures généreuses, cuites à la minute — street food d'exception.</p>
       </div>
 
-      <div class="menu-grid">
-        <article class="menu-item" data-id="chicken-burger" data-name="برغر دجاج" data-name-fr="Burger Poulet" data-price="650">
-          <img src="Burger.jpeg" alt="برغر دجاج">
-          <h3 class="item-title">برغر دجاج</h3>
-          <p class="price">650 دج</p>
-          <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
-        </article>
+      <!-- Mini-Cart / Summary List (Near Food Categories) -->
+      <div id="mini-cart-summary" class="mini-cart-summary glass-card" aria-live="polite">
+        <div class="summary-header">
+          <div class="summary-title-wrap">
+            <span class="summary-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+            </span>
+            <h3 class="summary-title" data-i18n="summary_title">ملخص الطلب السريع</h3>
+          </div>
+          <div class="summary-meta">
+            <span class="summary-badge-label" data-i18n="summary_badge_label">العناصر:</span>
+            <span id="summary-count" class="summary-count">0</span>
+          </div>
+        </div>
 
-        <article class="menu-item" data-id="margherita-pizza" data-name="بيتزا مارغريتا" data-name-fr="Pizza Margherita" data-price="800">
-          <img src="pizza.jpeg" alt="بيتزا مارغريتا">
-          <h3 class="item-title">بيتزا مارغريتا</h3>
-          <p class="price">800 دج</p>
-          <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
-        </article>
+        <div id="summary-empty" class="summary-empty">
+          <p data-i18n="summary_empty">سلتك فارغة حالياً. اختر من القائمة أدناه ليظهر طلبك هنا مباشرة!</p>
+        </div>
 
-        <article class="menu-item" data-id="french-fries" data-name="بطاطا مقلية" data-name-fr="Frites" data-price="250">
-          <img src="friz.jpeg" alt="بطاطا مقلية">
-          <h3 class="item-title">بطاطا مقلية</h3>
-          <p class="price">250 دج</p>
-          <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
-        </article>
+        <ul id="summary-items-list" class="summary-items-list" hidden></ul>
 
-        <article class="menu-item" data-id="soft-drink" data-name="مشروب غازي" data-name-fr="Boisson Gazeuse" data-price="150">
-          <img src="drink.jpeg" alt="مشروب غازي">
-          <h3 class="item-title">مشروب غازي</h3>
-          <p class="price">150 دج</p>
-          <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
-        </article>
+        <div id="summary-footer" class="summary-footer" hidden>
+          <a href="#formule" class="summary-checkout-link" data-i18n="summary_go_checkout">
+            <span>متابعة الطلب في الأسفل</span>
+            <span class="summary-arrow" aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
 
-        <article class="menu-item" data-id="family-meal" data-name="وجبة تشيكن ستريت العائلية" data-name-fr="Menu Familial Chicken Street" data-price="2500">
-          <img src="meal.jpeg" alt="وجبة تشيكن ستريت العائلية">
-          <h3 class="item-title">وجبة تشيكن ستريت العائلية</h3>
-          <p class="price">2500 دج</p>
-          <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">أضف إلى السلة</button>
-        </article>
+      <!-- Category Filter Pills -->
+      <div id="menu-categories" class="menu-categories" role="tablist" aria-label="Food Categories"></div>
+
+      <!-- Dynamic Menu Grid -->
+      <div class="menu-grid" id="menu-grid">
+        <!-- Rendered dynamically from restaurantData.menuItems -->
       </div>
     </section>
 
@@ -1528,7 +1802,7 @@
           <ul class="formule-perks">
             <li data-i18n="formule_p1">Préparation anticipée</li>
             <li data-i18n="formule_p2">Confirmation par téléphone</li>
-            <li data-i18n="formule_p3">Retrait à Bir El Djir</li>
+            <li data-i18n="formule_p3">Retrait express ou livraison</li>
           </ul>
         </div>
 
@@ -1620,10 +1894,10 @@
 
     <section id="about" class="section about">
       <div class="about-frame glass-card">
-        <p class="eyebrow" data-i18n="about_eyebrow">Maison</p>
-        <h2 data-i18n="about_title">À propos</h2>
-        <p class="about-lead" data-i18n="about_lead">Chicken Street n'est pas une simple enseigne de rue. C'est le rendez-vous nocturne d'Oran, là où le tandoor rencontre l'or, et où chaque naan, burger et aile croustillante est dressé comme un bijou.</p>
-        <p data-i18n="about_text">À Bir El Djir, nous élevons le street food au rang de cérémonie : produits généreux, chaleur du four, lumière dorée. Ici, la street est chic — et Oran le sait.</p>
+        <p class="eyebrow" id="about-eyebrow" data-i18n="about_eyebrow">Our Story</p>
+        <h2 id="about-title" data-i18n="about_title">About Web Restaurant</h2>
+        <p class="about-lead" id="about-lead" data-i18n="about_lead">Web Restaurant offers high quality street food and gourmet meals prepared with fresh ingredients.</p>
+        <p id="about-text" data-i18n="about_text">Every meal is prepared to order with care. Fast, delicious, and consistent quality every single day.</p>
       </div>
     </section>
 
@@ -1636,26 +1910,26 @@
       <div class="contact-grid">
         <article class="glass-card contact-card">
           <h3 data-i18n="contact_addr_title">Adresse</h3>
-          <p data-i18n="contact_addr">Boulevard des Lions<br>Bir El Djir, Oran</p>
-          <p class="plus-code">PC5Q+4QR</p>
+          <p id="contact-addr" data-i18n="contact_addr">Main Street 123<br>City Center</p>
+          <p class="plus-code">WR+CITY</p>
         </article>
         <article class="glass-card contact-card">
           <h3 data-i18n="contact_phone_title">Téléphone</h3>
-          <p><a href="tel:+213795513482">0795 51 34 82</a></p>
+          <p><a href="tel:+213795513482" id="contact-phone">0795 51 34 82</a></p>
           <p class="muted" data-i18n="contact_phone_hint">Appelez ou passez commande via FORMULE</p>
         </article>
         <article class="glass-card contact-card">
           <h3 data-i18n="contact_hours_title">Horaires</h3>
           <p data-i18n="contact_days">Lundi au dimanche</p>
-          <p class="hours" data-i18n="contact_time">11:00 AM — 03:00 AM</p>
+          <p class="hours" id="contact-hours" data-i18n="contact_time">11:00 AM — 03:00 AM</p>
         </article>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p data-i18n="footer_text">Chicken Street · Boulevard des Lions, Bir El Djir, Oran</p>
-    <p class="footer-tag" data-i18n="footer_tag">La Street c'est chic!</p>
+    <p id="footer-text" data-i18n="footer_text">Web Restaurant · Main Street, City Center</p>
+    <p class="footer-tag" id="footer-tag" data-i18n="footer_tag">Fast Food & Gourmet Experience!</p>
   </footer>
 
   <!-- Compiled Application Logic -->
@@ -1736,6 +2010,161 @@
          ========================================================== */
       const STORAGE_KEY = "fastfood-cart";
 
+      /* ==========================================================
+         SAAS RESTAURANT CONFIGURATION DATA (EDIT THIS OBJECT ONLY)
+         ========================================================== */
+      const restaurantData = {
+        // Brand & Identity
+        brand: {
+          name: "Web Restaurant",
+          shortName: "WR",
+          tagline: {
+            ar: "مطعم ويب · أكل سريع وراقي",
+            fr: "Web Restaurant · Fast Food & Gourmet"
+          }
+        },
+
+        // Hero Section Content
+        hero: {
+          eyebrow: {
+            ar: "أكل شوارع · جودة عالية",
+            fr: "Street Food · Haute Qualité"
+          },
+          title: {
+            ar: "مطعم ويب — تجربة طعام استثنائية!",
+            fr: "Web Restaurant — Le goût de l'excellence !"
+          },
+          description: {
+            ar: "وجبات سريعة ومميزة محضرة بعناية وبأجود المكونات الطازجة. برغر، بيتزا ومقبلات شهية محضرة فورياً.",
+            fr: "Des recettes savoureuses préparées à la minute avec des ingrédients frais. Burgers, pizzas et accompagnements croustillants."
+          },
+          ctaText: {
+            ar: "اطلب الآن",
+            fr: "Commander"
+          }
+        },
+
+        // About Story Content
+        about: {
+          eyebrow: {
+            ar: "قصتنا",
+            fr: "Notre Maison"
+          },
+          title: {
+            ar: "عن مطعم ويب",
+            fr: "À propos"
+          },
+          lead: {
+            ar: "نقدم في مطعم ويب مفهوماً عصرياً لتناول الطعام السريع بجودة راقية ومذاق لا يُنسى في أجواء دافئة ومميزة.",
+            fr: "Web Restaurant réinvente la street food avec des standards de haute cuisine et une passion pour les saveurs authentiques."
+          },
+          text: {
+            ar: "كل وجبة يتم إعدادها فورياً حسب طلبكم باستخدام أفضل المكونات والوصفات الحصرية لإرضاء جميع الأذواق.",
+            fr: "Chaque commande est préparée à la minute avec des produits rigoureusement sélectionnés pour vous garantir fraîcheur et plaisir gourmand."
+          }
+        },
+
+        // Contact & Hours
+        contact: {
+          address: {
+            ar: "شارع الاستقلال، وسط المدينة<br>الجزائر",
+            fr: "Boulevard Central, Centre-Ville<br>Alger"
+          },
+          phone: "0795 51 34 82",
+          phoneDisplay: "0795 51 34 82",
+          hours: {
+            ar: "يومياً من 11:00 صباحاً — 03:00 ليلاً",
+            fr: "Tous les jours de 11h00 à 03h00"
+          }
+        },
+
+        // Food Categories (Filters)
+        categories: [
+          { id: "all", name: { ar: "الكل", fr: "Tous" } },
+          { id: "burgers", name: { ar: "برغر", fr: "Burgers" } },
+          { id: "pizza", name: { ar: "بيتزا", fr: "Pizzas" } },
+          { id: "sides", name: { ar: "مقبلات", fr: "Accompagnements" } },
+          { id: "drinks", name: { ar: "مشروبات", fr: "Boissons" } },
+          { id: "meals", name: { ar: "وجبات عائلية", fr: "Menus Complets" } }
+        ],
+
+        // Menu Items (Dynamic Food Cards)
+        menuItems: [
+          {
+            id: "burger-model-1",
+            category: "burgers",
+            name: {
+              ar: "برغر موديل 1",
+              fr: "Burger Model 1"
+            },
+            description: {
+              ar: "شريحة لحم طازجة مع جبنة شيدر وخس وصلصة خاصة في خبز بريوش ناعم.",
+              fr: "Steak haché frais, cheddar fondant, sauce maison et pain brioché toasté."
+            },
+            price: 650,
+            image: "images/chicken-burger.jpg"
+          },
+          {
+            id: "pizza-model-1",
+            category: "pizza",
+            name: {
+              ar: "بيتزا موديل 1",
+              fr: "Pizza Model 1"
+            },
+            description: {
+              ar: "صلصة طماطم تقليدية مع جبنة موزاريلا غنية وأعشاب طازجة.",
+              fr: "Pâte artisanale, sauce tomate mijotée, mozzarella fondante et basilic frais."
+            },
+            price: 800,
+            image: "images/margherita-pizza.jpg"
+          },
+          {
+            id: "fries-model-1",
+            category: "sides",
+            name: {
+              ar: "بطاطا مقلية موديل 1",
+              fr: "Frites Model 1"
+            },
+            description: {
+              ar: "بطاطا مقلية مقرمشة وذهبية متبلة ببهارات المطعم الخاصة.",
+              fr: "Frites dorées et croustillantes avec assaisonnement spécial maison."
+            },
+            price: 250,
+            image: "images/french-fries.jpg"
+          },
+          {
+            id: "drink-model-1",
+            category: "drinks",
+            name: {
+              ar: "مشروب غازي موديل 1",
+              fr: "Boisson Model 1"
+            },
+            description: {
+              ar: "مشروب منعش وبارد بحجم مثالي يرافق وجبتك المفضلة.",
+              fr: "Boisson fraîche et pétillante pour accompagner parfaitement votre repas."
+            },
+            price: 150,
+            image: "images/soft-drink.jpg"
+          },
+          {
+            id: "family-meal-model-1",
+            category: "meals",
+            name: {
+              ar: "وجبة عائلية موديل 1",
+              fr: "Menu Familial Model 1"
+            },
+            description: {
+              ar: "وجبة متكاملة ومثالية للمشاركة تكفي العائلة والأصدقاء بسعر مميز.",
+              fr: "Grand menu complet idéal à partager en famille ou entre amis."
+            },
+            price: 2500,
+            image: "images/family-meal.jpg"
+          }
+        ]
+      };
+
+      let currentCategory = 'all';
+
       const TRANSLATIONS = {
         ar: {
           cart_btn: "السلة",
@@ -1746,61 +2175,66 @@
           checkout: "إتمام الطلب",
           currency: "دج",
 
-          brand_sub: "بئر الجير · وهران",
+          brand_sub: "مطعم ويب · أكل سريع وراقي",
           nav_menu: "القائمة",
           nav_formule: "العرض",
           nav_about: "من نحن",
           nav_contact: "اتصل بنا",
           nav_order: "اطلب الآن",
 
-          hero_eyebrow: "أكل شوارع · راقٍ وفخم",
-          hero_title: "تشيكن ستريت — الشارع بكل أناقة!",
-          hero_lede: "مذاق الشارع، بريق الذهب. خبز نان تندوري، برغر مميز ودجاج مقلي مقرمش في قلب بئر الجير.",
+          hero_eyebrow: "أكل شوارع · جودة عالية",
+          hero_title: "مطعم ويب — تجربة طعام استثنائية!",
+          hero_lede: "وجبات سريعة ومميزة محضرة بعناية وبأجود المكونات الطازجة. برغر، بيتزا ومقبلات شهية محضرة فورياً.",
           hero_cta: "اطلب الآن",
           hero_scroll: "مرر للأسفل",
 
           menu_eyebrow: "قائمة الطعام",
           menu_title: "القائمة",
-          menu_sub: "أطباق سخية تحضر فورياً — طعام شوارع استثنائي.",
+          menu_sub: "تشكيلة مميزة من أشهى الوجبات المحضرة فورياً بأعلى معايير الجودة.",
 
-          formule_eyebrow: "سريع 10 دقائق",
-          formule_title: "FORMULE",
-          formule_desc: "لا مزيد من الانتظار عند الصندوق. أرسل اسمك ورقم هاتفك وتفاصيل طلبك — وسنجهزه أثناء قدومك.",
-          formule_p1: "تحضير مسبق",
+          formule_eyebrow: "طلب سريع 10 دقائق",
+          formule_title: "العرض والطلب السريع",
+          formule_desc: "اختر وجباتك من القائمة، واملأ بياناتك وسيكون طلبك جاهزاً للاستلام أو التوصيل فور وصولك.",
+          formule_p1: "تحضير فوري مسبق",
           formule_p2: "تأكيد عبر الهاتف",
-          formule_p3: "استلام من بئر الجير",
+          formule_p3: "استلام سريع أو توصيل",
 
-          form_badge: "سريع ومباشر · مزامنة فورية",
-          form_title: "حجز طلبك",
-          form_hint: "إرسال مباشر وفوري إلى قاعدة بيانات Google Sheets.",
+          form_badge: "مزامنة فورية · Instant Sync",
+          form_title: "حجز وتأكيد طلبك",
+          form_hint: "يتم إرسال الطلب مباشرة إلى قاعدة البيانات لتأكيده فورياً.",
           label_name: "اسم العميل",
           tag_required: "مطلوب",
-          placeholder_name: "مثال: أحمد محمد",
+          placeholder_name: "مثال: الاسم الكامل",
           label_phone: "رقم الهاتف",
-          placeholder_phone: "مثال: 0795513482",
+          placeholder_phone: "مثال: 0795 51 34 82",
           label_details: "تفاصيل الطلب",
           tag_readonly: "للقراءة فقط",
-          label_price: "السعر",
+          label_price: "المجموع",
           tag_fixed: "محدد",
           submit_btn: "تأكيد الطلب الآن",
 
-          about_eyebrow: "القصة",
-          about_title: "عن تشيكن ستريت",
-          about_lead: "تشيكن ستريت ليست مجرد علامة طعام عادية. إنها ملتقى السهرات في وهران، حيث يلتقي التندوري ببريق الذهب، وتقدم كل وجبة كتحفة فنية.",
-          about_text: "في بئر الجير، نرتقي بطعام الشارع إلى مستوى التميز: منتجات سخية، حرارة الفرن، وأجواء ذهبية متميزة.",
+          about_eyebrow: "قصتنا",
+          about_title: "عن مطعم ويب",
+          about_lead: "نقدم في مطعم ويب مفهوماً عصرياً لتناول الطعام السريع بجودة راقية ومذاق لا يُنسى في أجواء دافئة ومميزة.",
+          about_text: "كل وجبة يتم إعدادها فورياً حسب طلبكم باستخدام أفضل المكونات والوصفات الحصرية لإرضاء جميع الأذواق.",
 
           contact_eyebrow: "موقعنا",
           contact_title: "تواصل معنا",
           contact_addr_title: "العنوان",
-          contact_addr: "شارع ليزليون<br>بئر الجير، وهران",
+          contact_addr: "شارع الاستقلال، وسط المدينة<br>الجزائر",
           contact_phone_title: "الهاتف",
-          contact_phone_hint: "اتصل أو اطلب عبر العرض",
+          contact_phone_hint: "اتصل أو اطلب عبر النموذج",
           contact_hours_title: "ساعات العمل",
-          contact_days: "من الإثنين إلى الأحد",
+          contact_days: "طوال أيام الأسبوع",
           contact_time: "11:00 صباحاً — 03:00 ليلاً",
 
-          footer_text: "تشيكن ستريت · شارع ليزليون، بئر الجير، وهران",
-          footer_tag: "الشارع بكل أناقة!"
+          footer_text: "Web Restaurant · Main Street, City Center",
+          footer_tag: "Fast Food & Gourmet Experience!",
+
+          summary_title: "ملخص الطلب السريع",
+          summary_empty: "سلتك فارغة حالياً. اختر من القائمة أدناه ليظهر طلبك هنا مباشرة!",
+          summary_badge_label: "العناصر:",
+          summary_go_checkout: "متابعة الطلب في الأسفل"
         },
         fr: {
           cart_btn: "Panier",
@@ -1811,33 +2245,33 @@
           checkout: "Commander",
           currency: "DA",
 
-          brand_sub: "Bir El Djir · Oran",
+          brand_sub: "Web Restaurant · Fast Food & Gourmet",
           nav_menu: "Menu",
           nav_formule: "Formule",
           nav_about: "À propos",
           nav_contact: "Contact",
           nav_order: "Commander",
 
-          hero_eyebrow: "Street food · Haute couture",
-          hero_title: "Chicken Street — La Street c'est chic!",
-          hero_lede: "Le goût de la rue, l'éclat de l'or. Naans tandoori, burgers signature et fried chicken croustillant au cœur de Bir El Djir.",
-          hero_cta: "Order Now",
+          hero_eyebrow: "Street Food · Haute Qualité",
+          hero_title: "Web Restaurant — Le goût de l'excellence !",
+          hero_lede: "Des recettes savoureuses préparées à la minute avec des ingrédients frais. Burgers, pizzas et accompagnements croustillants.",
+          hero_cta: "Commander",
           hero_scroll: "Défiler",
 
           menu_eyebrow: "La carte",
           menu_title: "Menu",
-          menu_sub: "Des signatures généreuses, cuites à la minute — street food d'exception.",
+          menu_sub: "Des signatures généreuses, cuites à la minute avec des ingrédients frais.",
 
           formule_eyebrow: "Express 10 min",
-          formule_title: "FORMULE",
-          formule_desc: "Fini l'attente de dix minutes au comptoir. Transmettez votre nom, votre téléphone et le détail de la commande — nous préparons pendant que vous arrivez.",
+          formule_title: "FORMULE & COMMANDE",
+          formule_desc: "Fini l'attente au comptoir. Transmettez vos coordonnées et le détail de votre commande — nous préparons pendant que vous arrivez.",
           formule_p1: "Préparation anticipée",
-          formule_p2: "Confirmation par téléphone",
-          formule_p3: "Retrait à Bir El Djir",
+          formule_p2: "Confirmation téléphonique",
+          formule_p3: "Retrait express ou livraison",
 
           form_badge: "Minimalist Express · Instant Sync",
           form_title: "Réserver votre commande",
-          form_hint: "Transmission directe et instantanée vers notre base de données Google Sheets.",
+          form_hint: "Transmission directe et instantanée vers notre base de données.",
           label_name: "Customer Name",
           tag_required: "Required",
           placeholder_name: "e.g. John Doe",
@@ -1849,23 +2283,28 @@
           tag_fixed: "Fixed",
           submit_btn: "Commander maintenant",
 
-          about_eyebrow: "Maison",
+          about_eyebrow: "Notre Maison",
           about_title: "À propos",
-          about_lead: "Chicken Street n'est pas une simple enseigne de rue. C'est le rendez-vous nocturne d'Oran, là où le tandoor rencontre l'or, et où chaque naan, burger et aile croustillante est dressé comme un bijou.",
-          about_text: "À Bir El Djir, nous élevons le street food au rang de cérémonie : produits généreux, chaleur du four, lumière dorée. Ici, la street est chic — et Oran le sait.",
+          about_lead: "Web Restaurant réinvente la street food avec des standards de haute cuisine et une passion pour les saveurs authentiques.",
+          about_text: "Chaque commande est préparée à la minute avec des produits rigoureusement sélectionnés pour vous garantir fraîcheur et plaisir gourmand.",
 
           contact_eyebrow: "Nous trouver",
           contact_title: "Contact",
           contact_addr_title: "Adresse",
-          contact_addr: "Boulevard des Lions<br>Bir El Djir, Oran",
+          contact_addr: "Boulevard Central, Centre-Ville<br>Alger",
           contact_phone_title: "Téléphone",
-          contact_phone_hint: "Appelez ou passez commande via FORMULE",
+          contact_phone_hint: "Appelez ou passez commande",
           contact_hours_title: "Horaires",
           contact_days: "Lundi au dimanche",
           contact_time: "11:00 AM — 03:00 AM",
 
-          footer_text: "Chicken Street · Boulevard des Lions, Bir El Djir, Oran",
-          footer_tag: "La Street c'est chic!"
+          footer_text: "Web Restaurant · Main Street, City Center",
+          footer_tag: "Fast Food & Gourmet Experience!",
+
+          summary_title: "Aperçu rapide de la commande",
+          summary_empty: "Votre panier est vide. Choisissez dans le menu ci-dessous pour voir vos articles ici !",
+          summary_badge_label: "Articles :",
+          summary_go_checkout: "Finaliser la commande en bas"
         }
       };
 
@@ -1998,7 +2437,8 @@
           if (cart.length > 0) {
             orderDetailsInput.value = cart.map(item => `${item.name} (x${item.quantity})`).join(', ');
           } else {
-            orderDetailsInput.value = currentLang === 'ar' ? 'وجبة تشيكن ستريت العائلية' : 'Chicken Street Family Meal';
+            const firstItem = (restaurantData.menuItems && restaurantData.menuItems[0]) ? restaurantData.menuItems[0] : null;
+            orderDetailsInput.value = firstItem ? (currentLang === 'ar' ? firstItem.name.ar : firstItem.name.fr) : 'Order Details';
           }
         }
         if (priceInput) {
@@ -2010,6 +2450,193 @@
           const submitBase = currentLang === 'ar' ? 'تأكيد الطلب الآن' : 'Commander maintenant';
           submitBtn.textContent = cart.length > 0 ? `${submitBase} — ${formatPrice(getTotal())}` : submitBase;
         }
+
+        // Keep Top Mini-Cart / Summary List perfectly in sync
+        renderSummaryList();
+      }
+
+      /* ==========================================================
+         4. MINI-CART / SUMMARY LIST UI SYNC
+         ========================================================== */
+      function renderSummaryList() {
+        const summaryList = document.querySelector("#summary-items-list");
+        const summaryEmpty = document.querySelector("#summary-empty");
+        const summaryCount = document.querySelector("#summary-count");
+        const summaryFooter = document.querySelector("#summary-footer");
+        const summaryContainer = document.querySelector("#mini-cart-summary");
+        if (!summaryList) return;
+
+        summaryList.innerHTML = "";
+
+        if (!Array.isArray(cart) || cart.length === 0) {
+          if (summaryEmpty) summaryEmpty.hidden = false;
+          if (summaryList) summaryList.hidden = true;
+          if (summaryFooter) summaryFooter.hidden = true;
+          if (summaryCount) summaryCount.textContent = "0";
+          if (summaryContainer) summaryContainer.classList.remove("has-items");
+          return;
+        }
+
+        if (summaryEmpty) summaryEmpty.hidden = true;
+        if (summaryList) summaryList.hidden = false;
+        if (summaryFooter) summaryFooter.hidden = false;
+        if (summaryContainer) summaryContainer.classList.add("has-items");
+
+        const totalQty = typeof getCount === "function" ? getCount() : cart.reduce((s, c) => s + (Number(c.quantity) || 0), 0);
+        if (summaryCount) summaryCount.textContent = String(totalQty);
+
+        cart.forEach(item => {
+          const li = document.createElement("li");
+          li.className = "summary-item-row";
+          li.dataset.id = item.id;
+
+          const nameSpan = document.createElement("span");
+          nameSpan.className = "summary-item-name";
+          nameSpan.textContent = item.name;
+
+          const qtySpan = document.createElement("span");
+          qtySpan.className = "summary-item-qty";
+          qtySpan.textContent = `× ${item.quantity}`;
+
+          li.appendChild(nameSpan);
+          li.appendChild(qtySpan);
+          summaryList.appendChild(li);
+        });
+      }
+
+      /* ==========================================================
+         5. DYNAMIC RESTAURANT & MENU RENDERING
+         ========================================================== */
+      function renderBrandData() {
+        const b = restaurantData.brand;
+        const h = restaurantData.hero;
+        const a = restaurantData.about;
+        const c = restaurantData.contact;
+
+        // Brand in Nav
+        const brandMark = document.querySelector('#brand-mark');
+        if (brandMark && b.shortName) brandMark.textContent = b.shortName;
+
+        const brandName = document.querySelector('#brand-name');
+        if (brandName && b.name) brandName.textContent = b.name;
+
+        const brandSub = document.querySelector('#brand-sub');
+        if (brandSub && b.tagline) brandSub.textContent = currentLang === 'ar' ? b.tagline.ar : b.tagline.fr;
+
+        // Hero Content
+        const heroEyebrow = document.querySelector('#hero-eyebrow');
+        if (heroEyebrow && h.eyebrow) heroEyebrow.textContent = currentLang === 'ar' ? h.eyebrow.ar : h.eyebrow.fr;
+
+        const heroTitle = document.querySelector('#hero-title');
+        if (heroTitle && h.title) heroTitle.textContent = currentLang === 'ar' ? h.title.ar : h.title.fr;
+
+        const heroLede = document.querySelector('#hero-lede');
+        if (heroLede && h.description) heroLede.textContent = currentLang === 'ar' ? h.description.ar : h.description.fr;
+
+        const heroCta = document.querySelector('#hero-cta');
+        if (heroCta && h.ctaText) heroCta.textContent = currentLang === 'ar' ? h.ctaText.ar : h.ctaText.fr;
+
+        // About Content
+        const aboutEyebrow = document.querySelector('#about-eyebrow');
+        if (aboutEyebrow && a.eyebrow) aboutEyebrow.textContent = currentLang === 'ar' ? a.eyebrow.ar : a.eyebrow.fr;
+
+        const aboutTitle = document.querySelector('#about-title');
+        if (aboutTitle && a.title) aboutTitle.textContent = currentLang === 'ar' ? a.title.ar : a.title.fr;
+
+        const aboutLead = document.querySelector('#about-lead');
+        if (aboutLead && a.lead) aboutLead.textContent = currentLang === 'ar' ? a.lead.ar : a.lead.fr;
+
+        const aboutText = document.querySelector('#about-text');
+        if (aboutText && a.text) aboutText.textContent = currentLang === 'ar' ? a.text.ar : a.text.fr;
+
+        // Contact Info
+        const contactAddr = document.querySelector('#contact-addr');
+        if (contactAddr && c.address) contactAddr.innerHTML = currentLang === 'ar' ? c.address.ar : c.address.fr;
+
+        const contactPhone = document.querySelector('#contact-phone');
+        if (contactPhone && c.phone) {
+          contactPhone.textContent = c.phoneDisplay || c.phone;
+          contactPhone.href = `tel:${c.phone.replace(/[\s-]/g, '')}`;
+        }
+
+        const contactHours = document.querySelector('#contact-hours');
+        if (contactHours && c.hours) contactHours.textContent = currentLang === 'ar' ? c.hours.ar : c.hours.fr;
+
+        // Footer
+        const footerText = document.querySelector('#footer-text');
+        if (footerText && b.name && c.address) {
+          const loc = currentLang === 'ar' ? c.address.ar.replace('<br>', ' · ') : c.address.fr.replace('<br>', ' · ');
+          footerText.textContent = `${b.name} · ${loc}`;
+        }
+
+        const footerTag = document.querySelector('#footer-tag');
+        if (footerTag && b.tagline) footerTag.textContent = currentLang === 'ar' ? b.tagline.ar : b.tagline.fr;
+      }
+
+      function renderCategories(activeCatId = 'all') {
+        const catContainer = document.querySelector('#menu-categories');
+        if (!catContainer || !restaurantData.categories) return;
+
+        catContainer.innerHTML = '';
+        restaurantData.categories.forEach(cat => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = `category-btn ${cat.id === activeCatId ? 'active' : ''}`;
+          btn.dataset.category = cat.id;
+          btn.textContent = currentLang === 'ar' ? cat.name.ar : cat.name.fr;
+          btn.addEventListener('click', () => {
+            currentCategory = cat.id;
+            renderCategories(currentCategory);
+            renderMenuGrid(currentCategory);
+          });
+          catContainer.appendChild(btn);
+        });
+      }
+
+      function renderMenuGrid(activeCatId = 'all') {
+        const menuGrid = document.querySelector('#menu-grid');
+        if (!menuGrid || !restaurantData.menuItems) return;
+
+        menuGrid.innerHTML = '';
+
+        const itemsToRender = activeCatId === 'all'
+          ? restaurantData.menuItems
+          : restaurantData.menuItems.filter(item => item.category === activeCatId);
+
+        itemsToRender.forEach(item => {
+          const nameAr = item.name.ar;
+          const nameFr = item.name.fr;
+          const descAr = item.description ? item.description.ar : '';
+          const descFr = item.description ? item.description.fr : '';
+
+          const localizedTitle = currentLang === 'ar' ? nameAr : nameFr;
+          const localizedDesc = currentLang === 'ar' ? descAr : descFr;
+
+          const article = document.createElement('article');
+          article.className = 'menu-item';
+          article.dataset.id = item.id;
+          article.dataset.category = item.category || 'all';
+          article.dataset.name = nameAr;
+          article.dataset.nameFr = nameFr;
+          article.dataset.price = String(item.price);
+
+          article.innerHTML = `
+            <img src="${item.image}" alt="" loading="lazy">
+            <h3 class="item-title"></h3>
+            ${localizedDesc ? `<p class="item-desc"></p>` : ''}
+            <p class="price">${formatPrice(item.price)}</p>
+            <button type="button" class="add-to-cart-btn" data-i18n="add_to_cart">
+              ${currentLang === 'ar' ? 'أضف إلى السلة' : 'Ajouter au panier'}
+            </button>
+          `;
+
+          article.querySelector('img').alt = localizedTitle;
+          article.querySelector('.item-title').textContent = localizedTitle;
+          const descEl = article.querySelector('.item-desc');
+          if (descEl && localizedDesc) descEl.textContent = localizedDesc;
+
+          menuGrid.appendChild(article);
+        });
       }
 
       function setLanguage(lang) {
@@ -2032,7 +2659,7 @@
           btn.classList.toggle('active', btn.dataset.lang === currentLang);
         });
 
-        // Translate data-i18n elements
+        // Translate static data-i18n elements
         const t = TRANSLATIONS[currentLang];
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
@@ -2051,30 +2678,16 @@
         const phoneInput = document.getElementById('phoneNumber');
         if (phoneInput && t.placeholder_phone) phoneInput.placeholder = t.placeholder_phone;
 
-        // Update menu items in DOM
-        const menuItems = document.querySelectorAll('.menu-item');
-        const itemMap = {};
-        menuItems.forEach(card => {
-          const nameAr = card.dataset.name;
-          const nameFr = card.dataset.nameFr || nameAr;
-          const priceNum = Number(card.dataset.price);
+        // Dynamic rendering from restaurantData
+        renderBrandData();
+        renderCategories(currentCategory);
+        renderMenuGrid(currentCategory);
 
-          itemMap[card.dataset.id] = { ar: nameAr, fr: nameFr };
-
-          const titleEl = card.querySelector('.item-title');
-          const priceEl = card.querySelector('.price');
-          const imgEl = card.querySelector('img');
-
-          const localizedTitle = currentLang === 'ar' ? nameAr : nameFr;
-          if (titleEl) titleEl.textContent = localizedTitle;
-          if (imgEl) imgEl.alt = localizedTitle;
-          if (priceEl) priceEl.textContent = formatPrice(priceNum);
-        });
-
-        // Sync localized names in current cart items
+        // Sync localized names in current cart items from restaurantData
         cart.forEach(item => {
-          if (itemMap[item.id]) {
-            item.name = currentLang === 'ar' ? itemMap[item.id].ar : itemMap[item.id].fr;
+          const menuItem = restaurantData.menuItems.find(m => m.id === item.id);
+          if (menuItem) {
+            item.name = currentLang === 'ar' ? menuItem.name.ar : menuItem.name.fr;
           }
         });
 
@@ -2250,10 +2863,11 @@
             orderDetailsVal = cart.map(item => `${item.name} (x${item.quantity})`).join(', ');
             priceVal = formatPrice(getTotal());
           } else {
-            orderDetailsVal = (orderDetailsInput && orderDetailsInput.value.trim())
-              ? orderDetailsInput.value.trim()
-              : (currentLang === 'ar' ? 'وجبة تشيكن ستريت العائلية' : 'Chicken Street Family Meal');
-            priceVal = (priceInput && priceInput.value.trim()) ? priceInput.value.trim() : (currentLang === 'ar' ? '2500 دج' : '2500 DA');
+            const firstItem = (restaurantData.menuItems && restaurantData.menuItems[0]) ? restaurantData.menuItems[0] : null;
+            const defaultName = firstItem ? (currentLang === 'ar' ? firstItem.name.ar : firstItem.name.fr) : 'Order Details';
+            const defaultPrice = firstItem ? formatPrice(firstItem.price) : '0 DA';
+            orderDetailsVal = (orderDetailsInput && orderDetailsInput.value.trim()) ? orderDetailsInput.value.trim() : defaultName;
+            priceVal = (priceInput && priceInput.value.trim()) ? priceInput.value.trim() : defaultPrice;
           }
 
           // UI Sending State
