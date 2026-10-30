@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Web Restaurant | [Restaurant Name] SaaS Template</title>
-  <meta name="description" content="Web Restaurant — Modern, customizable restaurant & food delivery SaaS template with real-time shopping cart and Google Sheets integration.">
+  <title>Check'in FAST - FOOD | Restaurant & Delivery</title>
+  <meta name="description" content="Check'in FAST - FOOD — Burgers, Sandwiches, Tacos, Pizzas, Gratins et Menus savoureux. Commande en ligne rapide et livraison.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -15,24 +15,34 @@
 
   <style>
     :root {
-      --green: #4a5d52;
-      --green-deep: #2c3a34;
-      --green-mist: #6b7d74;
-      --gold: #ffd700;
-      --gold-soft: #e8c547;
+      /* ── Check'in Fast-Food · Red & White Theme ── */
+      --red: #C62828;
+      --red-bright: #E53935;
+      --red-dark: #8B142B;
+      --red-deep: #1A070B;
+      --red-mist: #2E0B12;
       --white: #ffffff;
+      --white-soft: #fcfcfc;
+      --white-muted: rgba(255, 255, 255, 0.78);
       --glass: rgba(255, 255, 255, 0.08);
-      --glass-strong: rgba(255, 255, 255, 0.14);
-      --stroke: rgba(255, 215, 0, 0.28);
-      --shadow: 0 24px 80px rgba(8, 12, 10, 0.45);
-      --serif: "Cormorant Garamond", Georgia, serif;
+      --glass-strong: rgba(255, 255, 255, 0.16);
+      --stroke: rgba(229, 57, 53, 0.40);
+      --stroke-white: rgba(255, 255, 255, 0.22);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.65);
+      --glow-red: 0 0 28px rgba(229, 57, 53, 0.45);
+      --glow-white: 0 0 20px rgba(255, 255, 255, 0.35);
       --sans: "Outfit", "Cairo", "Tajawal", system-ui, sans-serif;
+      --serif: "Cormorant Garamond", Georgia, serif;
 
-      /* Official Color Tokens */
-      --red: #D62828;
-      --yellow: #FCBF49;
-      --primary-green: #2E7D32;
-      --warm-bg: #FFF8EC;
+      /* Backwards-compatible aliases (All Red & White) */
+      --green: #2B0D14;
+      --green-deep: #1A070B;
+      --green-mist: #3A1019;
+      --gold: #FFFFFF;
+      --gold-soft: #FFCDD2;
+      --yellow: #FFFFFF;
+      --primary-green: #C62828;
+      --warm-bg: #FFFFFF;
     }
 
     *,
@@ -53,7 +63,6 @@
       position: relative;
     }
 
-    /* 1. Force Hide Any Iframe */
     iframe,
     #hidden_iframe {
       display: none !important;
@@ -71,9 +80,9 @@
     body {
       font-family: var(--sans);
       color: var(--white);
-      background: radial-gradient(1200px 800px at 10% -10%, #5d7268 0%, transparent 55%),
-        radial-gradient(900px 700px at 100% 0%, #3a4a43 0%, transparent 50%),
-        linear-gradient(165deg, var(--green-deep) 0%, var(--green) 45%, #1d2622 100%);
+      background: radial-gradient(1200px 800px at 10% -10%, #5E0D1B 0%, transparent 55%),
+        radial-gradient(900px 700px at 100% 0%, #3B060F 0%, transparent 50%),
+        linear-gradient(165deg, #1A070B 0%, #290A11 45%, #120306 100%);
       min-height: 100vh;
       overflow-x: hidden;
       line-height: 1.6;
@@ -99,15 +108,15 @@
     .orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(40px);
-      opacity: 0.35;
+      filter: blur(45px);
+      opacity: 0.40;
       animation: drift 18s ease-in-out infinite;
     }
 
     .orb-a {
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.55), transparent 70%);
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, rgba(229, 57, 53, 0.65), transparent 70%);
       top: -80px;
       right: 8%;
     }
@@ -122,9 +131,9 @@
     }
 
     .orb-c {
-      width: 280px;
-      height: 280px;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.25), transparent 70%);
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(198, 40, 40, 0.50), transparent 70%);
       bottom: 30%;
       right: 18%;
       animation-delay: -12s;
@@ -151,13 +160,13 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      padding: 12px 18px 12px 12px;
+      padding: 12px 18px 12px 14px;
       border-radius: 999px;
-      background: rgba(44, 58, 52, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(22px) saturate(140%);
-      -webkit-backdrop-filter: blur(22px) saturate(140%);
+      background: rgba(26, 7, 11, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), 0 0 25px rgba(229, 57, 53, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
       animation: drop-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
@@ -173,12 +182,13 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
-      background: linear-gradient(145deg, var(--gold), #b89400);
-      color: var(--green-deep);
-      font-family: var(--serif);
-      font-weight: 700;
+      background: linear-gradient(145deg, #E53935, #B71C1C);
+      color: #FFFFFF;
+      font-family: var(--sans);
+      font-weight: 800;
       letter-spacing: 0.04em;
-      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.28);
+      box-shadow: 0 8px 24px rgba(229, 57, 53, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      border: 2px solid #FFFFFF;
     }
 
     .brand-text {
@@ -188,17 +198,20 @@
     }
 
     .brand-text strong {
-      font-family: var(--serif);
-      font-size: 1.05rem;
-      font-weight: 600;
+      font-family: var(--sans);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: 0.02em;
     }
 
     .brand-text em {
       font-style: normal;
       font-size: 0.68rem;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.7);
+      color: #FFCDD2;
+      font-weight: 600;
     }
 
     .nav-links {
@@ -207,11 +220,12 @@
       font-size: 0.86rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      font-weight: 600;
     }
 
     .nav-links a {
       position: relative;
-      color: rgba(255, 255, 255, 0.82);
+      color: rgba(255, 255, 255, 0.88);
       transition: color 0.3s ease;
     }
 
@@ -221,15 +235,16 @@
       left: 0;
       bottom: -6px;
       width: 100%;
-      height: 1px;
-      background: var(--gold);
+      height: 2px;
+      background: #E53935;
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .nav-links a:hover {
-      color: var(--gold);
+      color: #FFFFFF;
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
     }
 
     .nav-links a:hover::after {
@@ -237,20 +252,23 @@
     }
 
     .nav-cta {
-      padding: 10px 18px;
+      padding: 10px 20px;
       border-radius: 999px;
-      background: var(--gold);
-      color: var(--green-deep);
-      font-size: 0.78rem;
-      font-weight: 600;
+      background: linear-gradient(135deg, #E53935, #C62828);
+      color: #FFFFFF;
+      font-size: 0.80rem;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 20px rgba(229, 57, 53, 0.45);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
     }
 
     .nav-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(255, 215, 0, 0.35);
+      box-shadow: 0 12px 28px rgba(229, 57, 53, 0.65);
+      filter: brightness(1.1);
     }
 
     .hero {
@@ -260,7 +278,7 @@
       display: grid;
       place-items: center;
       padding: 140px 24px 80px;
-      background: radial-gradient(circle at 50% 36%, rgba(255, 215, 0, 0.08) 0%, rgba(74, 93, 82, 0.16) 45%, var(--green-deep) 90%);
+      background: radial-gradient(circle at 50% 36%, rgba(229, 57, 53, 0.18) 0%, rgba(43, 13, 20, 0.25) 45%, var(--green-deep) 90%);
     }
 
     .hero-veil {
@@ -268,8 +286,8 @@
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(180deg, rgba(29, 38, 34, 0.1) 0%, rgba(29, 38, 34, 0.5) 70%, var(--green-deep) 100%),
-        radial-gradient(circle at 65% 35%, rgba(255, 215, 0, 0.08), transparent 50%);
+        linear-gradient(180deg, rgba(26, 7, 11, 0.1) 0%, rgba(26, 7, 11, 0.55) 70%, var(--green-deep) 100%),
+        radial-gradient(circle at 65% 35%, rgba(229, 57, 53, 0.14), transparent 50%);
       pointer-events: none;
     }
 
@@ -281,71 +299,75 @@
     }
 
     .eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.34em;
+      font-size: 0.78rem;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: #FFCDD2;
+      font-weight: 700;
       margin-bottom: 16px;
+      text-shadow: 0 0 10px rgba(229, 57, 53, 0.4);
     }
 
     h1,
     h2,
     h3 {
-      font-family: var(--serif);
-      font-weight: 600;
-      line-height: 1.12;
+      font-family: var(--sans);
+      font-weight: 800;
+      line-height: 1.15;
     }
 
     h1 {
       font-size: clamp(2.4rem, 5.6vw, 4.6rem);
-      font-style: italic;
       margin-bottom: 22px;
       color: var(--white);
       text-shadow:
-        0 0 40px rgba(255, 215, 0, 0.18),
-        0 18px 50px rgba(0, 0, 0, 0.45);
+        0 0 40px rgba(229, 57, 53, 0.40),
+        0 18px 50px rgba(0, 0, 0, 0.65);
     }
 
     h2 {
       font-size: clamp(2.2rem, 4vw, 3.6rem);
       margin-bottom: 14px;
+      color: #FFFFFF;
     }
 
     h3 {
       font-size: 1.7rem;
+      color: #FFFFFF;
     }
 
     .lede {
-      max-width: 640px;
+      max-width: 660px;
       margin: 0 auto 36px;
-      color: rgba(255, 255, 255, 0.82);
-      font-weight: 300;
-      font-size: 1.08rem;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 400;
+      font-size: 1.12rem;
+      line-height: 1.7;
     }
 
     .btn-gold {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 16px 34px;
-      border: 0;
+      padding: 16px 36px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
       border-radius: 999px;
-      background: linear-gradient(180deg, #ffe566, var(--gold) 45%, var(--gold-soft));
-      color: var(--green-deep);
+      background: linear-gradient(180deg, #EF5350, #C62828 50%, #B71C1C);
+      color: #FFFFFF;
       font-family: var(--sans);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 0 16px 40px rgba(255, 215, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      box-shadow: 0 16px 40px rgba(198, 40, 40, 0.45), 0 0 20px rgba(239, 83, 80, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, filter 0.35s ease;
     }
 
     .btn-gold:hover {
       transform: translateY(-3px) scale(1.03);
-      filter: brightness(1.05);
-      box-shadow: 0 22px 50px rgba(255, 215, 0, 0.42);
+      filter: brightness(1.1);
+      box-shadow: 0 22px 50px rgba(229, 57, 53, 0.65), 0 0 30px rgba(255, 255, 255, 0.35);
     }
 
     .btn-full {
@@ -366,14 +388,14 @@
       font-size: 0.68rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.55);
+      color: rgba(255, 255, 255, 0.6);
     }
 
     .hero-scroll i {
       display: block;
-      width: 1px;
+      width: 2px;
       height: 42px;
-      background: linear-gradient(var(--gold), transparent);
+      background: linear-gradient(#E53935, transparent);
       animation: pulse-line 1.8s ease-in-out infinite;
     }
 
@@ -404,20 +426,21 @@
     }
 
     .section-sub {
-      color: rgba(255, 255, 255, 0.72);
-      max-width: 520px;
+      color: rgba(255, 255, 255, 0.80);
+      max-width: 560px;
       margin: 0 auto;
+      font-size: 1.05rem;
     }
 
     .glass-card {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(165deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: linear-gradient(165deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 255, 255, 0.20);
       border-radius: 28px;
-      box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.22);
-      backdrop-filter: blur(18px) saturate(150%);
-      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
     }
 
     .menu-grid,
@@ -443,14 +466,14 @@
 
     .menu-card:hover {
       transform: translateY(-6px);
-      border-color: var(--stroke);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 215, 0, 0.2);
+      border-color: #EF5350;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), 0 0 20px rgba(229, 57, 53, 0.35);
     }
 
     .card-shine {
       position: absolute;
       inset: 0;
-      background: linear-gradient(115deg, transparent 30%, rgba(255, 215, 0, 0.14) 48%, transparent 62%);
+      background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.18) 48%, transparent 62%);
       transform: translateX(-120%);
       transition: transform 0.8s ease;
       pointer-events: none;
@@ -468,14 +491,15 @@
     }
 
     .card-index {
-      font-family: var(--serif);
-      color: var(--gold);
+      font-family: var(--sans);
+      color: #E53935;
+      font-weight: 800;
       letter-spacing: 0.12em;
     }
 
     .card-tag {
       font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.62);
+      color: rgba(255, 255, 255, 0.70);
       margin-bottom: 22px;
     }
 
@@ -491,17 +515,21 @@
       justify-content: space-between;
       gap: 16px;
       padding-bottom: 12px;
-      border-bottom: 1px dashed rgba(255, 215, 0, 0.22);
+      border-bottom: 1px dashed rgba(229, 57, 53, 0.35);
     }
 
     .dish-list li span {
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .dish-list li em {
       font-style: normal;
-      color: var(--gold);
+      color: #FFFFFF;
+      background: #C62828;
       font-size: 0.82rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
       white-space: nowrap;
     }
 
@@ -513,8 +541,9 @@
     }
 
     .formule-copy p {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.85);
       max-width: 460px;
+      font-size: 1.05rem;
     }
 
     .formule-perks {
@@ -522,13 +551,14 @@
       margin-top: 28px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     .formule-perks li {
       position: relative;
-      padding-left: 22px;
+      padding-left: 24px;
       letter-spacing: 0.04em;
+      font-weight: 600;
     }
 
     .formule-perks li::before {
@@ -536,11 +566,11 @@
       position: absolute;
       left: 0;
       top: 0.55em;
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 12px var(--gold);
+      background: #E53935;
+      box-shadow: 0 0 12px #EF5350, 0 0 4px #FFFFFF;
     }
 
     #orderForm,
@@ -548,25 +578,24 @@
       padding: 36px 32px;
     }
 
-    /* SofΠek Minimalist Black & White Order Form Styling */
     #orderForm,
     .sofnek-form {
       position: relative;
-      background: linear-gradient(165deg, rgba(16, 21, 18, 0.92), rgba(8, 10, 9, 0.98));
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: linear-gradient(165deg, rgba(26, 7, 11, 0.94), rgba(16, 3, 6, 0.98));
+      border: 1px solid rgba(229, 57, 53, 0.40);
       border-radius: 24px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), 0 0 35px rgba(229, 57, 53, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.20);
       backdrop-filter: blur(24px) saturate(140%);
       -webkit-backdrop-filter: blur(24px) saturate(140%);
     }
 
     .form-glow {
       position: absolute;
-      width: 240px;
-      height: 240px;
+      width: 260px;
+      height: 260px;
       right: -60px;
       top: -70px;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.22), transparent 70%);
+      background: radial-gradient(circle, rgba(229, 57, 53, 0.32), transparent 70%);
       pointer-events: none;
     }
 
@@ -577,26 +606,27 @@
     .sofnek-badge {
       display: inline-block;
       font-size: 0.65rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.7);
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      background: rgba(229, 57, 53, 0.25);
+      border: 1px solid rgba(229, 57, 53, 0.50);
       border-radius: 999px;
       padding: 4px 12px;
     }
 
     .order-form h3 {
-      font-family: var(--serif);
+      font-family: var(--sans);
       font-size: 1.85rem;
+      font-weight: 800;
       color: #ffffff;
       margin-bottom: 6px;
       letter-spacing: 0.02em;
     }
 
     .form-hint {
-      color: rgba(255, 255, 255, 0.58);
+      color: rgba(255, 255, 255, 0.65);
       font-size: 0.88rem;
       margin-bottom: 22px;
       line-height: 1.45;
@@ -616,8 +646,8 @@
       font-size: 0.74rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.8);
-      font-weight: 500;
+      color: rgba(255, 255, 255, 0.90);
+      font-weight: 600;
     }
 
     .field-tag {
@@ -626,18 +656,19 @@
       text-transform: uppercase;
       padding: 2px 7px;
       border-radius: 4px;
+      font-weight: 700;
     }
 
     .required-tag {
-      color: var(--gold);
-      background: rgba(255, 215, 0, 0.12);
-      border: 1px solid rgba(255, 215, 0, 0.28);
+      color: #FFFFFF;
+      background: #C62828;
+      border: 1px solid #E53935;
     }
 
     .locked-tag {
-      color: rgba(255, 255, 255, 0.5);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
     }
 
     .fields-row {
@@ -656,8 +687,8 @@
       width: 100%;
       padding: 13px 16px;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      background: rgba(255, 255, 255, 0.08);
       color: var(--white);
       font-family: var(--sans);
       font-size: 0.95rem;
@@ -668,51 +699,53 @@
     }
 
     .field input::placeholder {
-      color: rgba(255, 255, 255, 0.35);
+      color: rgba(255, 255, 255, 0.40);
     }
 
     .field input:focus {
-      border-color: #ffffff;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
+      border-color: #EF5350;
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.35);
     }
 
     .field input[readonly] {
-      background: rgba(255, 255, 255, 0.03);
-      border-color: rgba(255, 255, 255, 0.08);
-      color: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.10);
+      color: rgba(255, 255, 255, 0.85);
       cursor: not-allowed;
       user-select: none;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .field input[readonly]:focus {
-      border-color: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.18);
       box-shadow: none;
     }
 
     .field-price input[readonly] {
-      color: var(--gold);
-      font-weight: 600;
+      color: #FFFFFF;
+      background: rgba(198, 40, 40, 0.35);
+      font-weight: 800;
       text-align: center;
       letter-spacing: 0.04em;
+      border-color: rgba(229, 57, 53, 0.5);
     }
 
     .btn-sofnek-submit {
       width: 100%;
       padding: 16px 28px;
       margin-top: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       border-radius: 999px;
-      background: #ffffff;
-      color: #0b0f0d;
+      background: #FFFFFF;
+      color: #C62828;
       font-family: var(--sans);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55), 0 0 20px rgba(255, 255, 255, 0.35);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       align-items: center;
@@ -721,21 +754,20 @@
     }
 
     .btn-sofnek-submit:hover:not(:disabled) {
-      background: var(--gold);
-      color: var(--green-deep);
-      border-color: var(--gold);
+      background: linear-gradient(135deg, #E53935, #C62828);
+      color: #FFFFFF;
+      border-color: #FFFFFF;
       transform: translateY(-2px);
-      box-shadow: 0 18px 45px rgba(255, 215, 0, 0.38);
+      box-shadow: 0 18px 45px rgba(229, 57, 53, 0.65), 0 0 25px rgba(255, 255, 255, 0.4);
     }
 
     .btn-sofnek-submit:disabled {
-      opacity: 0.75;
+      opacity: 0.70;
       cursor: not-allowed;
       transform: none !important;
       box-shadow: none !important;
     }
 
-    /* Cross-platform Form Status Banner (Android, iOS, Desktop) */
     .form-status {
       margin-top: 18px;
       padding: 16px 20px;
@@ -749,23 +781,23 @@
 
     .form-status.sending {
       display: block;
-      background: rgba(252, 191, 73, 0.12);
-      border: 1px solid rgba(252, 191, 73, 0.4);
-      color: #fcbf49;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #FFFFFF;
     }
 
     .form-status.success {
       display: block;
-      background: rgba(46, 125, 50, 0.22);
-      border: 1px solid rgba(76, 175, 80, 0.65);
-      color: #c8e6c9;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      background: rgba(198, 40, 40, 0.35);
+      border: 1px solid #EF5350;
+      color: #FFFFFF;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(229, 57, 53, 0.4);
     }
 
     .form-status.error {
       display: block;
-      background: rgba(214, 40, 40, 0.22);
-      border: 1px solid rgba(214, 40, 40, 0.55);
+      background: rgba(214, 40, 40, 0.25);
+      border: 1px solid rgba(214, 40, 40, 0.65);
       color: #ffcdd2;
     }
 
@@ -773,8 +805,8 @@
       display: inline-block;
       width: 14px;
       height: 14px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-top-color: #ffd700;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-top-color: #FFFFFF;
       border-radius: 50%;
       animation: cs-spin 0.75s linear infinite;
       margin-right: 6px;
@@ -782,7 +814,6 @@
       vertical-align: middle;
     }
 
-    /* iOS Safari Auto-Zoom Fix */
     @media (max-width: 768px) {
       .field input {
         font-size: 16px !important;
@@ -801,17 +832,19 @@
     }
 
     .about-lead {
-      font-family: var(--serif);
+      font-family: var(--sans);
       font-size: clamp(1.35rem, 2.4vw, 1.85rem);
-      font-style: italic;
+      font-weight: 700;
       line-height: 1.45;
       margin: 12px 0 22px;
+      color: #FFFFFF;
     }
 
     .about-frame p:last-child {
-      color: rgba(255, 255, 255, 0.76);
+      color: rgba(255, 255, 255, 0.82);
       max-width: 640px;
       margin: 0 auto;
+      font-size: 1.05rem;
     }
 
     .contact-card {
@@ -822,11 +855,12 @@
 
     .contact-card:hover {
       transform: translateY(-8px);
-      border-color: var(--stroke);
+      border-color: #EF5350;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(229, 57, 53, 0.3);
     }
 
     .contact-card h3 {
-      color: var(--gold);
+      color: #FFFFFF;
       font-size: 1.35rem;
       margin-bottom: 12px;
     }
@@ -834,18 +868,19 @@
     .plus-code,
     .hours {
       margin-top: 10px;
-      color: var(--gold);
-      letter-spacing: 0.08em;
+      color: #FFCDD2;
+      font-weight: 700;
+      letter-spacing: 0.06em;
     }
 
     .muted {
       margin-top: 10px;
-      color: rgba(255, 255, 255, 0.58);
+      color: rgba(255, 255, 255, 0.65);
       font-size: 0.9rem;
     }
 
     .contact-card a:hover {
-      color: var(--gold);
+      color: #EF5350;
     }
 
     .footer {
@@ -853,15 +888,15 @@
       z-index: 2;
       text-align: center;
       padding: 28px 20px 48px;
-      color: rgba(255, 255, 255, 0.55);
-      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.92rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .footer-tag {
       margin-top: 6px;
-      font-family: var(--serif);
-      font-style: italic;
-      color: var(--gold);
+      font-weight: 700;
+      color: #FFCDD2;
     }
 
     .anim-in {
@@ -902,13 +937,12 @@
       }
     }
 
-    /* Dynamic UI Feedback States */
     .btn-spinner {
       display: inline-block;
       width: 15px;
       height: 15px;
-      border: 2px solid rgba(44, 58, 52, 0.3);
-      border-top-color: #2c3a34;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-top-color: #FFFFFF;
       border-radius: 50%;
       animation: cs-spin 0.75s linear infinite;
       margin-right: 8px;
@@ -934,14 +968,14 @@
     }
 
     .feedback-success {
-      background: rgba(255, 215, 0, 0.12);
-      border: 1px solid rgba(255, 215, 0, 0.5);
+      background: rgba(198, 40, 40, 0.25);
+      border: 1px solid #EF5350;
       color: #ffffff;
-      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.12);
+      box-shadow: 0 10px 30px rgba(229, 57, 53, 0.35);
     }
 
     .feedback-success strong {
-      color: #ffd700;
+      color: #FFFFFF;
       display: block;
       font-size: 1rem;
       margin-bottom: 4px;
@@ -949,8 +983,8 @@
     }
 
     .feedback-error {
-      background: rgba(220, 53, 69, 0.16);
-      border: 1px solid rgba(220, 53, 69, 0.4);
+      background: rgba(220, 53, 69, 0.20);
+      border: 1px solid rgba(220, 53, 69, 0.5);
       color: #ffcccc;
     }
 
@@ -993,39 +1027,41 @@
       }
     }
 
-    /* ==========================================================
-       SHOPPING CART, BILINGUAL & LUXURY STYLING
-       ========================================================== */
+    /* ── SHOPPING CART & BILINGUAL STYLES ── */
     .add-to-cart-btn {
       width: 100%;
-      padding: 12px 0;
-      background: #D62828;
+      padding: 13px 0;
+      background: linear-gradient(135deg, #E53935, #C62828);
       color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-size: 17px;
-      font-weight: bold;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
       cursor: pointer;
-      transition: background .2s, transform .1s;
+      box-shadow: 0 8px 20px rgba(198, 40, 40, 0.45);
+      transition: background .2s, transform .1s, box-shadow .2s;
     }
-    .add-to-cart-btn:hover { background: #B71F1F; }
+    .add-to-cart-btn:hover {
+      background: linear-gradient(135deg, #EF5350, #D32F2F);
+      box-shadow: 0 12px 26px rgba(229, 57, 53, 0.6);
+    }
     .add-to-cart-btn:active { transform: scale(.97); }
-    .add-to-cart-btn:focus-visible { outline: 3px solid #1565C0; outline-offset: 2px; }
+    .add-to-cart-btn:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; }
 
-    /* 2. Fix Cart Sidebar: Push completely off screen by default */
     #cart-panel,
     .cart-panel {
       position: fixed !important;
       top: 0;
-      right: -100vw !important; /* Push it completely off screen */
+      right: -100vw !important;
       left: auto !important;
-      width: 300px;
+      width: 330px;
       max-width: 100vw;
       height: 100vh;
       height: 100dvh;
-      background: #fff;
+      background: #FFFFFF;
       color: #111;
-      box-shadow: 0 0 24px rgba(0, 0, 0, .2);
+      box-shadow: 0 0 35px rgba(0, 0, 0, .45);
       transform: none !important;
       transition: right 0.3s ease;
       display: flex;
@@ -1037,7 +1073,7 @@
     #cart-panel.open,
     .cart-panel.active,
     .cart-panel.open {
-      right: 0 !important; /* Only bring it in when active class is added */
+      right: 0 !important;
       left: auto !important;
       transform: none !important;
     }
@@ -1048,26 +1084,33 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 12px 0;
+      padding: 14px 0;
       border-bottom: 1px solid #eee;
     }
     #checkout-btn {
       width: 100%;
-      padding: 12px;
-      background: #2E7D32;
+      padding: 14px;
+      background: linear-gradient(135deg, #E53935, #C62828);
       color: #fff;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 17px;
-      font-weight: bold;
+      font-weight: 800;
+      letter-spacing: 0.05em;
       cursor: pointer;
+      box-shadow: 0 8px 20px rgba(198, 40, 40, 0.45);
+      transition: all 0.2s;
+    }
+    #checkout-btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #EF5350, #D32F2F);
+      box-shadow: 0 12px 28px rgba(229, 57, 53, 0.65);
     }
     #checkout-btn:disabled {
       background: #ccc;
+      box-shadow: none;
       cursor: not-allowed;
     }
 
-    /* Navigation Actions & Language Switcher */
     .nav-actions {
       display: flex;
       align-items: center;
@@ -1078,8 +1121,8 @@
       display: inline-flex;
       align-items: center;
       gap: 3px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 999px;
       padding: 3px 6px;
       backdrop-filter: blur(8px);
@@ -1089,12 +1132,12 @@
     .lang-btn {
       background: transparent;
       border: none;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.85);
       font-family: inherit;
       font-size: 0.78rem;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
-      padding: 3px 8px;
+      padding: 3px 10px;
       border-radius: 999px;
       line-height: 1.2;
       transition: color 0.2s, background 0.2s;
@@ -1102,38 +1145,38 @@
 
     .lang-btn.active,
     .lang-btn:hover {
-      color: #111;
-      background: #FCBF49;
+      color: #FFFFFF;
+      background: #C62828;
+      box-shadow: 0 2px 8px rgba(198, 40, 40, 0.6);
     }
 
     .lang-sep {
-      color: rgba(255, 255, 255, 0.35);
+      color: rgba(255, 255, 255, 0.45);
       font-size: 0.75rem;
       user-select: none;
     }
 
-    /* Header Cart Button */
     .cart-toggle {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 16px;
-      background: #D62828;
+      padding: 8px 18px;
+      background: linear-gradient(135deg, #E53935, #C62828);
       color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 999px;
       font-family: inherit;
-      font-size: 0.84rem;
-      font-weight: 700;
+      font-size: 0.86rem;
+      font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(214, 40, 40, 0.4);
+      box-shadow: 0 6px 18px rgba(229, 57, 53, 0.50);
       transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
     }
 
     .cart-toggle:hover {
-      background: #B71F1F;
+      background: linear-gradient(135deg, #EF5350, #D32F2F);
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(214, 40, 40, 0.55);
+      box-shadow: 0 8px 24px rgba(229, 57, 53, 0.65);
     }
 
     .cart-count {
@@ -1143,20 +1186,19 @@
       height: 22px;
       padding: 0 6px;
       border-radius: 999px;
-      background: #FCBF49;
-      color: #111;
-      font-size: 0.75rem;
-      font-weight: 800;
+      background: #FFFFFF;
+      color: #C62828;
+      font-size: 0.76rem;
+      font-weight: 900;
       line-height: 1;
     }
 
-    /* Cart Dim Backdrop */
     .cart-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
@@ -1168,20 +1210,19 @@
       pointer-events: auto;
     }
 
-    /* Cart Panel Header & Footer */
     .cart-panel-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 20px 22px;
-      border-bottom: 1px solid #eee;
-      background: #FFF8EC;
+      border-bottom: 2px solid #C62828;
+      background: #FFFFFF;
     }
 
     .cart-panel-header h2 {
       font-size: 1.35rem;
       font-weight: 800;
-      color: #111;
+      color: #C62828;
       margin: 0;
     }
 
@@ -1190,7 +1231,7 @@
       border: none;
       font-size: 30px;
       line-height: 1;
-      color: #666;
+      color: #555;
       cursor: pointer;
       padding: 0 6px;
       border-radius: 6px;
@@ -1198,8 +1239,8 @@
     }
 
     .cart-close:hover {
-      color: #D62828;
-      background: rgba(214, 40, 40, 0.08);
+      color: #C62828;
+      background: rgba(198, 40, 40, 0.10);
     }
 
     #cart-empty {
@@ -1216,8 +1257,8 @@
 
     .cart-footer {
       padding: 20px 22px;
-      border-top: 1px solid #eee;
-      background: #FFF8EC;
+      border-top: 2px solid #eee;
+      background: #FFFFFF;
       display: flex;
       flex-direction: column;
       gap: 14px;
@@ -1234,11 +1275,11 @@
     }
 
     #cart-total {
-      color: #D62828;
-      font-size: 1.3rem;
+      color: #C62828;
+      font-size: 1.35rem;
+      font-weight: 900;
     }
 
-    /* Cart Row Elements */
     .cart-name {
       flex: 1;
       font-weight: 700;
@@ -1248,8 +1289,8 @@
     }
 
     .cart-line-total {
-      font-weight: 700;
-      color: #D62828;
+      font-weight: 800;
+      color: #C62828;
       font-size: 0.95rem;
       white-space: nowrap;
     }
@@ -1280,9 +1321,9 @@
     }
 
     .cart-qty button:hover {
-      background: #FCBF49;
-      border-color: #d89e2e;
-      color: #000;
+      background: #C62828;
+      border-color: #C62828;
+      color: #fff;
     }
 
     .cart-qty span {
@@ -1306,11 +1347,11 @@
     }
 
     .cart-row button[data-action="remove"]:hover {
-      color: #D62828;
-      background: rgba(214, 40, 40, 0.1);
+      color: #C62828;
+      background: rgba(198, 40, 40, 0.12);
     }
 
-    /* Menu Cards Grid & Item Styles */
+    /* ── MENU CARDS GRID & FAST-FOOD CARD STYLES ── */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1320,14 +1361,14 @@
 
     .menu-item {
       position: relative;
-      background: linear-gradient(165deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: linear-gradient(165deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 255, 255, 0.20);
       border-radius: 24px;
       padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: var(--shadow);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.20);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
@@ -1335,24 +1376,25 @@
 
     .menu-item:hover {
       transform: translateY(-8px);
-      border-color: rgba(252, 191, 73, 0.4);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 20px rgba(252, 191, 73, 0.15);
+      border-color: #EF5350;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 0 0 28px rgba(229, 57, 53, 0.35);
     }
 
     .menu-item img {
       width: 100%;
-      height: 200px;
+      height: 190px;
       object-fit: cover;
       border-radius: 16px;
       margin-bottom: 16px;
-      background: #19241f;
+      background: #1A070B;
       display: block;
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .menu-item .item-title {
-      font-family: var(--serif);
-      font-size: 1.35rem;
-      font-weight: 700;
+      font-family: var(--sans);
+      font-size: 1.30rem;
+      font-weight: 800;
       color: #ffffff;
       margin-bottom: 6px;
       line-height: 1.3;
@@ -1361,11 +1403,25 @@
     .menu-item .price {
       font-size: 1.25rem;
       font-weight: 800;
-      color: #FCBF49;
+      color: #FFFFFF;
+      background: linear-gradient(135deg, #E53935, #C62828);
+      display: inline-block;
+      align-self: flex-start;
+      padding: 4px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 4px 14px rgba(229, 57, 53, 0.45);
       margin-bottom: 16px;
     }
 
-    /* Direction and RTL Support */
+    .menu-item .item-desc {
+      font-size: 0.86rem;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.45;
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+
     html[dir="rtl"] {
       direction: rtl;
     }
@@ -1376,7 +1432,7 @@
 
     html[dir="rtl"] .formule-perks li {
       padding-left: 0;
-      padding-right: 22px;
+      padding-right: 24px;
     }
 
     html[dir="rtl"] .formule-perks li::before {
@@ -1398,30 +1454,28 @@
         display: none;
       }
       .cart-toggle {
-        padding: 6px 12px;
+        padding: 6px 14px;
         font-size: 0.8rem;
       }
     }
 
-    /* ==========================================================
-       MINI-CART / SUMMARY LIST (TOP FOOD CATEGORIES / MENU)
-       ========================================================== */
+    /* ── MINI-CART SUMMARY LIST (RED & WHITE) ── */
     .mini-cart-summary {
       width: min(880px, 100%);
       margin: 0 auto 36px;
       padding: 20px 24px;
-      background: linear-gradient(165deg, rgba(44, 58, 52, 0.65), rgba(20, 28, 24, 0.78));
-      border: 1px solid rgba(255, 215, 0, 0.28);
+      background: linear-gradient(165deg, rgba(43, 13, 20, 0.75), rgba(20, 5, 8, 0.85));
+      border: 1px solid rgba(229, 57, 53, 0.40);
       border-radius: 20px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 20px rgba(229, 57, 53, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .mini-cart-summary.has-items {
-      border-color: rgba(252, 191, 73, 0.55);
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), 0 0 24px rgba(252, 191, 73, 0.12);
+      border-color: #EF5350;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 30px rgba(229, 57, 53, 0.35);
     }
 
     .summary-header {
@@ -1430,7 +1484,7 @@
       justify-content: space-between;
       gap: 12px;
       padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .summary-title-wrap {
@@ -1445,13 +1499,14 @@
       width: 32px;
       height: 32px;
       border-radius: 8px;
-      background: rgba(252, 191, 73, 0.15);
-      color: #FCBF49;
+      background: #C62828;
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(198, 40, 40, 0.5);
     }
 
     .summary-title {
       font-size: 1.1rem;
-      font-weight: 700;
+      font-weight: 800;
       color: #ffffff;
       margin: 0;
       letter-spacing: 0.3px;
@@ -1465,8 +1520,8 @@
 
     .summary-badge-label {
       font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.65);
-      font-weight: 500;
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 600;
     }
 
     .summary-count {
@@ -1476,17 +1531,17 @@
       height: 24px;
       padding: 0 7px;
       border-radius: 999px;
-      background: #FCBF49;
-      color: #1a2420;
-      font-size: 0.8rem;
-      font-weight: 800;
+      background: #FFFFFF;
+      color: #C62828;
+      font-size: 0.82rem;
+      font-weight: 900;
       line-height: 1;
     }
 
     .summary-empty {
       padding: 16px 8px 6px;
       text-align: center;
-      color: rgba(255, 255, 255, 0.62);
+      color: rgba(255, 255, 255, 0.70);
       font-size: 0.92rem;
       margin: 0;
     }
@@ -1513,17 +1568,17 @@
       align-items: center;
       gap: 10px;
       padding: 8px 16px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 999px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
       animation: summaryItemPop 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
       transition: background 0.2s, border-color 0.2s, transform 0.2s;
     }
 
     .summary-item-row:hover {
-      background: rgba(255, 255, 255, 0.14);
-      border-color: rgba(252, 191, 73, 0.5);
+      background: rgba(229, 57, 53, 0.30);
+      border-color: #EF5350;
       transform: translateY(-1px);
     }
 
@@ -1540,13 +1595,13 @@
       min-width: 24px;
       height: 22px;
       padding: 0 8px;
-      background: #D62828;
+      background: #C62828;
       color: #ffffff;
       border-radius: 999px;
       font-size: 0.8rem;
       font-weight: 800;
       line-height: 1;
-      box-shadow: 0 2px 6px rgba(214, 40, 40, 0.4);
+      box-shadow: 0 2px 6px rgba(198, 40, 40, 0.5);
     }
 
     .summary-footer {
@@ -1554,7 +1609,7 @@
       justify-content: flex-end;
       margin-top: 14px;
       padding-top: 10px;
-      border-top: 1px dashed rgba(255, 255, 255, 0.12);
+      border-top: 1px dashed rgba(255, 255, 255, 0.15);
     }
 
     .summary-footer[hidden] {
@@ -1565,19 +1620,23 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: #FCBF49;
+      color: #FFFFFF;
       font-size: 0.86rem;
-      font-weight: 700;
+      font-weight: 800;
       text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 8px;
-      background: rgba(252, 191, 73, 0.12);
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #E53935, #C62828);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 14px rgba(229, 57, 53, 0.4);
       transition: all 0.2s ease;
     }
 
     .summary-checkout-link:hover {
-      background: #FCBF49;
-      color: #1a2420;
+      background: #FFFFFF;
+      color: #C62828;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(255, 255, 255, 0.4);
     }
 
     .summary-arrow {
@@ -1624,53 +1683,71 @@
       }
     }
 
-    /* Category Filter Pills */
+    /* ── CATEGORY FILTER PILLS (RED & WHITE) ── */
     .menu-categories {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
       margin: 0 auto 32px;
-      max-width: 880px;
+      max-width: 980px;
       padding: 0 12px;
     }
 
     .category-btn {
-      padding: 8px 20px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 9px 22px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.22);
       border-radius: 999px;
-      color: rgba(255, 255, 255, 0.75);
+      color: #FFFFFF;
       font-family: inherit;
       font-size: 0.88rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      transition: all 0.22s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.25s ease;
     }
 
     .category-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(229, 57, 53, 0.35);
+      border-color: #EF5350;
       color: #fff;
-      border-color: rgba(252, 191, 73, 0.45);
       transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(229, 57, 53, 0.40);
     }
 
     .category-btn.active {
-      background: #FCBF49;
-      color: #1a2420;
-      border-color: #FCBF49;
-      font-weight: 700;
-      box-shadow: 0 4px 14px rgba(252, 191, 73, 0.35);
+      background: linear-gradient(135deg, #E53935, #C62828);
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+      font-weight: 800;
+      box-shadow: 0 8px 24px rgba(229, 57, 53, 0.55), 0 0 15px rgba(255, 255, 255, 0.3);
     }
 
-    .menu-item .item-desc {
-      font-size: 0.84rem;
-      color: rgba(255, 255, 255, 0.65);
-      line-height: 1.45;
-      margin-bottom: 12px;
-      flex-grow: 1;
+    .flyer-view-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 auto 28px;
+      padding: 10px 24px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 999px;
+      color: #FFFFFF;
+      font-size: 0.90rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .flyer-view-btn:hover {
+      background: #C62828;
+      border-color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(229, 57, 53, 0.5);
     }
   </style>
 </head>
@@ -1683,10 +1760,10 @@
 
   <header class="nav">
     <a class="brand" href="#hero">
-      <span class="brand-mark" id="brand-mark">WR</span>
+      <span class="brand-mark" id="brand-mark">CK</span>
       <span class="brand-text">
-        <strong id="brand-name">Web Restaurant</strong>
-        <em id="brand-sub" data-i18n="brand_sub">Fast Food & Gourmet</em>
+        <strong id="brand-name">Check'in</strong>
+        <em id="brand-sub" data-i18n="brand_sub">FAST - FOOD</em>
       </span>
     </a>
     <nav class="nav-links">
@@ -1747,8 +1824,14 @@
     <section id="menu" class="section menu">
       <div class="section-head">
         <p class="eyebrow" data-i18n="menu_eyebrow">La carte</p>
-        <h2 data-i18n="menu_title">Menu</h2>
+        <h2 data-i18n="menu_title">Menu Check'in</h2>
         <p class="section-sub" data-i18n="menu_sub">Des signatures généreuses, cuites à la minute — street food d'exception.</p>
+        <div style="margin-top: 18px; text-align: center;">
+          <a href="images/menu-flyer.jpg" target="_blank" class="flyer-view-btn" title="Voir la carte imprimée originale">
+            <span aria-hidden="true">📄</span>
+            <span data-i18n="view_flyer">عرض مطوية المينيو الأصلية Check'in (Flyer)</span>
+          </a>
+        </div>
       </div>
 
       <!-- Mini-Cart / Summary List (Near Food Categories) -->
@@ -2023,29 +2106,29 @@
       };
 
       const restaurantData = {
-        // Brand & Identity
+        // Brand & Identity - Check'in FAST - FOOD
         brand: {
-          name: "Web Restaurant",
-          shortName: "WR",
+          name: "Check'in",
+          shortName: "CK",
           tagline: {
-            ar: "مطعم ويب · أكل سريع وراقي",
-            fr: "Web Restaurant · Fast Food & Gourmet"
+            ar: "فاست فود · أشهى البرغر، التاكوس والبيتزا",
+            fr: "FAST - FOOD · Burgers, Tacos, Pizzas & More"
           }
         },
 
         // Hero Section Content
         hero: {
           eyebrow: {
-            ar: "أكل شوارع · جودة عالية",
-            fr: "Street Food · Haute Qualité"
+            ar: "فاست فود عالي الجودة · CHECK'IN",
+            fr: "FAST - FOOD DE QUALITÉ · CHECK'IN"
           },
           title: {
-            ar: "مطعم ويب — تجربة طعام استثنائية!",
-            fr: "Web Restaurant — Le goût de l'excellence !"
+            ar: "Check'in — أشهى فاست فود بنكهة لا تُقاوم!",
+            fr: "Check'in — Le Meilleur du Fast-Food !"
           },
           description: {
-            ar: "وجبات سريعة ومميزة محضرة بعناية وبأجود المكونات الطازجة. برغر، بيتزا ومقبلات شهية محضرة فورياً.",
-            fr: "Des recettes savoureuses préparées à la minute avec des ingrédients frais. Burgers, pizzas et accompagnements croustillants."
+            ar: "تشكيلة واسعة من أشهى البرغر، السندويشات، التاكوس والبيتزا والغراتان المحضرة فورياً بأجود المكونات الطازجة.",
+            fr: "Burgers gourmets, tacos généreux, sandwiches savoureux et pizzas artisanales préparés à la minute avec passion."
           },
           ctaText: {
             ar: "اطلب الآن",
@@ -2060,12 +2143,12 @@
             fr: "Notre Maison"
           },
           title: {
-            ar: "عن مطعم ويب",
-            fr: "À propos"
+            ar: "عن مطعم Check'in",
+            fr: "À propos de Check'in"
           },
           lead: {
-            ar: "نقدم في مطعم ويب مفهوماً عصرياً لتناول الطعام السريع بجودة راقية ومذاق لا يُنسى في أجواء دافئة ومميزة.",
-            fr: "Web Restaurant réinvente la street food avec des standards de haute cuisine et une passion pour les saveurs authentiques."
+            ar: "نقدم في مطعم Check'in مفهوماً عصرياً لتناول الفاست فود بجودة عالية ومذاق فريد يلبي جميع الأذواق.",
+            fr: "Check'in réinvente la street food avec des ingrédients sélectionnés, des sauces maison et une générosité sans égale."
           },
           text: {
             ar: "كل وجبة يتم إعدادها فورياً حسب طلبكم باستخدام أفضل المكونات والوصفات الحصرية لإرضاء جميع الأذواق.",
@@ -2087,97 +2170,543 @@
           }
         },
 
-        // Food Categories (Filters)
+        // Food Categories (Filters from Flyer)
         categories: [
           { id: "all", name: { ar: "الكل", fr: "Tous" } },
           { id: "burgers", name: { ar: "برغر", fr: "Burgers" } },
+          { id: "sandwiches", name: { ar: "سندويشات", fr: "Sandwiches" } },
+          { id: "tacos", name: { ar: "تاكوس", fr: "Tacos" } },
+          { id: "meals", name: { ar: "وجبات وبوكس", fr: "Menus & Box" } },
           { id: "pizza", name: { ar: "بيتزا", fr: "Pizzas" } },
-          { id: "sides", name: { ar: "مقبلات", fr: "Accompagnements" } },
-          { id: "drinks", name: { ar: "مشروبات", fr: "Boissons" } },
-          { id: "meals", name: { ar: "وجبات عائلية", fr: "Menus Complets" } }
+          { id: "gratins", name: { ar: "غراتان", fr: "Gratins" } },
+          { id: "poutines", name: { ar: "بوتين", fr: "Poutines" } },
+          { id: "drinks", name: { ar: "مشروبات", fr: "Boissons" } }
         ],
 
-                // Menu Items (Dynamic Food Cards - Chicken Street / Web Restaurant)
+        // Menu Items (Directly from Check'in Flyer)
         menuItems: [
+          /* ── BURGER ZONE ── */
           {
-            id: "chicken-burger",
-            legacyIds: ["burger-model-1"],
+            id: "burger-classic",
+            legacyIds: ["burger-model-1", "chicken-burger"],
             category: "burgers",
-            name: {
-              ar: "برغر دجاج",
-              fr: "Burger Poulet"
-            },
+            name: { ar: "برغر كلاسيك", fr: "Le Classic" },
             description: {
-              ar: "شريحة دجاج طازجة مقرمشة مع جبنة شيدر وخس وصلصة خاصة في خبز بريوش ناعم.",
-              fr: "Burger Poulet Signature, cheddar fondant, sauce maison et pain brioché toasté."
+              ar: "شريحة لحم بقر طازجة، جبنة شيدر ذائبة، صلصة خاصة، خبز بريوش ناعم.",
+              fr: "Pain brioché, steak haché pur bœuf, cheddar fondant, sauce maison."
+            },
+            price: 350,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+          {
+            id: "burger-professeur",
+            category: "burgers",
+            name: { ar: "برغر البروفيسور", fr: "Professeur" },
+            description: {
+              ar: "دجاج مقرمش كريسبي، جبنة شيدر، سلطة طازجة وصلصة البروفيسور الخاصة.",
+              fr: "Poulet pané ultra crispy, cheddar fondant, salade fraîche et sauce spéciale."
+            },
+            price: 450,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+          {
+            id: "burger-americain",
+            category: "burgers",
+            name: { ar: "برغر أمريكان", fr: "Américain" },
+            description: {
+              ar: "شريحة لحم دبل، بيكون بقري مدخن، جبنة شيدر، بصل مكرمل وصلصة باربيكيو.",
+              fr: "Double steak haché, bacon de bœuf, cheddar fondant, oignons caramélisés et BBQ."
+            },
+            price: 500,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+          {
+            id: "burger-marseille",
+            category: "burgers",
+            name: { ar: "برغر مرسيليا", fr: "Marseille" },
+            description: {
+              ar: "دجاج كريسبي متبل، جبنة شيدر، سلطة وصلصة جزائرية حارة ومميزة.",
+              fr: "Poulet pané croustillant mariné, cheddar, salade et sauce algérienne maison."
+            },
+            price: 500,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+          {
+            id: "burger-big-ben",
+            category: "burgers",
+            name: { ar: "برغر بيغ بن العملاق", fr: "Big Ben" },
+            description: {
+              ar: "برغر عملاق متعدد الطبقات: لحم بقر، بطاطا روستي، بيض، دبل شيدر وصلصة برغر.",
+              fr: "Grand burger gourmand : steak géant, galette de pomme de terre, œuf, double cheddar."
+            },
+            price: 700,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+
+          /* ── SANDWICHES ── */
+          {
+            id: "sandwich-suisse",
+            category: "sandwiches",
+            name: { ar: "سندويش سويسري", fr: "Sandwich Suisse" },
+            description: {
+              ar: "إسكالوب دجاج متبل، جبنة إيمنتال سويسرية، صلصة بيضاء غنية.",
+              fr: "Escalope de poulet marinée, emmental fondant, crème gruyère."
+            },
+            price: 450,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+          {
+            id: "sandwich-mexicain",
+            category: "sandwiches",
+            name: { ar: "سندويش مكسيكي", fr: "Sandwich Mexicain" },
+            description: {
+              ar: "لحم مفروم متبل بالبهارات المكسيكية، فلفل مشوي، جبنة وصلصة حارة.",
+              fr: "Viande hachée épicée, poivrons sautés, cheddar et sauce mexicaine piquante."
+            },
+            price: 450,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+          {
+            id: "sandwich-narcos",
+            category: "sandwiches",
+            name: { ar: "سندويش ناركوس", fr: "Sandwich Narcos" },
+            description: {
+              ar: "شرائح دجاج طازجة مشوية، صلصة جبن ناعمة وبطاطا مقلية مقرمشة.",
+              fr: "Émincé de poulet mariné au grill, sauce fromagère onctueuse et frites."
+            },
+            price: 500,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+          {
+            id: "sandwich-buffalo",
+            category: "sandwiches",
+            name: { ar: "سندويش بوفالو", fr: "Sandwich Buffalo" },
+            description: {
+              ar: "لحم بقر مشوي على الطريقة الأمريكية، بصل مقرمش، شيدر وصلصة باربيكيو.",
+              fr: "Steak haché façon buffalo, oignons croustillants, cheddar et sauce barbecue."
+            },
+            price: 500,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+          {
+            id: "sandwich-dalas",
+            category: "sandwiches",
+            name: { ar: "سندويش دالاس", fr: "Sandwich Dalas" },
+            description: {
+              ar: "تندرز دجاج كريسبي مقرمش، بيكون مدخن وصلصة جبن شيدر ذائبة.",
+              fr: "Tenders de poulet croustillants, bacon grillé et sauce fromagère maison."
+            },
+            price: 600,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+          {
+            id: "sandwich-3-fromages",
+            category: "sandwiches",
+            name: { ar: "سندويش 3 أجبان", fr: "Sandwich 3 Fromages" },
+            description: {
+              ar: "دجاج متبل مع مزيج ثلاثي من الشيدر، الموزاريلا والإيمنتال الذائب.",
+              fr: "Poulet émincé, généreuse trilogie mozzarella, cheddar et emmental fondant."
             },
             price: 650,
-            image: EMBEDDED_IMAGES.burger,
-            fileImage: "images/chicken-burger.jpg"
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
           },
           {
-            id: "margherita-pizza",
-            legacyIds: ["pizza-model-1"],
-            category: "pizza",
-            name: {
-              ar: "بيتزا مارغريتا",
-              fr: "Pizza Margherita"
-            },
+            id: "sandwich-le-divin",
+            category: "sandwiches",
+            name: { ar: "سندويش لو ديفان", fr: "Sandwich Le Divin" },
             description: {
-              ar: "صلصة طماطم تقليدية مع جبنة موزاريلا غنية وأعشاب طازجة.",
-              fr: "Pizza Margherita Classique, sauce tomate mijotée, mozzarella fondante et basilic frais."
+              ar: "مزيج فاخر من شريحة لحم بقري وإسكالوب ديك رومي مع صلصة بيضاء.",
+              fr: "Duo gourmand steak pur bœuf et escalope de dinde, sauce blanche aux herbes."
+            },
+            price: 600,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+          {
+            id: "sandwich-lucifer",
+            category: "sandwiches",
+            name: { ar: "سندويش لوسيفر الحار", fr: "Sandwich Lucifer" },
+            description: {
+              ar: "لحم مفروم مع فلفل الهالبينو الحار وصلصة ساموراي نارية لعشاق الحرارة.",
+              fr: "Viande hachée, piments jalapenos piquants, sauce samouraï explosive."
+            },
+            price: 650,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+          {
+            id: "sandwich-miam-miam",
+            category: "sandwiches",
+            name: { ar: "سندويش ميام ميام", fr: "Sandwich Miam-Miam" },
+            description: {
+              ar: "ميكس دجاج ولحم مفروم مع صلصة الجبن الغنية والبطاطا المقرمشة.",
+              fr: "Mélange généreux de poulet mariné et viande hachée, sauce fromagère signature."
+            },
+            price: 650,
+            image: "images/chicken-burger.jpg",
+            fallbackImage: EMBEDDED_IMAGES.burger
+          },
+
+          /* ── TACOS ── */
+          {
+            id: "tacos-chicharito",
+            category: "tacos",
+            name: { ar: "تاكوس تشيشاريتو", fr: "Tacos Chicharito" },
+            description: {
+              ar: "تاكوس قطعة لحم من اختيارك، بطاطا مقلية وصلصة جبن منزلية محمصة على الغريل.",
+              fr: "Tacos 1 viande au choix, frites dorées, sauce fromagère maison toasté au grill."
+            },
+            price: 650,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+          {
+            id: "tacos-booba",
+            category: "tacos",
+            name: { ar: "تاكوس بوبا (لحمان)", fr: "Tacos Booba" },
+            description: {
+              ar: "تاكوس قطعتين لحم (مفروم + إسكالوب دجاج) مع دبل صلصة جبن كريمية.",
+              fr: "Tacos 2 viandes (viande hachée + escalope), double dose de sauce fromagère."
+            },
+            price: 700,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+          {
+            id: "tacos-double-v",
+            category: "tacos",
+            name: { ar: "تاكوس دبل في", fr: "Tacos Double V" },
+            description: {
+              ar: "لحم مزدوج من اختيارك، جبنة شيدر، بطاطا مقلية وصلصة باربيكيو مدخنة.",
+              fr: "Double viande au choix, cheddar fondant, sauce barbecue fumée et frites."
             },
             price: 800,
-            image: EMBEDDED_IMAGES.pizza,
-            fileImage: "images/margherita-pizza.jpg"
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
           },
           {
-            id: "french-fries",
-            legacyIds: ["fries-model-1"],
-            category: "sides",
-            name: {
-              ar: "بطاطا مقلية",
-              fr: "Frites"
-            },
+            id: "tacos-22",
+            category: "tacos",
+            name: { ar: "تاكوس 22 الملكي", fr: "Tacos 22" },
             description: {
-              ar: "بطاطا مقلية مقرمشة وذهبية متبلة ببهارات المطعم الخاصة.",
-              fr: "Frites Croustillantes Dorées avec assaisonnement spécial maison."
+              ar: "تاكوس محشو بتندرز الدجاج المقرمش وكوردون بلو الفاخر مع صلصة الجبن.",
+              fr: "Tacos garni de tenders croustillants et cordon bleu, sauce fromagère maison."
             },
-            price: 250,
-            image: EMBEDDED_IMAGES.fries,
-            fileImage: "images/french-fries.jpg"
+            price: 800,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
           },
+          {
+            id: "tacos-naruto",
+            category: "tacos",
+            name: { ar: "تاكوس ناروتو", fr: "Tacos Naruto" },
+            description: {
+              ar: "دجاج متبل بكاري هادئ، جبنة مبشورة، بطاطا مقلية وصلصة شهية.",
+              fr: "Tacos poulet mariné au curry doux, fromage râpé et frites croustillantes."
+            },
+            price: 700,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+
+          /* ── MEALS & BOX ── */
+          {
+            id: "meal-solo",
+            category: "meals",
+            name: { ar: "وجبة سولو فردية", fr: "Menu Solo" },
+            description: {
+              ar: "1 همبرغر + 2 تندرز دجاج مقرمش + بطاطا مقلية + مشروب غازي منعش.",
+              fr: "1 Hamburger + 2 Tenders panés + 1 Barquette de frites + 1 Boisson fraîche."
+            },
+            price: 700,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+          {
+            id: "meal-combo",
+            category: "meals",
+            name: { ar: "وجبة كومبو ثنائية", fr: "Menu Combo" },
+            description: {
+              ar: "2 همبرغر + 4 تندرز دجاج + حصة كبيرة بطاطا مقلية + 2 مشروب غازي.",
+              fr: "2 Hamburgers + 4 Tenders + 1 Grande barquette de frites + 2 Boissons."
+            },
+            price: 1300,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+          {
+            id: "meal-hat-trick",
+            legacyIds: ["family-meal-model-1", "family-meal"],
+            category: "meals",
+            name: { ar: "وجبة هاتريك العائلية", fr: "Menu Hat-Trick" },
+            description: {
+              ar: "3 همبرغر + 6 تندرز كريسبي + بطاطا مقلية عائلية + قارورة مشروب 1 لتر.",
+              fr: "3 Hamburgers + 6 Tenders croustillants + 1 Maxi frites + Boisson 1L."
+            },
+            price: 1800,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+          {
+            id: "box-3-pieces",
+            category: "meals",
+            name: { ar: "بوكس 3 قطع تندرز", fr: "Box 3 Pièces" },
+            description: {
+              ar: "3 قطع تندرز دجاج كريسبي مقرمش ومتبل مع صلصة من اختيارك.",
+              fr: "3 pièces de tenders de poulet pané croustillant avec sauce au choix."
+            },
+            price: 600,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+          {
+            id: "box-6-pieces",
+            category: "meals",
+            name: { ar: "بوكس 6 قطع تندرز", fr: "Box 6 Pièces" },
+            description: {
+              ar: "6 قطع تندرز دجاج ذهبي ومقرمش مع صلصتين من اختيارك.",
+              fr: "6 pièces de tenders de poulet pané croustillant avec 2 sauces au choix."
+            },
+            price: 1000,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+          {
+            id: "box-10-pieces",
+            category: "meals",
+            name: { ar: "بوكس 10 قطع تندرز ماكسي", fr: "Box 10 Pièces" },
+            description: {
+              ar: "10 قطع تندرز دجاج عائلي مقرمش ومثالي للمشاركة مع تشكيلة صلصات.",
+              fr: "10 pièces maxi de tenders de poulet croustillant à partager avec sauces."
+            },
+            price: 1500,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+
+          /* ── PIZZAS ── */
+          {
+            id: "pizza-marguerite",
+            legacyIds: ["pizza-model-1", "margherita-pizza"],
+            category: "pizza",
+            name: { ar: "بيتزا مارغريتا", fr: "Pizza Marguerite" },
+            description: {
+              ar: "صلصة طماطم تقليدية، جبنة موزاريلا غنية، ريحان طازج وزيتون أسود.",
+              fr: "Sauce tomate artisanale, mozzarella fondante, basilic frais et olives."
+            },
+            price: 450,
+            image: "images/margherita-pizza.jpg",
+            fallbackImage: EMBEDDED_IMAGES.pizza
+          },
+          {
+            id: "pizza-vegetarienne",
+            category: "pizza",
+            name: { ar: "بيتزا خضار", fr: "Pizza Végétarienne" },
+            description: {
+              ar: "صلصة طماطم، فطر طازج، فلفل حلو، بصل، طماطم كرزية وموزاريلا.",
+              fr: "Sauce tomate, champignons de Paris, poivrons, oignons et mozzarella."
+            },
+            price: 550,
+            image: "images/margherita-pizza.jpg",
+            fallbackImage: EMBEDDED_IMAGES.pizza
+          },
+          {
+            id: "pizza-thon",
+            category: "pizza",
+            name: { ar: "بيتزا تونة", fr: "Pizza Thon" },
+            description: {
+              ar: "صلصة طماطم، تونة فاخرة، بصل مفروم، زيتون وجبنة موزاريلا ذائبة.",
+              fr: "Sauce tomate, thon émietté de qualité, oignons rouges, olives et fromage."
+            },
+            price: 650,
+            image: "images/margherita-pizza.jpg",
+            fallbackImage: EMBEDDED_IMAGES.pizza
+          },
+          {
+            id: "pizza-poulet",
+            category: "pizza",
+            name: { ar: "بيتزا دجاج", fr: "Pizza Poulet" },
+            description: {
+              ar: "صلصة طماطم، قطع دجاج متبلة، فلفل أخضر، زيتون وموزاريلا غنية.",
+              fr: "Sauce tomate, émincé de poulet mariné, poivrons, olives et mozzarella."
+            },
+            price: 700,
+            image: "images/margherita-pizza.jpg",
+            fallbackImage: EMBEDDED_IMAGES.pizza
+          },
+          {
+            id: "pizza-reine",
+            category: "pizza",
+            name: { ar: "بيتزا رين الملكية", fr: "Pizza Reine" },
+            description: {
+              ar: "صلصة طماطم، لانشون ديك رومي، فطر طازج وجبنة موزاريلا.",
+              fr: "Sauce tomate, jambon de dinde, champignons frais et mozzarella fondante."
+            },
+            price: 700,
+            image: "images/margherita-pizza.jpg",
+            fallbackImage: EMBEDDED_IMAGES.pizza
+          },
+          {
+            id: "pizza-oriental",
+            category: "pizza",
+            name: { ar: "بيتزا شرقية", fr: "Pizza Oriental" },
+            description: {
+              ar: "صلصة طماطم، نقانق مرقاز حارة، فلفل مشوي، بيض، زيتون وموزاريلا.",
+              fr: "Sauce tomate, merguez épicées, poivrons grillés, œuf, olives et mozzarella."
+            },
+            price: 1000,
+            image: "images/margherita-pizza.jpg",
+            fallbackImage: EMBEDDED_IMAGES.pizza
+          },
+          {
+            id: "pizza-5-fromages",
+            category: "pizza",
+            name: { ar: "بيتزا 5 أجبان (صلصة بيضاء)", fr: "Pizza 5 Fromages" },
+            description: {
+              ar: "صلصة بيضاء، موزاريلا، شيدر، إيمنتال، جبنة الريكفورد وجبنة الماعز.",
+              fr: "Sauce blanche crémeuse, mozzarella, cheddar, emmental, bleu et chèvre."
+            },
+            price: 850,
+            image: "images/margherita-pizza.jpg",
+            fallbackImage: EMBEDDED_IMAGES.pizza
+          },
+          {
+            id: "pizza-chikita",
+            category: "pizza",
+            name: { ar: "بيتزا تشيكيتا (صلصة بيضاء)", fr: "Pizza Chikita" },
+            description: {
+              ar: "صلصة بيضاء بالكريمة، دجاج متبل، فطر طازج وموزاريلا ذهبية.",
+              fr: "Sauce blanche à la crème fraîche, poulet mariné, champignons et mozzarella."
+            },
+            price: 800,
+            image: "images/margherita-pizza.jpg",
+            fallbackImage: EMBEDDED_IMAGES.pizza
+          },
+          {
+            id: "pizza-montagnarde",
+            category: "pizza",
+            name: { ar: "بيتزا مونتانيارد الجبلية", fr: "Pizza Montagnarde" },
+            description: {
+              ar: "كريمة طازجة، بطاطا، بيكون بقري، جبنة الراكليت وموزاريلا.",
+              fr: "Crème fraîche, pommes de terre, lardons de bœuf, fromage raclette et mozzarella."
+            },
+            price: 900,
+            image: "images/margherita-pizza.jpg",
+            fallbackImage: EMBEDDED_IMAGES.pizza
+          },
+
+          /* ── GRATINS ── */
+          {
+            id: "gratin-gomora",
+            category: "gratins",
+            name: { ar: "غراتان غومورا", fr: "Gratin Gomora" },
+            description: {
+              ar: "بطاطا مشوية بالفرن، دجاج متبل، كريمة طازجة وجبنة ذائبة ومحمرة.",
+              fr: "Pommes de terre au four, poulet mariné, crème fraîche et fromage gratiné."
+            },
+            price: 500,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+          {
+            id: "gratin-medeline",
+            category: "gratins",
+            name: { ar: "غراتان مادلين", fr: "Gratin Medeline" },
+            description: {
+              ar: "بطاطا أو معكرونة بصلصة البشاميل، لحم مفروم وجبنة موزاريلا.",
+              fr: "Pommes de terre ou pâtes, viande hachée mijotée, béchamel et mozzarella."
+            },
+            price: 500,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+          {
+            id: "gratin-mixte",
+            category: "gratins",
+            name: { ar: "غراتان ميكسد", fr: "Gratin Mixte" },
+            description: {
+              ar: "مزيج دجاج ولحم مفروم مع صلصة الجبن الغنية محمرة بالفرن.",
+              fr: "Duo poulet et viande hachée, sauce fromagère onctueuse gratinée au four."
+            },
+            price: 600,
+            image: "images/family-meal.jpg",
+            fallbackImage: EMBEDDED_IMAGES.family
+          },
+
+          /* ── POUTINES ── */
+          {
+            id: "poutine-dexter",
+            category: "poutines",
+            name: { ar: "بوتين ديكستر", fr: "Poutine Dexter" },
+            description: {
+              ar: "بطاطا مقلية ذهبية، تندرز دجاج مقرمش، صلصة بنية أصلية وجبنة ذائبة.",
+              fr: "Frites dorées, poulet pané croustillant, sauce brune authentique et fromage."
+            },
+            price: 700,
+            image: "images/french-fries.jpg",
+            fallbackImage: EMBEDDED_IMAGES.fries
+          },
+          {
+            id: "poutine-el-chapo",
+            category: "poutines",
+            name: { ar: "بوتين إل تشابو", fr: "Poutine El Chapo" },
+            description: {
+              ar: "بطاطا مقلية، لحم مفروم متبل، فلفل مشوي، بصل مكرمل وصلصة جبن.",
+              fr: "Frites maison, viande hachée assaisonnée, poivrons, oignons et sauce fromage."
+            },
+            price: 700,
+            image: "images/french-fries.jpg",
+            fallbackImage: EMBEDDED_IMAGES.fries
+          },
+          {
+            id: "poutine-sauvage",
+            category: "poutines",
+            name: { ar: "بوتين سوفاج", fr: "Poutine Sauvage" },
+            description: {
+              ar: "بطاطا مقلية، تشكيلة لحوم غنية، صلصة خاصة ودبل جبنة ذائبة.",
+              fr: "Frites croustillantes, mix viandes généreux, double fromage et sauce spéciale."
+            },
+            price: 800,
+            image: "images/french-fries.jpg",
+            fallbackImage: EMBEDDED_IMAGES.fries
+          },
+
+          /* ── DRINKS ── */
           {
             id: "soft-drink",
             legacyIds: ["drink-model-1"],
             category: "drinks",
-            name: {
-              ar: "مشروب غازي",
-              fr: "Boisson Gazeuse"
-            },
+            name: { ar: "مشروب غازي 33cl", fr: "Boisson Gazeuse 33cl" },
             description: {
-              ar: "مشروب منعش وبارد بحجم مثالي يرافق وجبتك المفضلة.",
-              fr: "Boisson Gazeuse Fraîche et pétillante pour accompagner parfaitement votre repas."
+              ar: "مشروب غازي بارد ومنعش بحجم مثالي يرافق وجبتك المفضلة.",
+              fr: "Canette fraîche au choix (Coca-Cola, Fanta, Sprite, Schweppes)."
             },
             price: 150,
-            image: EMBEDDED_IMAGES.drink,
-            fileImage: "images/soft-drink.jpg"
+            image: "images/soft-drink.jpg",
+            fallbackImage: EMBEDDED_IMAGES.drink
           },
           {
-            id: "family-meal",
-            legacyIds: ["family-meal-model-1"],
-            category: "meals",
-            name: {
-              ar: "وجبة تشيكن ستريت العائلية",
-              fr: "Menu Familial Chicken Street"
-            },
+            id: "mineral-water",
+            category: "drinks",
+            name: { ar: "ماء معدني 50cl", fr: "Eau Minérale 50cl" },
             description: {
-              ar: "وجبة متكاملة ومثالية للمشاركة تكفي العائلة والأصدقاء بسعر مميز.",
-              fr: "Menu Familial Chicken Street complet idéal à partager en famille ou entre amis."
+              ar: "قارورة ماء معدني نقي ومنعش.",
+              fr: "Bouteille d'eau minérale fraîche."
             },
-            price: 2500,
-            image: EMBEDDED_IMAGES.family,
-            fileImage: "images/family-meal.jpg"
+            price: 60,
+            image: "images/soft-drink.jpg",
+            fallbackImage: EMBEDDED_IMAGES.drink
           }
         ]
       };
@@ -2194,22 +2723,23 @@
           checkout: "إتمام الطلب",
           currency: "دج",
 
-          brand_sub: "مطعم ويب · أكل سريع وراقي",
+          brand_sub: "فاست فود · أشهى المأكولات السريعة",
           nav_menu: "القائمة",
           nav_formule: "العرض",
           nav_about: "من نحن",
           nav_contact: "اتصل بنا",
           nav_order: "اطلب الآن",
 
-          hero_eyebrow: "أكل شوارع · جودة عالية",
-          hero_title: "مطعم ويب — تجربة طعام استثنائية!",
-          hero_lede: "وجبات سريعة ومميزة محضرة بعناية وبأجود المكونات الطازجة. برغر، بيتزا ومقبلات شهية محضرة فورياً.",
+          hero_eyebrow: "فاست فود عالي الجودة · CHECK'IN",
+          hero_title: "Check'in — أشهى فاست فود بنكهة لا تُقاوم!",
+          hero_lede: "تشكيلة واسعة من أشهى البرغر، السندويشات، التاكوس والبيتزا والغراتان المحضرة فورياً بأجود المكونات الطازجة.",
           hero_cta: "اطلب الآن",
           hero_scroll: "مرر للأسفل",
 
           menu_eyebrow: "قائمة الطعام",
-          menu_title: "القائمة",
+          menu_title: "قائمة Check'in",
           menu_sub: "تشكيلة مميزة من أشهى الوجبات المحضرة فورياً بأعلى معايير الجودة.",
+          view_flyer: "عرض مطوية المينيو الأصلية Check'in (Flyer)",
 
           formule_eyebrow: "طلب سريع 10 دقائق",
           formule_title: "العرض والطلب السريع",
@@ -2233,8 +2763,8 @@
           submit_btn: "تأكيد الطلب الآن",
 
           about_eyebrow: "قصتنا",
-          about_title: "عن مطعم ويب",
-          about_lead: "نقدم في مطعم ويب مفهوماً عصرياً لتناول الطعام السريع بجودة راقية ومذاق لا يُنسى في أجواء دافئة ومميزة.",
+          about_title: "عن مطعم Check'in",
+          about_lead: "نقدم في مطعم Check'in مفهوماً عصرياً لتناول الفاست فود بجودة عالية ومذاق فريد يلبي جميع الأذواق.",
           about_text: "كل وجبة يتم إعدادها فورياً حسب طلبكم باستخدام أفضل المكونات والوصفات الحصرية لإرضاء جميع الأذواق.",
 
           contact_eyebrow: "موقعنا",
@@ -2247,13 +2777,12 @@
           contact_days: "طوال أيام الأسبوع",
           contact_time: "11:00 صباحاً — 03:00 ليلاً",
 
-          footer_text: "Web Restaurant · Main Street, City Center",
-          footer_tag: "Fast Food & Gourmet Experience!",
-
           summary_title: "ملخص الطلب السريع",
-          summary_empty: "سلتك فارغة حالياً. اختر من القائمة أدناه ليظهر طلبك هنا مباشرة!",
           summary_badge_label: "العناصر:",
-          summary_go_checkout: "متابعة الطلب في الأسفل"
+          summary_empty: "سلتك فارغة حالياً. اضغط على أضف إلى السلة في أي وجبة وسيظهر طلبك هنا مباشرة!",
+          summary_go_checkout: "متابعة الطلب في الأسفل",
+
+          footer_copy: "جميع الحقوق محفوظة."
         },
         fr: {
           cart_btn: "Panier",
@@ -2264,66 +2793,66 @@
           checkout: "Commander",
           currency: "DA",
 
-          brand_sub: "Web Restaurant · Fast Food & Gourmet",
+          brand_sub: "FAST - FOOD · Saveurs Gourmandes",
           nav_menu: "Menu",
           nav_formule: "Formule",
           nav_about: "À propos",
           nav_contact: "Contact",
           nav_order: "Commander",
 
-          hero_eyebrow: "Street Food · Haute Qualité",
-          hero_title: "Web Restaurant — Le goût de l'excellence !",
-          hero_lede: "Des recettes savoureuses préparées à la minute avec des ingrédients frais. Burgers, pizzas et accompagnements croustillants.",
+          hero_eyebrow: "FAST - FOOD DE QUALITÉ · CHECK'IN",
+          hero_title: "Check'in — Le Meilleur du Fast-Food !",
+          hero_lede: "Burgers gourmets, tacos généreux, sandwiches savoureux et pizzas artisanales préparés à la minute avec passion.",
           hero_cta: "Commander",
           hero_scroll: "Défiler",
 
           menu_eyebrow: "La carte",
-          menu_title: "Menu",
-          menu_sub: "Des signatures généreuses, cuites à la minute avec des ingrédients frais.",
+          menu_title: "Menu Check'in",
+          menu_sub: "Des signatures généreuses, cuites à la minute — fast food d'exception.",
+          view_flyer: "Voir la carte imprimée originale (Flyer)",
 
           formule_eyebrow: "Express 10 min",
-          formule_title: "FORMULE & COMMANDE",
-          formule_desc: "Fini l'attente au comptoir. Transmettez vos coordonnées et le détail de votre commande — nous préparons pendant que vous arrivez.",
+          formule_title: "FORMULE EXPRESS",
+          formule_desc: "Fini l'attente au comptoir. Transmettez votre nom, téléphone et détail — nous préparons pendant que vous arrivez.",
           formule_p1: "Préparation anticipée",
-          formule_p2: "Confirmation téléphonique",
+          formule_p2: "Confirmation par téléphone",
           formule_p3: "Retrait express ou livraison",
 
           form_badge: "Minimalist Express · Instant Sync",
           form_title: "Réserver votre commande",
-          form_hint: "Transmission directe et instantanée vers notre base de données.",
-          label_name: "Customer Name",
-          tag_required: "Required",
-          placeholder_name: "e.g. John Doe",
-          label_phone: "Phone Number",
-          placeholder_phone: "e.g. +213 795 51 34 82",
-          label_details: "Order Details",
-          tag_readonly: "Readonly",
-          label_price: "Price",
-          tag_fixed: "Fixed",
-          submit_btn: "Commander maintenant",
+          form_hint: "Transmission directe et instantanée vers notre base de données Google Sheets.",
+          label_name: "Nom du Client",
+          tag_required: "Requis",
+          placeholder_name: "ex. Nom et Prénom",
+          label_phone: "Numéro de Téléphone",
+          placeholder_phone: "ex. 0795 51 34 82",
+          label_details: "Détails de la Commande",
+          tag_readonly: "Lecture seule",
+          label_price: "Total",
+          tag_fixed: "Fixe",
+          submit_btn: "Confirmer la commande",
 
           about_eyebrow: "Notre Maison",
-          about_title: "À propos",
-          about_lead: "Web Restaurant réinvente la street food avec des standards de haute cuisine et une passion pour les saveurs authentiques.",
-          about_text: "Chaque commande est préparée à la minute avec des produits rigoureusement sélectionnés pour vous garantir fraîcheur et plaisir gourmand.",
+          about_title: "À propos de Check'in",
+          about_lead: "Check'in réinvente la street food avec des ingrédients rigoureusement sélectionnés et une passion pour les saveurs authentiques.",
+          about_text: "Chaque commande est préparée à la minute avec des produits frais pour vous garantir un plaisir gourmand irréprochable.",
 
-          contact_eyebrow: "Nous trouver",
-          contact_title: "Contact",
+          contact_eyebrow: "Localisation",
+          contact_title: "Contactez-nous",
           contact_addr_title: "Adresse",
           contact_addr: "Boulevard Central, Centre-Ville<br>Alger",
           contact_phone_title: "Téléphone",
-          contact_phone_hint: "Appelez ou passez commande",
+          contact_phone_hint: "Appel direct ou formulaire",
           contact_hours_title: "Horaires",
-          contact_days: "Lundi au dimanche",
-          contact_time: "11:00 AM — 03:00 AM",
+          contact_days: "7 jours sur 7",
+          contact_time: "De 11h00 à 03h00",
 
-          footer_text: "Web Restaurant · Main Street, City Center",
-          footer_tag: "Fast Food & Gourmet Experience!",
-
-          summary_title: "Aperçu rapide de la commande",
-          summary_empty: "Votre panier est vide. Choisissez dans le menu ci-dessous pour voir vos articles ici !",
+          summary_title: "Récapitulatif Express",
           summary_badge_label: "Articles :",
-          summary_go_checkout: "Finaliser la commande en bas"
+          summary_empty: "Votre panier est vide. Cliquez sur Ajouter pour voir vos articles ici !",
+          summary_go_checkout: "Passer la commande",
+
+          footer_copy: "Tous droits réservés."
         }
       };
 
@@ -2369,39 +2898,42 @@
         }
       }
 
+      function getTotal() {
+        return cart.reduce((s, c) => s + (Number(c.price) || 0) * (Number(c.quantity) || 0), 0);
+      }
+
       function addToCart(item) {
-        const existing = cart.find(c => c.id === item.id);
+        const itemId = String(item.id);
+        const existing = cart.find(c => String(c.id) === itemId);
         if (existing) {
           existing.quantity += 1;
         } else {
           cart.push({
-            id: String(item.id),
+            id: itemId,
             name: String(item.name),
-            price: Number(item.price),
+            price: Number(item.price) || 0,
             quantity: 1
           });
         }
         update();
       }
 
-      function changeQuantity(id, delta) {
-        const item = cart.find(c => c.id === id);
-        if (!item) return;
-        item.quantity += delta;
-        if (item.quantity <= 0) {
-          removeFromCart(id);
-          return;
-        }
-        update();
-      }
-
       function removeFromCart(id) {
-        cart = cart.filter(c => c.id !== id);
+        const itemId = String(id);
+        cart = cart.filter(c => String(c.id) !== itemId);
         update();
       }
 
-      function getTotal() {
-        return cart.reduce((s, c) => s + Number(c.price) * Number(c.quantity), 0);
+      function changeQuantity(id, delta) {
+        const itemId = String(id);
+        const item = cart.find(c => String(c.id) === itemId);
+        if (!item) return;
+        item.quantity += Number(delta);
+        if (item.quantity <= 0) {
+          removeFromCart(itemId);
+        } else {
+          update();
+        }
       }
 
       function getCount() {
