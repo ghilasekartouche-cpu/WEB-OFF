@@ -182,13 +182,21 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
-      background: linear-gradient(145deg, #E53935, #B71C1C);
+      background: #701235;
+      overflow: hidden;
       color: #FFFFFF;
       font-family: var(--sans);
       font-weight: 800;
       letter-spacing: 0.04em;
       box-shadow: 0 8px 24px rgba(229, 57, 53, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
       border: 2px solid #FFFFFF;
+      flex-shrink: 0;
+    }
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .brand-text {
@@ -1749,6 +1757,78 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 22px rgba(229, 57, 53, 0.5);
     }
+
+    /* Check'in printed menu preview with a subtle brand watermark */
+    .menu-flyer-showcase{width:min(980px,100%);margin:30px auto 24px;padding:12px;border:1px solid rgba(255,255,255,.18);border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.025));box-shadow:0 24px 70px rgba(0,0,0,.38)}
+    .menu-flyer-photo-link{position:relative;display:block;overflow:hidden;border-radius:14px;background:#25070e}
+    .menu-flyer-photo{display:block;width:100%;height:auto;max-height:740px;object-fit:contain;margin:0 auto}
+    .menu-flyer-watermark{position:absolute;right:clamp(14px,3vw,30px);bottom:clamp(14px,3vw,30px);width:clamp(100px,18vw,180px);height:auto;opacity:.85;filter:drop-shadow(0 4px 12px rgba(0,0,0,.7));pointer-events:none;transition:transform .3s ease,opacity .3s ease}
+    .menu-flyer-photo-link:hover .menu-flyer-watermark{opacity:.98;transform:scale(1.05)}
+    .menu-flyer-caption{padding:12px 8px 2px;text-align:center;color:rgba(255,255,255,.76);font-size:13px;letter-spacing:.04em}
+    @media(max-width:640px){.menu-flyer-showcase{padding:7px;border-radius:16px;margin-top:22px}.menu-flyer-photo-link{border-radius:10px}.menu-flyer-watermark{width:88px;right:12px;bottom:12px}.menu-flyer-caption{font-size:11px}}
+
+    /* ── Official Delivery & Social Pill Buttons ── */
+    .footer-links-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px 0 12px;
+    }
+    .footer-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+    .footer-pill-btn:hover {
+      transform: translateY(-2px);
+      color: #FFFFFF;
+    }
+    .footer-pill-btn.yassir-btn:hover {
+      border-color: #00D084;
+      background: rgba(0, 208, 132, 0.22);
+      box-shadow: 0 6px 20px rgba(0, 208, 132, 0.35);
+    }
+    .footer-pill-btn.insta-btn:hover {
+      border-color: #E1306C;
+      background: rgba(225, 48, 108, 0.22);
+      box-shadow: 0 6px 20px rgba(225, 48, 108, 0.35);
+    }
+    .footer-pill-btn.fb-btn:hover {
+      border-color: #1877F2;
+      background: rgba(24, 119, 242, 0.22);
+      box-shadow: 0 6px 20px rgba(24, 119, 242, 0.35);
+    }
+
+    /* Ambient background brand watermark */
+    .site-watermark-bg {
+      position: fixed;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(560px, 80vw);
+      height: auto;
+      opacity: 0.038;
+      pointer-events: none;
+      z-index: 0;
+      filter: drop-shadow(0 0 35px rgba(229, 57, 53, 0.45));
+    }
+    .site-watermark-bg img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -1758,9 +1838,14 @@
     <span class="orb orb-c"></span>
   </div>
 
+  <!-- Ambient Check'in Brand Watermark -->
+  <div class="site-watermark-bg" aria-hidden="true">
+    <img src="images/checkin-watermark.png" alt="" />
+  </div>
+
   <header class="nav">
     <a class="brand" href="#hero">
-      <span class="brand-mark" id="brand-mark">CK</span>
+      <span class="brand-mark" id="brand-mark"><img class="brand-logo-img" src="images/checkin-logo.jpg" alt="Check'in FAST - FOOD Logo"></span>
       <span class="brand-text">
         <strong id="brand-name">Check'in</strong>
         <em id="brand-sub" data-i18n="brand_sub">FAST - FOOD</em>
@@ -1785,7 +1870,7 @@
         <span data-i18n="cart_btn">السلة</span> <span id="cart-count" class="cart-count">0</span>
       </button>
 
-      <a class="nav-cta" href="#formule" data-i18n="nav_order">Commander</a>
+      <a class="nav-cta" href="#formule" data-i18n="nav_order">كوموندي دروك</a>
     </div>
   </header>
 
@@ -1810,13 +1895,13 @@
     <section id="hero" class="hero">
       <div class="hero-veil"></div>
       <div class="hero-content">
-        <p class="eyebrow anim-in" id="hero-eyebrow" data-i18n="hero_eyebrow">Fast Food · Gourmet Quality</p>
-        <h1 class="anim-in delay-1" id="hero-title" data-i18n="hero_title">Web Restaurant — Fast Food & Gourmet</h1>
-        <p class="lede anim-in delay-2" id="hero-lede" data-i18n="hero_lede">Tasty description goes here. Fresh burgers, crispy sides and gourmet recipes prepared in minutes.</p>
-        <a class="btn-gold anim-in delay-3" href="#formule" id="hero-cta" data-i18n="hero_cta">Order Now</a>
+        <p class="eyebrow anim-in" id="hero-eyebrow" data-i18n="hero_eyebrow">ماكلة نتاع الصح · CHECK'IN</p>
+        <h1 class="anim-in delay-1" id="hero-title" data-i18n="hero_title">Check'in - البنة لي تهبل.. أرواح تذوق وما تندمش! دجاج مخير في ڨاع وهران</h1>
+        <p class="lede anim-in delay-2" id="hero-lede" data-i18n="hero_lede">عندنا تلقى أحسن طاكوس، برغر، بيتزا وغراتان. كلش نقي ويتخدم في دقيقتو بمكونات طازجة، أرواح وبصحتك.</p>
+        <a class="btn-gold anim-in delay-3" href="#formule" id="hero-cta" data-i18n="hero_cta">كوموندي دروك</a>
       </div>
       <div class="hero-scroll" aria-hidden="true">
-        <span data-i18n="hero_scroll">Défiler</span>
+        <span data-i18n="hero_scroll">هبط تشوف</span>
         <i></i>
       </div>
     </section>
@@ -1826,10 +1911,17 @@
         <p class="eyebrow" data-i18n="menu_eyebrow">La carte</p>
         <h2 data-i18n="menu_title">Menu Check'in</h2>
         <p class="section-sub" data-i18n="menu_sub">Des signatures généreuses, cuites à la minute — street food d'exception.</p>
+        <figure class="menu-flyer-showcase">
+          <a class="menu-flyer-photo-link" href="images/menu-flyer.jpg" target="_blank" rel="noopener" aria-label="Open the full Check'in menu flyer">
+            <img class="menu-flyer-photo" src="images/menu-flyer-watermarked.jpg" alt="Check'in printed menu flyer with the restaurant logo watermark; meals, pizza, gratins, sandwiches, tacos, burgers and prices" loading="lazy">
+            <img class="menu-flyer-watermark" src="images/checkin-watermark.png" alt="Check'in Watermark Logo" aria-hidden="true">
+          </a>
+          <figcaption class="menu-flyer-caption">Check'in Fast - Food · Menu flyer</figcaption>
+        </figure>
         <div style="margin-top: 18px; text-align: center;">
           <a href="images/menu-flyer.jpg" target="_blank" class="flyer-view-btn" title="Voir la carte imprimée originale">
             <span aria-hidden="true">📄</span>
-            <span data-i18n="view_flyer">عرض مطوية المينيو الأصلية Check'in (Flyer)</span>
+            <span data-i18n="view_flyer">شوف مطوية المينيو الأصلية Check'in (Flyer)</span>
           </a>
         </div>
       </div>
@@ -1887,6 +1979,10 @@
             <li data-i18n="formule_p2">Confirmation par téléphone</li>
             <li data-i18n="formule_p3">Retrait express ou livraison</li>
           </ul>
+          <div class="formule-delivery-badge" style="margin-top: 22px; padding: 12px 16px; border-radius: 14px; background: rgba(0, 208, 132, 0.12); border: 1px solid rgba(0, 208, 132, 0.35); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <span style="font-size: 0.88rem; color: #E8F5E9;">🛵 <strong>توصيل سريع؟</strong> متوفرون على تطبيق Yassir Express</span>
+            <a href="https://delivery.yassir.com/fr/restaurants/6a157128b9c115fde1161f08/Check'in-Oran" target="_blank" rel="noopener" style="padding: 6px 14px; border-radius: 999px; background: #00D084; color: #003319; font-weight: 700; font-size: 0.8rem; text-decoration: none;">طلب على Yassir ←</a>
+          </div>
         </div>
 
         <form id="orderForm">
@@ -2006,13 +2102,43 @@
           <p data-i18n="contact_days">Lundi au dimanche</p>
           <p class="hours" id="contact-hours" data-i18n="contact_time">11:00 AM — 03:00 AM</p>
         </article>
+        <article class="glass-card contact-card yassir-card">
+          <h3 style="color: #00D084;">🛵 Yassir Express</h3>
+          <p style="margin-bottom: 8px;">توصيل سريع حتى لباب الدار عبر تطبيق Yassir</p>
+          <p><a href="https://delivery.yassir.com/fr/restaurants/6a157128b9c115fde1161f08/Check'in-Oran" target="_blank" rel="noopener" style="color: #00D084; font-weight: 700; text-decoration: underline;">اطلب على Yassir ←</a></p>
+        </article>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p id="footer-text" data-i18n="footer_text">Web Restaurant · Main Street, City Center</p>
+    <p id="footer-text" data-i18n="footer_text">Check'in FAST - FOOD · شارع الاستقلال، وسط المدينة، وهران الباهية</p>
     <p class="footer-tag" id="footer-tag" data-i18n="footer_tag">Fast Food & Gourmet Experience!</p>
+    
+    <!-- Official Delivery & Social Links -->
+    <div class="footer-links-grid">
+      <!-- Yassir Delivery -->
+      <a href="https://delivery.yassir.com/fr/restaurants/6a157128b9c115fde1161f08/Check'in-Oran" target="_blank" rel="noopener" class="footer-pill-btn yassir-btn" title="Commander sur Yassir Express">
+        <span class="pill-icon">🛵</span>
+        <span><strong>Yassir Express:</strong> Check'in Oran</span>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/check_in_31/?hl=en" target="_blank" rel="noopener" class="footer-pill-btn insta-btn" title="Suivez-nous sur Instagram">
+        <span class="pill-icon">📸</span>
+        <span><strong>Instagram:</strong> @check_in_31</span>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/p/Checkin-oran-100094279756285/" target="_blank" rel="noopener" class="footer-pill-btn fb-btn" title="Suivez-nous sur Facebook">
+        <span class="pill-icon">🌐</span>
+        <span><strong>Facebook:</strong> Check'in Oran</span>
+      </a>
+    </div>
+
+    <p class="footer-credit" style="margin-top: 14px; font-size: 0.78rem; color: rgba(255, 255, 255, 0.6); letter-spacing: 0.04em;">
+      Check'in FAST - FOOD · وهران الباهية · جميع الحقوق محفوظة © 2026
+    </p>
   </footer>
 
   <!-- Compiled Application Logic -->
@@ -2110,8 +2236,9 @@
         brand: {
           name: "Check'in",
           shortName: "CK",
+          logo: "images/checkin-logo.jpg",
           tagline: {
-            ar: "فاست فود · أشهى البرغر، التاكوس والبيتزا",
+            ar: "فاست فود في وهران · البنة لي تحوس عليها",
             fr: "FAST - FOOD · Burgers, Tacos, Pizzas & More"
           }
         },
@@ -2119,19 +2246,19 @@
         // Hero Section Content
         hero: {
           eyebrow: {
-            ar: "فاست فود عالي الجودة · CHECK'IN",
+            ar: "ماكلة نتاع الصح · CHECK'IN",
             fr: "FAST - FOOD DE QUALITÉ · CHECK'IN"
           },
           title: {
-            ar: "Check'in — أشهى فاست فود بنكهة لا تُقاوم!",
+            ar: "Check'in - البنة لي تهبل.. أرواح تذوق وما تندمش! دجاج مخير في ڨاع وهران",
             fr: "Check'in — Le Meilleur du Fast-Food !"
           },
           description: {
-            ar: "تشكيلة واسعة من أشهى البرغر، السندويشات، التاكوس والبيتزا والغراتان المحضرة فورياً بأجود المكونات الطازجة.",
+            ar: "عندنا تلقى أحسن طاكوس، برغر، بيتزا وغراتان. كلش نقي ويتخدم في دقيقتو بمكونات طازجة، أرواح وبصحتك.",
             fr: "Burgers gourmets, tacos généreux, sandwiches savoureux et pizzas artisanales préparés à la minute avec passion."
           },
           ctaText: {
-            ar: "اطلب الآن",
+            ar: "كوموندي دروك",
             fr: "Commander"
           }
         },
@@ -2139,19 +2266,19 @@
         // About Story Content
         about: {
           eyebrow: {
-            ar: "قصتنا",
+            ar: "حكايتنا",
             fr: "Notre Maison"
           },
           title: {
-            ar: "عن مطعم Check'in",
+            ar: "على مطعم Check'in وهران",
             fr: "À propos de Check'in"
           },
           lead: {
-            ar: "نقدم في مطعم Check'in مفهوماً عصرياً لتناول الفاست فود بجودة عالية ومذاق فريد يلبي جميع الأذواق.",
+            ar: "في Check'in رانا دايرينلكم أحسن ماكلة سريعة في وهران، بنة تهبل وتتخدم بالنية ومن القلب.",
             fr: "Check'in réinvente la street food avec des ingrédients sélectionnés, des sauces maison et une générosité sans égale."
           },
           text: {
-            ar: "كل وجبة يتم إعدادها فورياً حسب طلبكم باستخدام أفضل المكونات والوصفات الحصرية لإرضاء جميع الأذواق.",
+            ar: "كل وجبة نوجدوها حامية وفرشكة قدام عينيك بالدجاج المتبل، صوصات واعرة وفرماج يذوب باش تشبع وتتمتع.",
             fr: "Chaque commande est préparée à la minute avec des produits rigoureusement sélectionnés pour vous garantir fraîcheur et plaisir gourmand."
           }
         },
@@ -2159,15 +2286,18 @@
         // Contact & Hours
         contact: {
           address: {
-            ar: "شارع الاستقلال، وسط المدينة<br>الجزائر",
-            fr: "Boulevard Central, Centre-Ville<br>Alger"
+            ar: "شارع الاستقلال، وسط المدينة، وهران الباهية<br>الجزائر",
+            fr: "Boulevard Central, Centre-Ville, Oran<br>Algérie"
           },
           phone: "0795 51 34 82",
           phoneDisplay: "0795 51 34 82",
           hours: {
-            ar: "يومياً من 11:00 صباحاً — 03:00 ليلاً",
+            ar: "كل يوم من 11:00 صباحاً حتى 03:00 تاع الليل",
             fr: "Tous les jours de 11h00 à 03h00"
-          }
+          },
+          instagram: "https://www.instagram.com/check_in_31/?hl=en",
+          yassir: "https://delivery.yassir.com/fr/restaurants/6a157128b9c115fde1161f08/Check'in-Oran",
+          facebook: "https://www.facebook.com/p/Checkin-oran-100094279756285/"
         },
 
         // Food Categories (Filters from Flyer)
@@ -2717,72 +2847,72 @@
         ar: {
           cart_btn: "السلة",
           my_cart: "سلتي",
-          cart_empty: "سلتك فارغة",
-          add_to_cart: "أضف إلى السلة",
+          cart_empty: "سلتك راهي خاوية",
+          add_to_cart: "زيد للسلة",
           total: "المجموع:",
-          checkout: "إتمام الطلب",
+          checkout: "كمّل الكوموند",
           currency: "دج",
 
-          brand_sub: "فاست فود · أشهى المأكولات السريعة",
-          nav_menu: "القائمة",
-          nav_formule: "العرض",
-          nav_about: "من نحن",
-          nav_contact: "اتصل بنا",
-          nav_order: "اطلب الآن",
+          brand_sub: "فاست فود في وهران · البنة لي تحوس عليها",
+          nav_menu: "المينيو",
+          nav_formule: "الكوموند",
+          nav_about: "حكايتنا",
+          nav_contact: "اتصل بينا",
+          nav_order: "كوموندي دروك",
 
-          hero_eyebrow: "فاست فود عالي الجودة · CHECK'IN",
-          hero_title: "Check'in — أشهى فاست فود بنكهة لا تُقاوم!",
-          hero_lede: "تشكيلة واسعة من أشهى البرغر، السندويشات، التاكوس والبيتزا والغراتان المحضرة فورياً بأجود المكونات الطازجة.",
-          hero_cta: "اطلب الآن",
-          hero_scroll: "مرر للأسفل",
+          hero_eyebrow: "ماكلة نتاع الصح · CHECK'IN",
+          hero_title: "Check'in - البنة لي تهبل.. أرواح تذوق وما تندمش! دجاج مخير في ڨاع وهران",
+          hero_lede: "عندنا تلقى أحسن طاكوس، برغر، بيتزا وغراتان. كلش نقي ويتخدم في دقيقتو بمكونات طازجة، أرواح وبصحتك.",
+          hero_cta: "كوموندي دروك",
+          hero_scroll: "هبط تشوف",
 
-          menu_eyebrow: "قائمة الطعام",
-          menu_title: "قائمة Check'in",
-          menu_sub: "تشكيلة مميزة من أشهى الوجبات المحضرة فورياً بأعلى معايير الجودة.",
-          view_flyer: "عرض مطوية المينيو الأصلية Check'in (Flyer)",
+          menu_eyebrow: "المينيو نتاعنا",
+          menu_title: "مينيو Check'in وهران",
+          menu_sub: "كلش واعر ومخدوم حامي وفرشك، بنة لا تقاوم.",
+          view_flyer: "شوف مطوية المينيو الأصلية Check'in (Flyer)",
 
-          formule_eyebrow: "طلب سريع 10 دقائق",
-          formule_title: "العرض والطلب السريع",
-          formule_desc: "اختر وجباتك من القائمة، واملأ بياناتك وسيكون طلبك جاهزاً للاستلام أو التوصيل فور وصولك.",
-          formule_p1: "تحضير فوري مسبق",
-          formule_p2: "تأكيد عبر الهاتف",
-          formule_p3: "استلام سريع أو توصيل",
+          formule_eyebrow: "كوموند سريعة في 10 دقايق",
+          formule_title: "كوموندي بالخف وما تقارعش",
+          formule_desc: "خيّر واش يعجبك من المينيو، عمّر نيميروك وتوجدلك الماكلة حامية وسخونة في وقتها.",
+          formule_p1: "توجدلك حامية وفوراً",
+          formule_p2: "تأكيد في التيليفون",
+          formule_p3: "توصيل ولا تجي تديها",
 
           form_badge: "مزامنة فورية · Instant Sync",
-          form_title: "حجز وتأكيد طلبك",
-          form_hint: "يتم إرسال الطلب مباشرة إلى قاعدة البيانات لتأكيده فورياً.",
-          label_name: "اسم العميل",
+          form_title: "كونفيرمي الكوموند نتاعك",
+          form_hint: "الطلب يوصلنا ديريكت باش نوجدوه ليك في دقيقته.",
+          label_name: "اسمك الكامل",
           tag_required: "مطلوب",
-          placeholder_name: "مثال: الاسم الكامل",
+          placeholder_name: "مثال: أمين وهراني",
           label_phone: "رقم الهاتف",
           placeholder_phone: "مثال: 0795 51 34 82",
-          label_details: "تفاصيل الطلب",
-          tag_readonly: "للقراءة فقط",
-          label_price: "المجموع",
-          tag_fixed: "محدد",
-          submit_btn: "تأكيد الطلب الآن",
+          label_details: "واش طلبت",
+          tag_readonly: "أوتوماتيك",
+          label_price: "السومة الإجمالية",
+          tag_fixed: "حساب دقيق",
+          submit_btn: "أكد الكوموند دروك",
 
-          about_eyebrow: "قصتنا",
-          about_title: "عن مطعم Check'in",
-          about_lead: "نقدم في مطعم Check'in مفهوماً عصرياً لتناول الفاست فود بجودة عالية ومذاق فريد يلبي جميع الأذواق.",
-          about_text: "كل وجبة يتم إعدادها فورياً حسب طلبكم باستخدام أفضل المكونات والوصفات الحصرية لإرضاء جميع الأذواق.",
+          about_eyebrow: "حكايتنا",
+          about_title: "على مطعم Check'in وهران",
+          about_lead: "في Check'in رانا دايرينلكم أحسن ماكلة سريعة في وهران، بنة تهبل وتتخدم بالنية ومن القلب.",
+          about_text: "كل وجبة نوجدوها حامية وفرشكة قدام عينيك بالدجاج المتبل، صوصات واعرة وفرماج يذوب باش تشبع وتتمتع.",
 
-          contact_eyebrow: "موقعنا",
-          contact_title: "تواصل معنا",
+          contact_eyebrow: "وين رانا",
+          contact_title: "تواصل معانا",
           contact_addr_title: "العنوان",
-          contact_addr: "شارع الاستقلال، وسط المدينة<br>الجزائر",
+          contact_addr: "شارع الاستقلال، وسط المدينة، وهران الباهية<br>الجزائر",
           contact_phone_title: "الهاتف",
-          contact_phone_hint: "اتصل أو اطلب عبر النموذج",
-          contact_hours_title: "ساعات العمل",
-          contact_days: "طوال أيام الأسبوع",
-          contact_time: "11:00 صباحاً — 03:00 ليلاً",
+          contact_phone_hint: "عيطلنا ولا كوموندي ديريكت من السيت",
+          contact_hours_title: "أوقات العمل",
+          contact_days: "كل يوم في السيمانة",
+          contact_time: "من 11:00 صباحاً حتى 03:00 تاع الليل",
 
-          summary_title: "ملخص الطلب السريع",
-          summary_badge_label: "العناصر:",
-          summary_empty: "سلتك فارغة حالياً. اضغط على أضف إلى السلة في أي وجبة وسيظهر طلبك هنا مباشرة!",
-          summary_go_checkout: "متابعة الطلب في الأسفل",
+          summary_title: "واش خيّرت (ملخص سريع)",
+          summary_badge_label: "الوجبات:",
+          summary_empty: "سلتك راهي خاوية دروك.. كليكي على 'زيد للسلة' في أي وجبة وتطلعلك هنا ديريكت!",
+          summary_go_checkout: "هبط لتحت تكمل الكوموند نتاعك",
 
-          footer_copy: "جميع الحقوق محفوظة."
+          footer_copy: "جميع الحقوق محفوظة © Check'in FAST - FOOD."
         },
         fr: {
           cart_btn: "Panier",
@@ -3066,7 +3196,13 @@
 
         // Brand in Nav
         const brandMark = document.querySelector('#brand-mark');
-        if (brandMark && b.shortName) brandMark.textContent = b.shortName;
+        if (brandMark) {
+          if (b.logo) {
+            brandMark.innerHTML = `<img src="${b.logo}" alt="${b.name}" class="brand-logo-img">`;
+          } else if (b.shortName) {
+            brandMark.textContent = b.shortName;
+          }
+        }
 
         const brandName = document.querySelector('#brand-name');
         if (brandName && b.name) brandName.textContent = b.name;
