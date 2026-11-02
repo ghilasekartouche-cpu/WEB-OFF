@@ -15,22 +15,24 @@
 
   <style>
     :root {
-      /* ── Check'in Fast-Food · Red & White Theme ── */
-      --red: #C62828;
-      --red-bright: #E53935;
-      --red-dark: #8B142B;
-      --red-deep: #1A070B;
-      --red-mist: #2E0B12;
+      /* ── Brand Color Synchronization (Sampled from Logo: #7A1439) ── */
+      --brand-bg: #7A1439;
+      --brand-bg-dark: #5C0B28;
+      --brand-bg-card: rgba(92, 11, 40, 0.72);
+      --red: #7A1439;
+      --red-bright: #911844;
+      --red-dark: #7A1439;
+      --red-deep: #7A1439;
+      --red-mist: #5C0B28;
       --white: #ffffff;
-      --white-soft: #fcfcfc;
+      --white-soft: #FFF3F5;
       --white-muted: rgba(255, 255, 255, 0.78);
       --glass: rgba(255, 255, 255, 0.08);
-      --glass-strong: rgba(255, 255, 255, 0.16);
-      --stroke: rgba(229, 57, 53, 0.40);
+      --glass-strong: rgba(255, 255, 255, 0.14);
+      --stroke: rgba(255, 255, 255, 0.14);
       --stroke-white: rgba(255, 255, 255, 0.22);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.65);
-      --glow-red: 0 0 28px rgba(229, 57, 53, 0.45);
-      --glow-white: 0 0 20px rgba(255, 255, 255, 0.35);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+      --card-radius: 12px;
       --sans: "Outfit", "Cairo", "Tajawal", system-ui, sans-serif;
       --serif: "Cormorant Garamond", Georgia, serif;
 
@@ -41,7 +43,7 @@
       --gold: #FFFFFF;
       --gold-soft: #FFCDD2;
       --yellow: #FFFFFF;
-      --primary-green: #C62828;
+      --primary-green: #7A1439;
       --warm-bg: #FFFFFF;
     }
 
@@ -56,8 +58,8 @@
     html, body {
       font-family: var(--sans);
       color: var(--white);
-      background-color: #800015;
-      background: #800015;
+      background-color: #7A1439;
+      background: #7A1439;
       min-height: 100vh;
       overflow-x: hidden;
       line-height: 1.6;
@@ -151,12 +153,12 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
-      background: linear-gradient(145deg, #E53935, #B71C1C);
+      background: #5C0B28;
       color: #FFFFFF;
       font-family: var(--sans);
       font-weight: 800;
       letter-spacing: 0.04em;
-      box-shadow: 0 8px 24px rgba(229, 57, 53, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
       border: 2px solid #FFFFFF;
     }
 
@@ -221,23 +223,24 @@
     }
 
     .nav-cta {
-      padding: 10px 20px;
+      padding: 10px 22px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #E53935, #C62828);
+      background: #5C0B28;
       color: #FFFFFF;
       font-size: 0.80rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 8px 20px rgba(229, 57, 53, 0.45);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.30);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
     }
 
     .nav-cta:hover {
+      background: #7A1439;
+      border-color: rgba(255, 255, 255, 0.45);
       transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(229, 57, 53, 0.65);
-      filter: brightness(1.1);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.40);
     }
 
     .hero {
@@ -246,9 +249,9 @@
       min-height: 85vh;
       display: grid;
       place-items: center;
-      padding: 140px 24px 80px;
-      background-color: #800015;
-      background: #800015;
+      padding: clamp(120px, 14vw, 150px) 24px clamp(60px, 8vw, 90px);
+      background-color: #7A1439;
+      background: #7A1439;
     }
 
     .hero-veil { display: none !important; }
@@ -312,9 +315,9 @@
       align-items: center;
       justify-content: center;
       padding: 16px 36px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 999px;
-      background: linear-gradient(180deg, #EF5350, #C62828 50%, #B71C1C);
+      background: #5C0B28;
       color: #FFFFFF;
       font-family: var(--sans);
       font-size: 0.86rem;
@@ -322,14 +325,15 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 0 16px 40px rgba(198, 40, 40, 0.45), 0 0 20px rgba(239, 83, 80, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, filter 0.35s ease;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, background 0.3s ease, border-color 0.3s ease;
     }
 
     .btn-gold:hover {
-      transform: translateY(-3px) scale(1.03);
-      filter: brightness(1.1);
-      box-shadow: 0 22px 50px rgba(229, 57, 53, 0.65), 0 0 30px rgba(255, 255, 255, 0.35);
+      transform: translateY(-3px) scale(1.02);
+      background: #7A1439;
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
     }
 
     .btn-full {
@@ -357,7 +361,7 @@
       display: block;
       width: 2px;
       height: 42px;
-      background: linear-gradient(#E53935, transparent);
+      background: linear-gradient(rgba(255, 255, 255, 0.8), transparent);
       animation: pulse-line 1.8s ease-in-out infinite;
     }
 
@@ -377,9 +381,9 @@
     .section {
       position: relative;
       z-index: 2;
-      width: min(1180px, calc(100% - 40px));
+      width: min(1200px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 88px 0;
+      padding: clamp(70px, 8.5vw, 110px) 0;
     }
 
     .section-head {
@@ -397,19 +401,29 @@
     .glass-card {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(165deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
-      border: 1px solid rgba(255, 255, 255, 0.20);
-      border-radius: 28px;
-      box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(20px) saturate(150%);
-      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      background: rgba(92, 11, 40, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .menu-grid,
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(18px, 2.2vw, 28px);
+    }
+    @media (max-width: 1080px) {
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .menu-card {
@@ -544,9 +558,9 @@
     .sofnek-form {
       position: relative;
       background: linear-gradient(165deg, rgba(26, 7, 11, 0.94), rgba(16, 3, 6, 0.98));
-      border: 1px solid rgba(229, 57, 53, 0.40);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 24px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), 0 0 35px rgba(229, 57, 53, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.20);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), 0 0 35px rgba(92, 11, 40, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.20);
       backdrop-filter: blur(24px) saturate(140%);
       -webkit-backdrop-filter: blur(24px) saturate(140%);
     }
@@ -557,7 +571,7 @@
       height: 260px;
       right: -60px;
       top: -70px;
-      background: radial-gradient(circle, rgba(229, 57, 53, 0.32), transparent 70%);
+      background: radial-gradient(circle, rgba(122, 20, 57, 0.25), transparent 70%);
       pointer-events: none;
     }
 
@@ -572,8 +586,8 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: #FFFFFF;
-      background: rgba(229, 57, 53, 0.25);
-      border: 1px solid rgba(229, 57, 53, 0.50);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.20);
       border-radius: 999px;
       padding: 4px 12px;
     }
@@ -622,9 +636,9 @@
     }
 
     .required-tag {
-      color: #FFFFFF;
-      background: #C62828;
-      border: 1px solid #E53935;
+      color: #F8E7ED;
+      background: #4A1026;
+      border: 1px solid rgba(255, 255, 255, 0.22);
     }
 
     .locked-tag {
@@ -665,9 +679,9 @@
     }
 
     .field input:focus {
-      border-color: #EF5350;
+      border-color: rgba(255, 255, 255, 0.45);
       background: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.35);
+      box-shadow: 0 0 0 3px rgba(122, 20, 57, 0.40);
     }
 
     .field input[readonly] {
@@ -686,28 +700,28 @@
 
     .field-price input[readonly] {
       color: #FFFFFF;
-      background: rgba(198, 40, 40, 0.35);
+      background: #4A1026;
       font-weight: 800;
       text-align: center;
       letter-spacing: 0.04em;
-      border-color: rgba(229, 57, 53, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.22);
     }
 
     .btn-sofnek-submit {
       width: 100%;
       padding: 16px 28px;
       margin-top: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 999px;
       background: #FFFFFF;
-      color: #C62828;
+      color: #5C0B28;
       font-family: var(--sans);
       font-size: 0.88rem;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55), 0 0 20px rgba(255, 255, 255, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       align-items: center;
@@ -716,11 +730,11 @@
     }
 
     .btn-sofnek-submit:hover:not(:disabled) {
-      background: linear-gradient(135deg, #E53935, #C62828);
+      background: #5C0B28;
       color: #FFFFFF;
-      border-color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.6);
       transform: translateY(-2px);
-      box-shadow: 0 18px 45px rgba(229, 57, 53, 0.65), 0 0 25px rgba(255, 255, 255, 0.4);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55);
     }
 
     .btn-sofnek-submit:disabled {
@@ -750,10 +764,10 @@
 
     .form-status.success {
       display: block;
-      background: rgba(198, 40, 40, 0.35);
-      border: 1px solid #EF5350;
+      background: rgba(92, 11, 40, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       color: #FFFFFF;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(229, 57, 53, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .form-status.error {
@@ -810,9 +824,31 @@
     }
 
     .contact-card {
-      padding: 28px 26px;
-      min-height: 210px;
-      transition: transform 0.4s ease, border-color 0.3s ease;
+      padding: 26px 22px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.26);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.36);
+    }
+    .contact-card h3 {
+      font-size: 1.20rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+    .contact-card p {
+      color: #FFF3F5;
+      font-size: 0.96rem;
+      line-height: 1.6;
     }
 
     .contact-card:hover {
@@ -993,25 +1029,26 @@
     .add-to-cart-btn {
       width: 100%;
       padding: 13px 0;
-      background: linear-gradient(135deg, #E53935, #C62828);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: #5C0B28;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.22);
       border-radius: 12px;
       font-size: 16px;
       font-weight: 800;
       letter-spacing: 0.04em;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(198, 40, 40, 0.45);
-      transition: background .2s, transform .1s, box-shadow .2s;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s, border-color 0.2s;
     }
     .add-to-cart-btn:hover {
-      background: linear-gradient(135deg, #EF5350, #D32F2F);
-      box-shadow: 0 12px 26px rgba(229, 57, 53, 0.6);
+      background: #7A1439;
+      border-color: rgba(255, 255, 255, 0.45);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.38);
     }
     .add-to-cart-btn:active { transform: scale(.97); }
-    .add-to-cart-btn:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; }
-
-    #cart-panel,
+    .add-to-cart-btn:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }
+#cart-panel,
     .cart-panel {
       position: fixed !important;
       top: 0;
@@ -1052,20 +1089,21 @@
     #checkout-btn {
       width: 100%;
       padding: 14px;
-      background: linear-gradient(135deg, #E53935, #C62828);
+      background: #5C0B28;
       color: #fff;
-      border: none;
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 12px;
       font-size: 17px;
       font-weight: 800;
       letter-spacing: 0.05em;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(198, 40, 40, 0.45);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.30);
       transition: all 0.2s;
     }
     #checkout-btn:hover:not(:disabled) {
-      background: linear-gradient(135deg, #EF5350, #D32F2F);
-      box-shadow: 0 12px 28px rgba(229, 57, 53, 0.65);
+      background: #7A1439;
+      border-color: rgba(255, 255, 255, 0.50);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.40);
     }
     #checkout-btn:disabled {
       background: #ccc;
@@ -1108,8 +1146,8 @@
     .lang-btn.active,
     .lang-btn:hover {
       color: #FFFFFF;
-      background: #C62828;
-      box-shadow: 0 2px 8px rgba(198, 40, 40, 0.6);
+      background: #5C0B28;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     }
 
     .lang-sep {
@@ -1123,22 +1161,23 @@
       align-items: center;
       gap: 8px;
       padding: 8px 18px;
-      background: linear-gradient(135deg, #E53935, #C62828);
+      background: #5C0B28;
       color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 999px;
       font-family: inherit;
       font-size: 0.86rem;
       font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 6px 18px rgba(229, 57, 53, 0.50);
-      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.30);
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
 
     .cart-toggle:hover {
-      background: linear-gradient(135deg, #EF5350, #D32F2F);
+      background: #7A1439;
+      border-color: rgba(255, 255, 255, 0.45);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(229, 57, 53, 0.65);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.40);
     }
 
     .cart-count {
@@ -1148,8 +1187,9 @@
       height: 22px;
       padding: 0 6px;
       border-radius: 999px;
-      background: #FFFFFF;
-      color: #C62828;
+      background: #7A1439;
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.30);
       font-size: 0.76rem;
       font-weight: 900;
       line-height: 1;
@@ -1177,14 +1217,14 @@
       align-items: center;
       justify-content: space-between;
       padding: 20px 22px;
-      border-bottom: 2px solid #C62828;
+      border-bottom: 2px solid #5C0B28;
       background: #FFFFFF;
     }
 
     .cart-panel-header h2 {
       font-size: 1.35rem;
       font-weight: 800;
-      color: #C62828;
+      color: #5C0B28;
       margin: 0;
     }
 
@@ -1237,7 +1277,7 @@
     }
 
     #cart-total {
-      color: #C62828;
+      color: #5C0B28;
       font-size: 1.35rem;
       font-weight: 900;
     }
@@ -1252,7 +1292,7 @@
 
     .cart-line-total {
       font-weight: 800;
-      color: #C62828;
+      color: #5C0B28;
       font-size: 0.95rem;
       white-space: nowrap;
     }
@@ -1283,8 +1323,8 @@
     }
 
     .cart-qty button:hover {
-      background: #C62828;
-      border-color: #C62828;
+      background: #5C0B28;
+      border-color: #5C0B28;
       color: #fff;
     }
 
@@ -1309,8 +1349,8 @@
     }
 
     .cart-row button[data-action="remove"]:hover {
-      color: #C62828;
-      background: rgba(198, 40, 40, 0.12);
+      color: #5C0B28;
+      background: rgba(92, 11, 40, 0.12);
     }
 
     /* ── MENU CARDS GRID & FAST-FOOD CARD STYLES ── */
@@ -1366,13 +1406,13 @@
       font-size: 1.25rem;
       font-weight: 800;
       color: #FFFFFF;
-      background: linear-gradient(135deg, #E53935, #C62828);
+      background: #5C0B28;
       display: inline-block;
       align-self: flex-start;
       padding: 4px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      box-shadow: 0 4px 14px rgba(229, 57, 53, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.30);
       margin-bottom: 16px;
     }
 
@@ -1461,9 +1501,10 @@
       width: 32px;
       height: 32px;
       border-radius: 8px;
-      background: #C62828;
+      background: #5C0B28;
       color: #FFFFFF;
-      box-shadow: 0 2px 8px rgba(198, 40, 40, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.30);
     }
 
     .summary-title {
@@ -1494,7 +1535,7 @@
       padding: 0 7px;
       border-radius: 999px;
       background: #FFFFFF;
-      color: #C62828;
+      color: #5C0B28;
       font-size: 0.82rem;
       font-weight: 900;
       line-height: 1;
@@ -1557,13 +1598,13 @@
       min-width: 24px;
       height: 22px;
       padding: 0 8px;
-      background: #C62828;
+      background: #5C0B28;
       color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.20);
       border-radius: 999px;
       font-size: 0.8rem;
       font-weight: 800;
       line-height: 1;
-      box-shadow: 0 2px 6px rgba(198, 40, 40, 0.5);
     }
 
     .summary-footer {
@@ -1588,15 +1629,15 @@
       text-decoration: none;
       padding: 8px 16px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #E53935, #C62828);
+      background: #5C0B28;
       border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 4px 14px rgba(229, 57, 53, 0.4);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
       transition: all 0.2s ease;
     }
 
     .summary-checkout-link:hover {
-      background: #FFFFFF;
-      color: #C62828;
+      background: #7A1439;
+      color: #FFFFFF;
       transform: translateY(-1px);
       box-shadow: 0 6px 18px rgba(255, 255, 255, 0.4);
     }
@@ -1672,19 +1713,19 @@
     }
 
     .category-btn:hover {
-      background: rgba(229, 57, 53, 0.35);
-      border-color: #EF5350;
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.40);
       color: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(229, 57, 53, 0.40);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.30);
     }
 
     .category-btn.active {
-      background: linear-gradient(135deg, #E53935, #C62828);
+      background: #5C0B28;
       color: #FFFFFF;
-      border-color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.60);
       font-weight: 800;
-      box-shadow: 0 8px 24px rgba(229, 57, 53, 0.55), 0 0 15px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
     }
 
     
@@ -1735,6 +1776,97 @@
       border-color: #1877F2;
       background: rgba(24, 119, 242, 0.22);
       box-shadow: 0 6px 20px rgba(24, 119, 242, 0.35);
+    }
+  
+    /* ── Distinct Modern Yassir Delivery Styling ── */
+    .yassir-contact-card {
+      border-color: rgba(0, 208, 132, 0.40) !important;
+      background: linear-gradient(160deg, rgba(92, 11, 40, 0.85) 0%, rgba(10, 40, 26, 0.55) 100%) !important;
+    }
+    .yassir-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .yassir-live-pill {
+      font-size: 0.70rem;
+      font-weight: 700;
+      color: #00D084;
+      background: rgba(0, 208, 132, 0.16);
+      border: 1px solid rgba(0, 208, 132, 0.35);
+      padding: 2px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .btn-yassir-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: #FFFFFF;
+      color: #5C0B28 !important;
+      font-weight: 700;
+      font-size: 0.90rem;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.25s ease;
+    }
+    .btn-yassir-action:hover {
+      background: #FFF3F5;
+      color: #7A1439 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+    .footer-yassir-cta {
+      margin: 16px auto 18px;
+      text-align: center;
+    }
+    .btn-yassir-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 28px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      color: #5C0B28 !important;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.25s ease;
+    }
+    .btn-yassir-main:hover {
+      background: #FFF3F5;
+      color: #7A1439 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+    .btn-yassir-main strong {
+      font-size: 1rem;
+      font-weight: 800;
+      display: block;
+      line-height: 1.2;
+    }
+    .btn-yassir-main small {
+      font-size: 0.78rem;
+      opacity: 0.88;
+      display: block;
+    }
+    .yassir-arrow {
+      font-size: 1.2rem;
+      font-weight: 800;
+      transition: transform 0.25s ease;
+    }
+    .btn-yassir-main:hover .yassir-arrow {
+      transform: translateX(-4px);
+    }
+    [dir="ltr"] .btn-yassir-main:hover .yassir-arrow {
+      transform: translateX(4px);
     }
   </style>
 </head>
@@ -1798,7 +1930,7 @@
       <div class="hero-veil"></div>
       <div class="hero-content">
         <p class="eyebrow anim-in" id="hero-eyebrow" data-i18n="hero_eyebrow">ماكلة نتاع الصح · CHECK'IN</p>
-        <h1 class="anim-in delay-1" id="hero-title" data-i18n="hero_title">Check'in - البنة لي تهبل.. أرواح تذوق وما تندمش! دجاج مخير في ڨاع وهران</h1>
+        <h1 class="anim-in delay-1" id="hero-title" data-i18n="hero_title">Check'in - البنة لي تهبل.. أرواح تذوق وما تندمش! دجاج مخير في ڤاع وهران</h1>
         <p class="lede anim-in delay-2" id="hero-lede" data-i18n="hero_lede">عندنا تلقى أحسن طاكوس، برغر، بيتزا وغراتان. كلش نقي ويتخدم في دقيقتو بمكونات طازجة، أرواح وبصحتك.</p>
         <a class="btn-gold anim-in delay-3" href="#formule" id="hero-cta" data-i18n="hero_cta">كوموندي دروك</a>
       </div>
@@ -1988,6 +2120,23 @@
           <p data-i18n="contact_days">Lundi au dimanche</p>
           <p class="hours" id="contact-hours" data-i18n="contact_time">11:00 AM — 03:00 AM</p>
         </article>
+        <article class="glass-card contact-card yassir-contact-card">
+          <div>
+            <div class="yassir-card-header">
+              <span class="yassir-live-pill" data-i18n="yassir_pill">توصيل سريع</span>
+            </div>
+            <h3 data-i18n="contact_yassir_title">يسير - Yassir</h3>
+            <p data-i18n="contact_yassir_desc">متوفرون على تطبيق Yassir Express للتوصيل الفوري في وهران</p>
+          </div>
+          <a href="https://delivery.yassir.com/fr/restaurants/6a157128b9c115fde1161f08/Check'in-Oran" 
+             target="_blank" 
+             rel="noopener" 
+             class="btn-yassir-action"
+             data-i18n="yassir_btn_action">
+            <span class="btn-icon">🛵</span>
+            <span>اطلب عبر يسير - Yassir</span>
+          </a>
+        </article>
       </div>
     </section>
   </main>
@@ -1996,13 +2145,23 @@
     <p id="footer-text" data-i18n="footer_text">Check'in FAST - FOOD · شارع الاستقلال، وسط المدينة، وهران الباهية</p>
     <p class="footer-tag" id="footer-tag" data-i18n="footer_tag">Fast Food & Gourmet Experience!</p>
     
+    <!-- Yassir Express Prominent CTA -->
+    <div class="footer-yassir-cta">
+      <a href="https://delivery.yassir.com/fr/restaurants/6a157128b9c115fde1161f08/Check'in-Oran" 
+         target="_blank" 
+         rel="noopener" 
+         class="btn-yassir-main">
+        <span class="yassir-badge-icon" style="font-size: 1.4rem;">🛵</span>
+        <span class="yassir-text-wrap" style="text-align: right;">
+          <strong data-i18n="yassir_main_btn">اطلب عبر يسير - Yassir</strong>
+          <small data-i18n="yassir_main_sub">توصيل حامي وسريع حتى لباب الدار في وهران</small>
+        </span>
+        <span class="yassir-arrow" aria-hidden="true">←</span>
+      </a>
+    </div>
+
     <!-- Official Delivery & Social Links -->
     <div class="footer-links-grid">
-      <!-- Yassir Delivery -->
-      <a href="https://delivery.yassir.com/fr/restaurants/6a157128b9c115fde1161f08/Check'in-Oran" target="_blank" rel="noopener" class="footer-pill-btn yassir-btn" title="Commander sur Yassir Express">
-        <span class="pill-icon">🛵</span>
-        <span><strong>Yassir Express:</strong> Check'in Oran</span>
-      </a>
 
       <!-- Instagram -->
       <a href="https://www.instagram.com/check_in_31/?hl=en" target="_blank" rel="noopener" class="footer-pill-btn insta-btn" title="Suivez-nous sur Instagram">
@@ -2131,7 +2290,7 @@
             fr: "FAST - FOOD DE QUALITÉ · CHECK'IN"
           },
           title: {
-            ar: "Check'in - البنة لي تهبل.. أرواح تذوق وما تندمش! دجاج مخير في ڨاع وهران",
+            ar: "Check'in - البنة لي تهبل.. أرواح تذوق وما تندمش! دجاج مخير في ڤاع وهران",
             fr: "Check'in — Le Meilleur du Fast-Food !"
           },
           description: {
@@ -2738,7 +2897,7 @@
           nav_contact: "اتصل بنا",
           nav_order: "كوموندي دروك",
           hero_eyebrow: "ماكلة نتاع الصح · CHECK'IN",
-          hero_title: "Check'in - البنة لي تهبل.. أرواح تذوق وما تندمش! دجاج مخير في ڨاع وهران",
+          hero_title: "Check'in - البنة لي تهبل.. أرواح تذوق وما تندمش! دجاج مخير في ڤاع وهران",
           hero_lede: "عندنا تلقى أحسن طاكوس، برغر، بيتزا وغراتان. كلش نقي ويتخدم في دقيقتو بمكونات طازجة، أرواح وبصحتك.",
           hero_cta: "كوموندي دروك",
           hero_scroll: "هبط تشوف",
@@ -2789,7 +2948,13 @@
           summary_empty: "سلتك فارغة حالياً. اضغط على أضف إلى السلة في أي وجبة وسيظهر طلبك هنا مباشرة!",
           summary_go_checkout: "متابعة الطلب في الأسفل",
 
-          footer_copy: "جميع الحقوق محفوظة."
+          footer_copy: "جميع الحقوق محفوظة © Check'in FAST - FOOD.",
+          contact_yassir_title: "يسير - Yassir",
+          contact_yassir_desc: "متوفرون على تطبيق Yassir Express للتوصيل الفوري في وهران",
+          yassir_pill: "توصيل سريع",
+          yassir_btn_action: "اطلب عبر يسير - Yassir",
+          yassir_main_btn: "اطلب عبر يسير - Yassir",
+          yassir_main_sub: "توصيل حامي وسريع حتى لباب الدار في وهران"
         },
         fr: {
           cart_btn: "Panier",
@@ -2859,7 +3024,13 @@
           summary_empty: "Votre panier est vide. Cliquez sur Ajouter pour voir vos articles ici !",
           summary_go_checkout: "Passer la commande",
 
-          footer_copy: "Tous droits réservés."
+          footer_copy: "Tous droits réservés © Check'in FAST - FOOD.",
+          contact_yassir_title: "Yassir Express",
+          contact_yassir_desc: "Disponible sur l'application Yassir Express pour une livraison directe à Oran",
+          yassir_pill: "Livraison Express",
+          yassir_btn_action: "Commander sur Yassir",
+          yassir_main_btn: "Commander sur Yassir Express",
+          yassir_main_sub: "Livraison rapide et chaude à votre porte à Oran"
         }
       };
 
